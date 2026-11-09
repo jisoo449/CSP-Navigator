@@ -1,0 +1,32 @@
+{
+  "_설명": "catalog.json 작성 예시. 아래 자료는 1일차 수집 결과 ②-2(P1~P3, P8)에서 옮겼다. 파일을 내려받아 이 폴더에 두고, 이용 조건을 확인한 뒤 use를 true로 바꿔 catalog.json에 넣는다. file 이름은 직접 저장한 파일명으로 바꾼다.",
+  "items": [
+    {
+      "file": "KISA_클라우드서비스_보안인증기준_해설서_공공데이터포털.pdf",
+      "title": "클라우드서비스 보안인증기준 해설서 (공공데이터포털 등록본, KISA)",
+      "summary": "클라우드서비스 보안인증(CSAP) 기준 항목별 해설. 공공부문 특화 요구사항 포함",
+      "source_url": "https://www.data.go.kr/biz/dcat/metadata/15160242.do",
+      "license": "공공누리 제4유형(출처표시·상업적 이용금지·변경금지). 판(版) 확인 필요",
+      "sectors": ["public"],
+      "use": false
+    },
+    {
+      "file": "KISA_2026_클라우드서비스_보안인증기준_해설서_2026.07.pdf",
+      "title": "2026년 클라우드서비스 보안인증기준 해설서(2026.07)",
+      "summary": "KISA 자료실 게시본. 공공누리 표시 없음",
+      "source_url": "https://isms-p.or.kr/ntcn/rcsrm/selectGnrlVrtlRcsrmList.do",
+      "license": "확인 필요 (게시 페이지에 공공누리 표시 없음 — KISA 문의 후 사용)",
+      "sectors": ["public"],
+      "use": false
+    },
+    {
+      "file": "KISA_2026_클라우드_보안인증_FAQ_2026.07.pdf",
+      "title": "2026년 클라우드 보안인증 FAQ(2026.07)",
+      "summary": "인증 등급·절차 질의응답",
+      "source_url": "https://isms-p.or.kr/ntcn/rcsrm/selectGnrlVrtlRcsrmList.do",
+      "license": "확인 필요 (게시 페이지에 공공누리 표시 없음)",
+      "sectors": ["public"],
+      "use": false
+    }
+  ]
+}

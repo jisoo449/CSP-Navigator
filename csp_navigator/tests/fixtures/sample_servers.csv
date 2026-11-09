@@ -1,0 +1,4 @@
+item_id,csp,platform,category,server_type,vcpu,memory_gb,included_disk,currency,hourly_price,official_monthly_price,monthly_price_730h,note,source_url,checked_at
+AWS-S0004,AWS,EC2 서울,컴퓨팅 최적화,c4.large,2.0,3.75,EBS 별도,USD,0.114,,83.22,,https://aws.amazon.com/ko/ec2/pricing/on-demand/,2026-10-21
+AWS-T0001,AWS,EC2 서울,범용,t3.large,2.0,8.0,EBS 별도,USD,0.104,,75.92,,https://aws.amazon.com/ko/ec2/pricing/on-demand/,2026-10-21
+NCP-S0001,NCP,VPC 2세대,Standard,Standard-g2,2.0,8.0,HDD 50GB,KRW,119.0,85120.0,85120.0,,https://www.ncloud.com/charge/price/ko,2026-10-21

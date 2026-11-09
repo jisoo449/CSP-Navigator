@@ -1,0 +1,3716 @@
+{
+  "run_at": "2026-10-23 11:30",
+  "llm": "gpt-4.1-mini",
+  "embedding": "text-embedding-3-small",
+  "settings": {
+    "_설명": "search_type: similarity | mmr (F2014는 미선택이지만 값으로 바꿀 수 있게 둠)",
+    "top_k": 5,
+    "search_type": "similarity",
+    "mmr_fetch_k": 20,
+    "mmr_lambda": 0.5,
+    "own_doc_k": 2,
+    "max_evidences": 8,
+    "snippet_chars": 280
+  },
+  "chunking": {
+    "chunk_size": 1000,
+    "chunk_overlap": 200
+  },
+  "4.1": {
+    "products": 108,
+    "meta_count": 108,
+    "doc_chunks": 5,
+    "index_text_NCP-CMP-01": "CSP: NCP\n상품명: Server Standard-g2 2vCPU/8GB\n분류: 컴퓨팅 (CMP)\n사양: 2vCPU / 8GB, 디스크 50GB\n요금(공식 표기, VAT 별도): 119 원/시간\n요금 환산: 원화 환산 119.00원/시간\n공식 월 요금: 85,120원\n리전: 한국(VPC)\n공공 요건: 확인 필요 (공공기관용 별도 플랫폼이 CSAP IaaS 인증 범위. 이 단가는 민간용 요금)\n폐쇄망·사설 연결: 확인 필요 (전용회선·VPN·사설 엔드포인트 지원 여부 미확인)\n무료 티어: 확인 필요 (확인 필요)\n설명: Server Standard-g2 2vCPU/8GB — 2vCPU / 8GB, 디스크 50GB. 월 85,120원. 월 환산(730시간, 참고) 86,870 원\n출처: https://www.ncloud.com/charge/price/ko\n확인일: 2026-10-21"
+  },
+  "graph": {
+    "nodes": [
+      "__start__",
+      "retrieve",
+      "generate",
+      "__end__"
+    ],
+    "edges": [
+      [
+        "__start__",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "generate"
+      ],
+      [
+        "generate",
+        "__end__"
+      ]
+    ],
+    "mermaid": "---\nconfig:\n  flowchart:\n    curve: linear\n---\ngraph TD;\n\t__start__([<p>__start__</p>]):::first\n\tretrieve(retrieve)\n\tgenerate(generate)\n\t__end__([<p>__end__</p>]):::last\n\t__start__ --> retrieve;\n\tretrieve --> generate;\n\tgenerate --> __end__;\n\tclassDef default fill:#f2f0ff,line-height:1.2\n\tclassDef first fill-opacity:0\n\tclassDef last fill:#bfb6fc\n"
+  },
+  "ask_first": {
+    "progress": [
+      "질문에서 외부 문서 검색어를 뽑고 있습니다.",
+      "선택 상품의 공식 문서를 가져오고 있습니다.",
+      "새 검색어 4개로 외부 문서 후보를 모으고 있습니다.",
+      "후보 10건 중 색인할 문서를 고르고 있습니다.",
+      "상품 메타데이터와 외부 문서에서 근거를 찾아 합치고 있습니다.",
+      "근거를 바탕으로 답변을 만들었습니다."
+    ],
+    "keywords": [
+      "AWS EC2 t3.micro 요금",
+      "EC2 월간 비용 계산",
+      "AWS 무료 티어 혜택",
+      "클라우드 컴퓨팅 비용 산정"
+    ],
+    "keywords_used": [
+      "AWS EC2 t3.micro 요금",
+      "EC2 월간 비용 계산",
+      "AWS 무료 티어 혜택",
+      "클라우드 컴퓨팅 비용 산정"
+    ],
+    "candidates": [
+      {
+        "cid": "c1",
+        "type": "web",
+        "title": "AWS 공식 상품·요금 페이지 (데이터베이스)",
+        "ref": "https://aws.amazon.com/ko/rds/mysql/pricing/",
+        "selected": false
+      },
+      {
+        "cid": "c2",
+        "type": "web",
+        "title": "AWS 공식 상품·요금 페이지 (데이터베이스)",
+        "ref": "https://aws.amazon.com/ko/rds/postgresql/pricing/",
+        "selected": false
+      },
+      {
+        "cid": "c3",
+        "type": "web",
+        "title": "AWS 공식 상품·요금 페이지 (데이터베이스)",
+        "ref": "https://aws.amazon.com/ko/dynamodb/pricing/on-demand/",
+        "selected": false
+      },
+      {
+        "cid": "c4",
+        "type": "web",
+        "title": "AWS 공식 상품·요금 페이지 (스토리지)",
+        "ref": "https://aws.amazon.com/ko/s3/pricing/",
+        "selected": false
+      },
+      {
+        "cid": "c5",
+        "type": "web",
+        "title": "GCP 공식 상품·요금 페이지 (컴퓨팅)",
+        "ref": "https://cloud.google.com/products/compute/pricing/general-purpose",
+        "selected": false
+      },
+      {
+        "cid": "c6",
+        "type": "web",
+        "title": "NCP 공식 상품·요금 페이지 (네트워크, 데이터베이스, 보안, 스토리지, 컴퓨팅)",
+        "ref": "https://www.ncloud.com/charge/price/ko",
+        "selected": false
+      },
+      {
+        "cid": "c7",
+        "type": "web",
+        "title": "NHN Cloud 공식 상품·요금 페이지 (컴퓨팅)",
+        "ref": "https://www.nhncloud.com/kr/pricing?c=Compute&s=Instance",
+        "selected": false
+      },
+      {
+        "cid": "c8",
+        "type": "web",
+        "title": "KT Cloud 공식 상품·요금 페이지 (네트워크, 데이터베이스, 보안, 스토리지, 컴퓨팅)",
+        "ref": "https://cloud.kt.com/calculator/",
+        "selected": false
+      },
+      {
+        "cid": "c9",
+        "type": "wiki",
+        "title": "소프트웨어 구조",
+        "ref": "소프트웨어 구조",
+        "selected": false
+      },
+      {
+        "cid": "c10",
+        "type": "wiki",
+        "title": "전력 구매 계약",
+        "ref": "전력 구매 계약",
+        "selected": false
+      }
+    ],
+    "report": {
+      "official": "indexed",
+      "new_keywords": [
+        "AWS EC2 t3.micro 요금",
+        "EC2 월간 비용 계산",
+        "AWS 무료 티어 혜택",
+        "클라우드 컴퓨팅 비용 산정"
+      ],
+      "cached_keywords": [],
+      "candidates": 10,
+      "selected": [],
+      "indexed_docs": [
+        "web-b3c884614d"
+      ],
+      "skipped": []
+    },
+    "ok": true,
+    "answer": "- AWS EC2 t3.micro 인스턴스는 2vCPU, 1GiB RAM에 Linux 운영체제로 월 730시간 사용 시 온디맨드 요금은 0.013 USD/시간이며, 월 환산 시 9.49 USD이다. 이 단가는 서울(ap-northeast-2) 리전을 기준으로 한 공식 AWS 웹 문서에 명시되어 있다[근거 1].\n- 한편, 무제한 모드의 T3 인스턴스 사용 시 CPU 크레딧 비용이 별도로 부과될 수 있는데, Linux의 경우 vCPU-시간당 0.05 USD로 계산된다. 총 비용 산정을 위해 원하는 무제한 모드 설정 여부는 확인 필요하다[근거 2, 6].\n- 무료 티어 및 크레딧은 AWS 신규 계정에 계정 단위로 최대 200 USD 크레딧이 최대 6개월 동안 제공되므로 이를 활용하면 초기 학습용 비용을 크게 절감할 수 있다. 단, 이 크레딧은 자동 적용되며 월별 미사용분 이월은 불가하다[근거 1, 4].\n- 따라서 무료 크레딧 적용 전, t3.micro 730시간 사용 시 예상 비용은 9.49 USD이지만(약 12,329원, 환율 1,334.03원/USD 기준), 신규 가입 후엔 최대 200 USD 크레딧 범위 내에서 무료로 사용할 수 있다[근거 1, 4].\n- 기타 요금(예: EBS 최적화, 탄력적 IP 등)은 별도 추가 비용이 있으며, 해당 서비스 이용 여부 및 설정에 따라 달라지므로 별도 확인이 필요하다[근거 6].\n- 리전, 요금 변동 및 무료 크레딧 세부 조건 등은 콘솔 로그인 후 확인해야 하며, 최신 정보 확인 및 견적 요청을 권장한다[근거 4, 5].",
+    "cited": [
+      1,
+      2,
+      6,
+      4,
+      5
+    ],
+    "notices": [],
+    "evidences": [
+      {
+        "n": 1,
+        "type": "meta",
+        "title": "AWS EC2 t3.micro",
+        "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+        "checked_at": "2026-10-21",
+        "chunk_id": "AWS-CMP-01",
+        "item_id": "AWS-CMP-01",
+        "cited": true
+      },
+      {
+        "n": 2,
+        "type": "web",
+        "title": "AWS 공식 문서: EC2 t3.micro",
+        "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+        "checked_at": "2026-10-23",
+        "chunk_id": "AWS-CMP-01:web-b3c884614d:4",
+        "item_id": "AWS-CMP-01",
+        "cited": true
+      },
+      {
+        "n": 3,
+        "type": "web",
+        "title": "AWS 공식 문서: EC2 t3.micro",
+        "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+        "checked_at": "2026-10-23",
+        "chunk_id": "AWS-CMP-01:web-b3c884614d:5",
+        "item_id": "AWS-CMP-01",
+        "cited": false
+      },
+      {
+        "n": 4,
+        "type": "summary",
+        "title": "CSP별 계정 단위 무료 티어·크레딧 요약",
+        "source": "수집결과_상품메타_공공PDF.md · CSP별 공통 정보",
+        "checked_at": "2026-10-21",
+        "chunk_id": "COMMON:sum-a36f9cee68:0",
+        "item_id": "COMMON",
+        "cited": true
+      },
+      {
+        "n": 5,
+        "type": "summary",
+        "title": "로그인 필요·공개 단가 없음 항목 정리",
+        "source": "수집결과_상품메타_공공PDF.md · ③",
+        "checked_at": "2026-10-21",
+        "chunk_id": "COMMON:sum-86cdd6ef61:0",
+        "item_id": "COMMON",
+        "cited": true
+      },
+      {
+        "n": 6,
+        "type": "web",
+        "title": "AWS 공식 문서: EC2 t3.micro",
+        "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+        "checked_at": "2026-10-23",
+        "chunk_id": "AWS-CMP-01:web-b3c884614d:3",
+        "item_id": "AWS-CMP-01",
+        "cited": true
+      }
+    ],
+    "seconds": 27.1,
+    "item_id": "AWS-CMP-01",
+    "question": "이 상품을 월 730시간 쓰면 비용이 얼마인가요?",
+    "sector": "learning"
+  },
+  "ask_again": {
+    "progress": [
+      "질문에서 외부 문서 검색어를 뽑고 있습니다.",
+      "새 검색어 3개로 외부 문서 후보를 모으고 있습니다.",
+      "후보 15건 중 색인할 문서를 고르고 있습니다.",
+      "선택한 문서 1건의 본문을 수집·색인하고 있습니다.",
+      "상품 메타데이터와 외부 문서에서 근거를 찾아 합치고 있습니다.",
+      "근거를 바탕으로 답변을 만들었습니다."
+    ],
+    "keywords": [
+      "AWS EC2 t3.micro 요금",
+      "클라우드 컴퓨팅 비용 계산",
+      "AWS 무료 티어 서비스",
+      "클라우드 컴퓨팅 월간 과금"
+    ],
+    "keywords_used": [
+      "AWS EC2 t3.micro 요금",
+      "클라우드 컴퓨팅 비용 계산",
+      "AWS 무료 티어 서비스",
+      "클라우드 컴퓨팅 월간 과금"
+    ],
+    "candidates": [
+      {
+        "cid": "c1",
+        "type": "web",
+        "title": "GCP 공식 상품·요금 페이지 (컴퓨팅)",
+        "ref": "https://cloud.google.com/products/compute/pricing/general-purpose",
+        "selected": false
+      },
+      {
+        "cid": "c2",
+        "type": "web",
+        "title": "NCP 공식 상품·요금 페이지 (네트워크, 데이터베이스, 보안, 스토리지, 컴퓨팅)",
+        "ref": "https://www.ncloud.com/charge/price/ko",
+        "selected": false
+      },
+      {
+        "cid": "c3",
+        "type": "web",
+        "title": "NHN Cloud 공식 상품·요금 페이지 (컴퓨팅)",
+        "ref": "https://www.nhncloud.com/kr/pricing?c=Compute&s=Instance",
+        "selected": false
+      },
+      {
+        "cid": "c4",
+        "type": "web",
+        "title": "KT Cloud 공식 상품·요금 페이지 (네트워크, 데이터베이스, 보안, 스토리지, 컴퓨팅)",
+        "ref": "https://cloud.kt.com/calculator/",
+        "selected": false
+      },
+      {
+        "cid": "c5",
+        "type": "wiki",
+        "title": "클라우드 컴퓨팅 보안",
+        "ref": "클라우드 컴퓨팅 보안",
+        "selected": false
+      },
+      {
+        "cid": "c6",
+        "type": "wiki",
+        "title": "리저버 컴퓨팅",
+        "ref": "리저버 컴퓨팅",
+        "selected": false
+      },
+      {
+        "cid": "c7",
+        "type": "wiki",
+        "title": "컴퓨터 과학",
+        "ref": "컴퓨터 과학",
+        "selected": false
+      },
+      {
+        "cid": "c8",
+        "type": "wiki",
+        "title": "양자 컴퓨터",
+        "ref": "양자 컴퓨터",
+        "selected": false
+      },
+      {
+        "cid": "c9",
+        "type": "web",
+        "title": "AWS 공식 상품·요금 페이지 (데이터베이스)",
+        "ref": "https://aws.amazon.com/ko/rds/mysql/pricing/",
+        "selected": false
+      },
+      {
+        "cid": "c10",
+        "type": "web",
+        "title": "AWS 공식 상품·요금 페이지 (데이터베이스)",
+        "ref": "https://aws.amazon.com/ko/rds/postgresql/pricing/",
+        "selected": false
+      },
+      {
+        "cid": "c11",
+        "type": "web",
+        "title": "AWS 공식 상품·요금 페이지 (데이터베이스)",
+        "ref": "https://aws.amazon.com/ko/dynamodb/pricing/on-demand/",
+        "selected": false
+      },
+      {
+        "cid": "c12",
+        "type": "web",
+        "title": "AWS 공식 상품·요금 페이지 (스토리지)",
+        "ref": "https://aws.amazon.com/ko/s3/pricing/",
+        "selected": false
+      },
+      {
+        "cid": "c13",
+        "type": "wiki",
+        "title": "위시켓",
+        "ref": "위시켓",
+        "selected": false
+      },
+      {
+        "cid": "c14",
+        "type": "wiki",
+        "title": "리눅스 재단",
+        "ref": "리눅스 재단",
+        "selected": false
+      },
+      {
+        "cid": "c15",
+        "type": "wiki",
+        "title": "아마존 일래스틱 컴퓨트 클라우드",
+        "ref": "아마존 일래스틱 컴퓨트 클라우드",
+        "selected": true
+      }
+    ],
+    "report": {
+      "official": "cached",
+      "new_keywords": [
+        "클라우드 컴퓨팅 비용 계산",
+        "AWS 무료 티어 서비스",
+        "클라우드 컴퓨팅 월간 과금"
+      ],
+      "cached_keywords": [
+        "AWS EC2 t3.micro 요금"
+      ],
+      "candidates": 15,
+      "selected": [
+        "c15"
+      ],
+      "indexed_docs": [
+        "wiki-fc2d02fa7e"
+      ],
+      "skipped": []
+    },
+    "ok": true,
+    "answer": "- AWS EC2 t3.micro 인스턴스는 2vCPU, 1GiB 메모리, 리전은 서울(ap-northeast-2)이며, Linux 기준 시간당 요금은 0.013 USD입니다. 한국 원화로 환산하면 17.34원/시간입니다. 월 730시간 사용 시 공식 문서 기준 월 환산 비용은 9.49 USD입니다[근거 1].\n- AWS는 신규 계정에 최대 200 USD 무료 크레딧과 최대 6개월 무료 플랜을 제공합니다. 따라서 처음 200 USD까지는 추가 비용 없이도 사용할 수 있습니다[근거 4].\n- CPU 크레딧 요금은 무제한 모드에서 vCPU-시간당 0.05 USD가 별도로 추가될 수 있으나, 무제한 모드 사용 여부는 확인 필요합니다[근거 2, 6].\n- 무료 티어 사용량은 AWS GovCloud를 제외한 모든 리전에서 적용되고, 월별 미사용량 이월은 불가합니다[근거 3].\n- 요금에는 VAT 및 판매세 별도 부과되며, EBS 최적화는 추가 비용 없이 기본 활성화됩니다[근거 6].\n- 위 금액은 온디맨드 정가 기준이며, 별도 약정 할인이나 맞춤 견적은 회원 로그인 및 상담이 필요합니다[근거 5].\n- 따라서, 월 730시간 사용 시 비용은 대략 9.49 USD이며 신규 계정은 최대 200 USD 크레딧까지 무료 사용 가능하므로, 이 범위 내에서는 비용 부담이 없습니다[근거 1, 4].\n\n요약하면,\n\n- 월 730시간 사용 비용: 9.49 USD (환산 약 12,300원 내외)\n- 신규 계정 무료 크레딧 최대 200 USD 및 6개월 무료 플랜 적용 가능\n- CPU 크레딧 추가 비용은 무제한 모드 시 발생 가능, 사용 여부 확인 필요\n- VAT 및 기타 세금 별도임\n- 리전: 서울(ap-northeast-2)\n- 무료 티어는 AWS GovCloud 제외 전 리전 합산 적용, 미사용량 이월 불가\n\n이 정보를 참고하여 학습용으로 AWS EC2 t3.micro를 사용할 경우 비용 부담이 거의 없고, 무료 크레딧 내에서 충분히 사용 가능합니다.",
+    "cited": [
+      1,
+      4,
+      2,
+      6,
+      3,
+      5
+    ],
+    "notices": [],
+    "evidences": [
+      {
+        "n": 1,
+        "type": "meta",
+        "title": "AWS EC2 t3.micro",
+        "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+        "checked_at": "2026-10-21",
+        "chunk_id": "AWS-CMP-01",
+        "item_id": "AWS-CMP-01",
+        "cited": true
+      },
+      {
+        "n": 2,
+        "type": "web",
+        "title": "AWS 공식 문서: EC2 t3.micro",
+        "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+        "checked_at": "2026-10-23",
+        "chunk_id": "AWS-CMP-01:web-b3c884614d:4",
+        "item_id": "AWS-CMP-01",
+        "cited": true
+      },
+      {
+        "n": 3,
+        "type": "web",
+        "title": "AWS 공식 문서: EC2 t3.micro",
+        "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+        "checked_at": "2026-10-23",
+        "chunk_id": "AWS-CMP-01:web-b3c884614d:5",
+        "item_id": "AWS-CMP-01",
+        "cited": true
+      },
+      {
+        "n": 4,
+        "type": "summary",
+        "title": "CSP별 계정 단위 무료 티어·크레딧 요약",
+        "source": "수집결과_상품메타_공공PDF.md · CSP별 공통 정보",
+        "checked_at": "2026-10-21",
+        "chunk_id": "COMMON:sum-a36f9cee68:0",
+        "item_id": "COMMON",
+        "cited": true
+      },
+      {
+        "n": 5,
+        "type": "summary",
+        "title": "로그인 필요·공개 단가 없음 항목 정리",
+        "source": "수집결과_상품메타_공공PDF.md · ③",
+        "checked_at": "2026-10-21",
+        "chunk_id": "COMMON:sum-86cdd6ef61:0",
+        "item_id": "COMMON",
+        "cited": true
+      },
+      {
+        "n": 6,
+        "type": "web",
+        "title": "AWS 공식 문서: EC2 t3.micro",
+        "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+        "checked_at": "2026-10-23",
+        "chunk_id": "AWS-CMP-01:web-b3c884614d:3",
+        "item_id": "AWS-CMP-01",
+        "cited": true
+      }
+    ],
+    "seconds": 47.9,
+    "item_id": "AWS-CMP-01",
+    "question": "이 상품을 월 730시간 쓰면 비용이 얼마인가요?",
+    "sector": "learning"
+  },
+  "cache_keys": [
+    "AWS-CMP-01|aws ec2 t3.micro 요금",
+    "AWS-CMP-01|ec2 월간 비용 계산",
+    "AWS-CMP-01|aws 무료 티어 혜택",
+    "AWS-CMP-01|클라우드 컴퓨팅 비용 산정",
+    "AWS-CMP-01|클라우드 컴퓨팅 비용 계산",
+    "AWS-CMP-01|aws 무료 티어 서비스",
+    "AWS-CMP-01|클라우드 컴퓨팅 월간 과금"
+  ],
+  "ask_exp": {
+    "E2": {
+      "progress": [
+        "질문에서 외부 문서 검색어를 뽑고 있습니다.",
+        "선택 상품의 공식 문서를 가져오고 있습니다.",
+        "새 검색어 4개로 외부 문서 후보를 모으고 있습니다.",
+        "후보 14건 중 색인할 문서를 고르고 있습니다.",
+        "선택한 문서 2건의 본문을 수집·색인하고 있습니다.",
+        "상품 메타데이터와 외부 문서에서 근거를 찾아 합치고 있습니다.",
+        "근거를 바탕으로 답변을 만들었습니다."
+      ],
+      "keywords": [
+        "KT Cloud Connect Hub 요금 및 구성",
+        "전용회선 폐쇄망 구축",
+        "VPN 연동 방식",
+        "공공 클라우드 보안인증 CSAP"
+      ],
+      "keywords_used": [
+        "KT Cloud Connect Hub 요금 및 구성",
+        "전용회선 폐쇄망 구축",
+        "VPN 연동 방식",
+        "공공 클라우드 보안인증 CSAP"
+      ],
+      "candidates": [
+        {
+          "cid": "c1",
+          "type": "web",
+          "title": "NHN Cloud 공식 상품·요금 페이지 (네트워크)",
+          "ref": "https://www.nhncloud.com/kr/pricing?c=Network",
+          "selected": false
+        },
+        {
+          "cid": "c2",
+          "type": "web",
+          "title": "KT Cloud 공식 상품·요금 페이지 (네트워크, 데이터베이스, 보안, 스토리지, 컴퓨팅)",
+          "ref": "https://cloud.kt.com/calculator/",
+          "selected": true
+        },
+        {
+          "cid": "c3",
+          "type": "web",
+          "title": "KT Cloud 공식 상품·요금 페이지 (네트워크)",
+          "ref": "https://cloud.kt.com/product/productDetail?prodId=P000000032",
+          "selected": true
+        },
+        {
+          "cid": "c4",
+          "type": "web",
+          "title": "AWS 공식 상품·요금 페이지 (네트워크)",
+          "ref": "https://aws.amazon.com/ko/directconnect/pricing/",
+          "selected": false
+        },
+        {
+          "cid": "c5",
+          "type": "web",
+          "title": "행정기관 및 공공기관 정보시스템 구축·운영 지침",
+          "ref": "https://www.law.go.kr/행정규칙/행정기관및공공기관정보시스템구축·운영지침",
+          "selected": false
+        },
+        {
+          "cid": "c6",
+          "type": "web",
+          "title": "AWS 공식 상품·요금 페이지 (네트워크)",
+          "ref": "https://aws.amazon.com/ko/vpn/pricing/",
+          "selected": false
+        },
+        {
+          "cid": "c7",
+          "type": "web",
+          "title": "GCP 공식 상품·요금 페이지 (네트워크)",
+          "ref": "https://cloud.google.com/vpn/pricing",
+          "selected": false
+        },
+        {
+          "cid": "c8",
+          "type": "web",
+          "title": "2026년 클라우드 보안인증 FAQ(2026.07)",
+          "ref": "https://isms-p.or.kr/ntcn/rcsrm/selectGnrlVrtlRcsrmList.do",
+          "selected": false
+        },
+        {
+          "cid": "c9",
+          "type": "web",
+          "title": "클라우드컴퓨팅서비스 보안인증에 관한 고시",
+          "ref": "https://www.law.go.kr/행정규칙/클라우드컴퓨팅서비스보안인증에관한고시",
+          "selected": false
+        },
+        {
+          "cid": "c10",
+          "type": "web",
+          "title": "행정기관 및 공공기관의 클라우드컴퓨팅서비스 이용 기준 및 안전성 확보 등에 관한 고시",
+          "ref": "https://www.law.go.kr/행정규칙/행정기관및공공기관의클라우드컴퓨팅서비스이용기준및안전성확보등에관한고시",
+          "selected": false
+        },
+        {
+          "cid": "c11",
+          "type": "wiki",
+          "title": "모두싸인",
+          "ref": "모두싸인",
+          "selected": false
+        },
+        {
+          "cid": "c12",
+          "type": "wiki",
+          "title": "한국정보통신진흥협회",
+          "ref": "한국정보통신진흥협회",
+          "selected": false
+        },
+        {
+          "cid": "c13",
+          "type": "wiki",
+          "title": "틸론",
+          "ref": "틸론",
+          "selected": false
+        },
+        {
+          "cid": "c14",
+          "type": "wiki",
+          "title": "트리니티소프트",
+          "ref": "트리니티소프트",
+          "selected": false
+        }
+      ],
+      "report": {
+        "official": "failed",
+        "new_keywords": [
+          "KT Cloud Connect Hub 요금 및 구성",
+          "전용회선 폐쇄망 구축",
+          "VPN 연동 방식",
+          "공공 클라우드 보안인증 CSAP"
+        ],
+        "cached_keywords": [],
+        "candidates": 14,
+        "selected": [
+          "c2",
+          "c3"
+        ],
+        "indexed_docs": [],
+        "skipped": [
+          "KT Cloud 공식 상품·요금 페이지 (네트워크, 데이터베이스, 보안, 스토리지, 컴퓨팅): 수집 실패",
+          "KT Cloud 공식 상품·요금 페이지 (네트워크): 수집 실패"
+        ]
+      },
+      "ok": true,
+      "answer": "사내 폐쇄망에서 KT Cloud의 Connect Hub 1Gbps (Shared) 상품을 사용하려면 다음 사항이 필요합니다.\n\n- **전용 회선·VPN 연동 허브 제공**: Connect Hub는 전용 회선과 VPN 연동을 지원하므로 폐쇄망 환경에서 전용 회선을 통해 안전하게 연결할 수 있습니다. 따라서 폐쇄망과의 전용 회선 연결, 또는 VPN 구성이 필요합니다[근거 1].\n- **전용 회선 비용 및 설치 별도 문의**: 전용회선 관련 비용과 설치비는 별도로 문의해야 하므로, 네트워크 사업자와 협의하여 폐쇄망에 맞는 전용 회선 구성을 사전에 확인해야 합니다[근거 2].\n- **공공기관용 별도 인증 및 플랫폼 확인 필요**: 공공기관용 폐쇄망 환경에서의 이용 시 인증 및 별도 플랫폼 여부가 확인 필요해, 관련 사항을 별도 점검 및 협의해야 할 수 있습니다[근거 1, 2].\n- **무료 체험 혜택**: 가입 후 1개월 이내 50만원 상당 90일 무료체험을 지원하는 계정 단위 무료 혜택이 있으나, 폐쇄망 구축에 필요한 모든 구성 요소가 포함되는지는 문서에서 확인되지 않습니다[근거 1, 3].\n\n요약하면, 폐쇄망 환경에서 이 상품을 이용하기 위해 전용 회선 구축 및 VPN 연동 환경 구성을 별도로 준비해야 하며, 전용 회선 비용과 설치는 별도 문의 후 진행해야 합니다. 공공기관 폐쇄망용 인증과 플랫폼 요구사항도 별도로 확인이 필요합니다.",
+      "cited": [
+        1,
+        2,
+        3
+      ],
+      "notices": [
+        "선택 상품의 공식 문서를 가져오지 못해(접속 제한·본문 없음 등) 상품 메타데이터와 기존 색인 문서로 답했습니다.",
+        "수집하지 않은 문서: KT Cloud 공식 상품·요금 페이지 (네트워크, 데이터베이스, 보안, 스토리지, 컴퓨팅): 수집 실패; KT Cloud 공식 상품·요금 페이지 (네트워크): 수집 실패"
+      ],
+      "evidences": [
+        {
+          "n": 1,
+          "type": "meta",
+          "title": "KT Cloud Connect Hub 1Gbps (Shared)",
+          "source": "https://cloud.kt.com/product/productDetail?prodId=P000000029",
+          "checked_at": "2026-10-21",
+          "chunk_id": "KT-NET-02",
+          "item_id": "KT-NET-02",
+          "cited": true
+        },
+        {
+          "n": 2,
+          "type": "summary",
+          "title": "로그인 필요·공개 단가 없음 항목 정리",
+          "source": "수집결과_상품메타_공공PDF.md · ③",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-86cdd6ef61:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 3,
+          "type": "summary",
+          "title": "CSP별 계정 단위 무료 티어·크레딧 요약",
+          "source": "수집결과_상품메타_공공PDF.md · CSP별 공통 정보",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-a36f9cee68:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 4,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:1",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        },
+        {
+          "n": 5,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:2",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        },
+        {
+          "n": 6,
+          "type": "wiki",
+          "title": "위키백과: 아마존 일래스틱 컴퓨트 클라우드",
+          "source": "https://ko.wikipedia.org/wiki/%EC%95%84%EB%A7%88%EC%A1%B4_%EC%9D%BC%EB%9E%98%EC%8A%A4%ED%8B%B1_%EC%BB%B4%ED%93%A8%ED%8A%B8_%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:wiki-fc2d02fa7e:9",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        }
+      ],
+      "seconds": 50.4,
+      "item_id": "KT-NET-02",
+      "question": "사내 폐쇄망에서 이 상품을 쓰려면 무엇이 더 필요한가요?",
+      "sector": "private"
+    },
+    "E3": {
+      "progress": [
+        "질문에서 외부 문서 검색어를 뽑고 있습니다.",
+        "선택 상품의 공식 문서를 가져오고 있습니다.",
+        "새 검색어 4개로 외부 문서 후보를 모으고 있습니다.",
+        "후보 9건 중 색인할 문서를 고르고 있습니다.",
+        "선택한 문서 1건의 본문을 수집·색인하고 있습니다.",
+        "상품 메타데이터와 외부 문서에서 근거를 찾아 합치고 있습니다.",
+        "근거를 바탕으로 답변을 만들었습니다."
+      ],
+      "keywords": [
+        "NHN Cloud Instance m2.c2m4 공공 기관 사용",
+        "NHN Cloud 클라우드 보안인증 CSAP",
+        "공공 클라우드 보안인증 요건",
+        "공공 클라우드 폐쇄망 전용회선"
+      ],
+      "keywords_used": [
+        "NHN Cloud Instance m2.c2m4 공공 기관 사용",
+        "NHN Cloud 클라우드 보안인증 CSAP",
+        "공공 클라우드 보안인증 요건",
+        "공공 클라우드 폐쇄망 전용회선"
+      ],
+      "candidates": [
+        {
+          "cid": "c1",
+          "type": "web",
+          "title": "NHN Cloud 공식 상품·요금 페이지 (데이터베이스)",
+          "ref": "https://www.nhncloud.com/kr/pricing?c=Database",
+          "selected": false
+        },
+        {
+          "cid": "c2",
+          "type": "web",
+          "title": "NHN Cloud 공식 상품·요금 페이지 (스토리지)",
+          "ref": "https://www.nhncloud.com/kr/pricing?c=Storage",
+          "selected": false
+        },
+        {
+          "cid": "c3",
+          "type": "web",
+          "title": "NHN Cloud 공식 상품·요금 페이지 (네트워크)",
+          "ref": "https://www.nhncloud.com/kr/pricing?c=Network",
+          "selected": false
+        },
+        {
+          "cid": "c4",
+          "type": "web",
+          "title": "NHN Cloud 공식 상품·요금 페이지 (보안)",
+          "ref": "https://www.nhncloud.com/kr/pricing?c=Security",
+          "selected": false
+        },
+        {
+          "cid": "c5",
+          "type": "web",
+          "title": "2026년 클라우드 보안인증 FAQ(2026.07)",
+          "ref": "https://isms-p.or.kr/ntcn/rcsrm/selectGnrlVrtlRcsrmList.do",
+          "selected": false
+        },
+        {
+          "cid": "c6",
+          "type": "web",
+          "title": "클라우드컴퓨팅서비스 보안인증에 관한 고시",
+          "ref": "https://www.law.go.kr/행정규칙/클라우드컴퓨팅서비스보안인증에관한고시",
+          "selected": false
+        },
+        {
+          "cid": "c7",
+          "type": "web",
+          "title": "행정기관 및 공공기관의 클라우드컴퓨팅서비스 이용 기준 및 안전성 확보 등에 관한 고시",
+          "ref": "https://www.law.go.kr/행정규칙/행정기관및공공기관의클라우드컴퓨팅서비스이용기준및안전성확보등에관한고시",
+          "selected": true
+        },
+        {
+          "cid": "c8",
+          "type": "web",
+          "title": "행정기관 및 공공기관 정보시스템 구축·운영 지침",
+          "ref": "https://www.law.go.kr/행정규칙/행정기관및공공기관정보시스템구축·운영지침",
+          "selected": false
+        },
+        {
+          "cid": "c9",
+          "type": "web",
+          "title": "국가 망 보안체계(N²SF) 보안 가이드라인 1.0",
+          "ref": "https://byline.network/2025/09/30-445/",
+          "selected": false
+        }
+      ],
+      "report": {
+        "official": "indexed",
+        "new_keywords": [
+          "NHN Cloud Instance m2.c2m4 공공 기관 사용",
+          "NHN Cloud 클라우드 보안인증 CSAP",
+          "공공 클라우드 보안인증 요건",
+          "공공 클라우드 폐쇄망 전용회선"
+        ],
+        "cached_keywords": [],
+        "candidates": 9,
+        "selected": [
+          "c7"
+        ],
+        "indexed_docs": [
+          "web-80f582c10b"
+        ],
+        "skipped": [
+          "행정기관 및 공공기관의 클라우드컴퓨팅서비스 이용 기준 및 안전성 확보 등에 관한 고시: 본문이 너무 짧음(0자)"
+        ]
+      },
+      "ok": true,
+      "answer": "- NHN Cloud Instance m2.c2m4 상품은 공공기관용 별도 플랫폼이 CSAP IaaS 인증 범위에 포함되어 있습니다. 하지만 이 단가는 민간용 요금이며 공공 요건 충족 여부는 \"확인 필요\"로 명기되어 있습니다. 즉, 이 상품을 공공기관에서 바로 사용할 수 있는지는 추가 확인이 필요합니다[근거 1].\n- NHN Cloud는 CSAP 인증서를 보유하고 있으며, 공공기관용 IaaS 인증 범위에서 인증서를 유지하고 있습니다(인증번호 CSAP-2017-003호, 유효기간 2022-12-13 ~ 2027-12-12)[근거 4].\n- 공공기관용 플랫폼에 관한 요금표는 이번 수집 대상에 포함되지 않아 확인할 수 없습니다. 따라서 공공기관용 별도 플랫폼 및 서비스 조건에 관한 더 자세한 정보는 별도 문의 혹은 영업 상담이 필요합니다[근거 3].\n- 2027년 하반기부터 공공 클라우드 보안 검증 제도가 국정원 단일 검증 체계로 일원화되는데, 기존 CSAP 인증서는 잔여 유효기간 동안 유효하므로 공공기관 사용 시 현재 인증 상황과 향후 제도 변화를 고려해야 합니다[근거 6].\n- 폐쇄망·사설 네트워크 연결 지원 여부와 무료 티어 지원 여부 등 구체적인 공공기관 요구 조건 충족 여부는 모두 \"확인 필요\" 상태입니다[근거 1].\n- 따라서, NHN Cloud Instance m2.c2m4를 공공기관에서 사용하고자 할 경우, CSAP 인증 범위 내 공공기관용 별도 플랫폼을 이용해야 하며, 현재 제공되는 민간용 단가 및 서비스가 아닌 공공기관용으로 별도 문의하고 확실한 인증과 요금 조건을 확인하는 절차가 필요합니다[근거 1, 3, 4].",
+      "cited": [
+        1,
+        4,
+        3,
+        6
+      ],
+      "notices": [
+        "수집하지 않은 문서: 행정기관 및 공공기관의 클라우드컴퓨팅서비스 이용 기준 및 안전성 확보 등에 관한 고시: 본문이 너무 짧음(0자)"
+      ],
+      "evidences": [
+        {
+          "n": 1,
+          "type": "meta",
+          "title": "NHN Cloud Instance m2.c2m4",
+          "source": "https://www.nhncloud.com/kr/pricing?c=Compute&s=Instance",
+          "checked_at": "2026-10-21",
+          "chunk_id": "NHN-CMP-02",
+          "item_id": "NHN-CMP-02",
+          "cited": true
+        },
+        {
+          "n": 2,
+          "type": "web",
+          "title": "NHN Cloud 공식 문서: Instance m2.c2m4",
+          "source": "https://www.nhncloud.com/kr/pricing?c=Compute&s=Instance",
+          "checked_at": "2026-10-23",
+          "chunk_id": "NHN-CMP-02:web-80f582c10b:0",
+          "item_id": "NHN-CMP-02",
+          "cited": false
+        },
+        {
+          "n": 3,
+          "type": "summary",
+          "title": "로그인 필요·공개 단가 없음 항목 정리",
+          "source": "수집결과_상품메타_공공PDF.md · ③",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-86cdd6ef61:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 4,
+          "type": "summary",
+          "title": "CSAP(클라우드 보안인증) IaaS 인증 현황 — KISA 발급현황 조회 요약(2026-10-21)",
+          "source": "https://isms-p.or.kr/sttus/vrtl/selectVrtlCrtfctList.do",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-61f777353e:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 5,
+          "type": "summary",
+          "title": "CSAP(클라우드 보안인증) IaaS 인증 현황 — KISA 발급현황 조회 요약(2026-10-21)",
+          "source": "https://isms-p.or.kr/sttus/vrtl/selectVrtlCrtfctList.do",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-61f777353e:1",
+          "item_id": "COMMON",
+          "cited": false
+        },
+        {
+          "n": 6,
+          "type": "summary",
+          "title": "공공 클라우드 보안 검증 제도 변경(2026-04-20 발표) 요약",
+          "source": "https://byline.network/2026/04/20-578/",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-d07438a889:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 7,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:1",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        }
+      ],
+      "seconds": 31.2,
+      "item_id": "NHN-CMP-02",
+      "question": "공공기관이 이 상품을 써도 되나요?",
+      "sector": "public"
+    }
+  },
+  "not_in_docs": {
+    "progress": [
+      "질문에서 외부 문서 검색어를 뽑고 있습니다.",
+      "선택 상품의 공식 문서를 가져오고 있습니다.",
+      "새 검색어 4개로 외부 문서 후보를 모으고 있습니다.",
+      "후보 10건 중 색인할 문서를 고르고 있습니다.",
+      "상품 메타데이터와 외부 문서에서 근거를 찾아 합치고 있습니다.",
+      "근거를 바탕으로 답변을 만들었습니다."
+    ],
+    "keywords": [
+      "NCP Server Standard-g2 SLA 장애 보상",
+      "NCP 클라우드 SLA 정책",
+      "SLA 장애 보상 비율",
+      "서비스 수준 협약 개념"
+    ],
+    "keywords_used": [
+      "NCP Server Standard-g2 SLA 장애 보상",
+      "NCP 클라우드 SLA 정책",
+      "SLA 장애 보상 비율",
+      "서비스 수준 협약 개념"
+    ],
+    "candidates": [
+      {
+        "cid": "c1",
+        "type": "web",
+        "title": "KT Cloud 공식 상품·요금 페이지 (네트워크, 데이터베이스, 보안, 스토리지, 컴퓨팅)",
+        "ref": "https://cloud.kt.com/calculator/",
+        "selected": false
+      },
+      {
+        "cid": "c2",
+        "type": "web",
+        "title": "AWS 공식 상품·요금 페이지 (스토리지)",
+        "ref": "https://aws.amazon.com/ko/s3/pricing/",
+        "selected": false
+      },
+      {
+        "cid": "c3",
+        "type": "web",
+        "title": "AWS 공식 상품·요금 페이지 (스토리지)",
+        "ref": "https://aws.amazon.com/ko/efs/pricing/",
+        "selected": false
+      },
+      {
+        "cid": "c4",
+        "type": "web",
+        "title": "GCP 공식 상품·요금 페이지 (컴퓨팅)",
+        "ref": "https://cloud.google.com/products/compute/pricing/general-purpose",
+        "selected": false
+      },
+      {
+        "cid": "c5",
+        "type": "web",
+        "title": "2026년 클라우드 보안인증 FAQ(2026.07)",
+        "ref": "https://isms-p.or.kr/ntcn/rcsrm/selectGnrlVrtlRcsrmList.do",
+        "selected": false
+      },
+      {
+        "cid": "c6",
+        "type": "web",
+        "title": "행정기관 및 공공기관의 클라우드컴퓨팅서비스 이용 기준 및 안전성 확보 등에 관한 고시",
+        "ref": "https://www.law.go.kr/행정규칙/행정기관및공공기관의클라우드컴퓨팅서비스이용기준및안전성확보등에관한고시",
+        "selected": false
+      },
+      {
+        "cid": "c7",
+        "type": "web",
+        "title": "행정기관 및 공공기관 정보시스템 구축·운영 지침",
+        "ref": "https://www.law.go.kr/행정규칙/행정기관및공공기관정보시스템구축·운영지침",
+        "selected": false
+      },
+      {
+        "cid": "c8",
+        "type": "wiki",
+        "title": "API",
+        "ref": "API",
+        "selected": false
+      },
+      {
+        "cid": "c9",
+        "type": "wiki",
+        "title": "고객",
+        "ref": "고객",
+        "selected": false
+      },
+      {
+        "cid": "c10",
+        "type": "wiki",
+        "title": "차세대 통신망",
+        "ref": "차세대 통신망",
+        "selected": false
+      }
+    ],
+    "report": {
+      "official": "failed",
+      "new_keywords": [
+        "NCP Server Standard-g2 SLA 장애 보상",
+        "NCP 클라우드 SLA 정책",
+        "SLA 장애 보상 비율",
+        "서비스 수준 협약 개념"
+      ],
+      "cached_keywords": [],
+      "candidates": 10,
+      "selected": [],
+      "indexed_docs": [],
+      "skipped": []
+    },
+    "ok": true,
+    "answer": "이 상품의 SLA 장애 보상 비율에 관한 정보는 문서에서 확인되지 않습니다.  \n- 근거 문서 어디에서도 SLA 장애 보상 비율이나 관련 보상 정책에 대한 내용이 없습니다[근거 1, 2, 3, 4, 5, 6].",
+    "cited": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "notices": [
+      "선택 상품의 공식 문서를 가져오지 못해(접속 제한·본문 없음 등) 상품 메타데이터와 기존 색인 문서로 답했습니다."
+    ],
+    "evidences": [
+      {
+        "n": 1,
+        "type": "meta",
+        "title": "NCP Server Standard-g2 2vCPU/8GB",
+        "source": "https://www.ncloud.com/charge/price/ko",
+        "checked_at": "2026-10-21",
+        "chunk_id": "NCP-CMP-01",
+        "item_id": "NCP-CMP-01",
+        "cited": true
+      },
+      {
+        "n": 2,
+        "type": "summary",
+        "title": "로그인 필요·공개 단가 없음 항목 정리",
+        "source": "수집결과_상품메타_공공PDF.md · ③",
+        "checked_at": "2026-10-21",
+        "chunk_id": "COMMON:sum-86cdd6ef61:0",
+        "item_id": "COMMON",
+        "cited": true
+      },
+      {
+        "n": 3,
+        "type": "wiki",
+        "title": "위키백과: 아마존 일래스틱 컴퓨트 클라우드",
+        "source": "https://ko.wikipedia.org/wiki/%EC%95%84%EB%A7%88%EC%A1%B4_%EC%9D%BC%EB%9E%98%EC%8A%A4%ED%8B%B1_%EC%BB%B4%ED%93%A8%ED%8A%B8_%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C",
+        "checked_at": "2026-10-23",
+        "chunk_id": "AWS-CMP-01:wiki-fc2d02fa7e:4",
+        "item_id": "AWS-CMP-01",
+        "cited": true
+      },
+      {
+        "n": 4,
+        "type": "web",
+        "title": "NHN Cloud 공식 문서: Instance m2.c2m4",
+        "source": "https://www.nhncloud.com/kr/pricing?c=Compute&s=Instance",
+        "checked_at": "2026-10-23",
+        "chunk_id": "NHN-CMP-02:web-80f582c10b:0",
+        "item_id": "NHN-CMP-02",
+        "cited": true
+      },
+      {
+        "n": 5,
+        "type": "wiki",
+        "title": "위키백과: 아마존 일래스틱 컴퓨트 클라우드",
+        "source": "https://ko.wikipedia.org/wiki/%EC%95%84%EB%A7%88%EC%A1%B4_%EC%9D%BC%EB%9E%98%EC%8A%A4%ED%8B%B1_%EC%BB%B4%ED%93%A8%ED%8A%B8_%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C",
+        "checked_at": "2026-10-23",
+        "chunk_id": "AWS-CMP-01:wiki-fc2d02fa7e:10",
+        "item_id": "AWS-CMP-01",
+        "cited": true
+      },
+      {
+        "n": 6,
+        "type": "summary",
+        "title": "CSP별 계정 단위 무료 티어·크레딧 요약",
+        "source": "수집결과_상품메타_공공PDF.md · CSP별 공통 정보",
+        "checked_at": "2026-10-21",
+        "chunk_id": "COMMON:sum-a36f9cee68:0",
+        "item_id": "COMMON",
+        "cited": true
+      }
+    ],
+    "seconds": 42.1,
+    "item_id": "NCP-CMP-01",
+    "question": "이 상품의 SLA 장애 보상 비율은 몇 퍼센트인가요?",
+    "sector": "learning"
+  },
+  "unrelated": {
+    "progress": [
+      "질문에서 외부 문서 검색어를 뽑고 있습니다.",
+      "선택 상품의 공식 문서를 가져오고 있습니다.",
+      "새 검색어 4개로 외부 문서 후보를 모으고 있습니다.",
+      "후보 19건 중 색인할 문서를 고르고 있습니다.",
+      "상품 메타데이터와 외부 문서에서 근거를 찾아 합치고 있습니다.",
+      "근거를 바탕으로 답변을 만들었습니다."
+    ],
+    "keywords": [
+      "NCP Server Standard-g2 요금",
+      "국내 클라우드 무료 티어",
+      "클라우드 컴퓨팅 학습용 비용",
+      "서울 날씨 예보"
+    ],
+    "keywords_used": [
+      "NCP Server Standard-g2 요금",
+      "국내 클라우드 무료 티어",
+      "클라우드 컴퓨팅 학습용 비용",
+      "서울 날씨 예보"
+    ],
+    "candidates": [
+      {
+        "cid": "c1",
+        "type": "web",
+        "title": "KT Cloud 공식 상품·요금 페이지 (네트워크, 데이터베이스, 보안, 스토리지, 컴퓨팅)",
+        "ref": "https://cloud.kt.com/calculator/",
+        "selected": false
+      },
+      {
+        "cid": "c2",
+        "type": "web",
+        "title": "AWS 공식 상품·요금 페이지 (스토리지)",
+        "ref": "https://aws.amazon.com/ko/s3/pricing/",
+        "selected": false
+      },
+      {
+        "cid": "c3",
+        "type": "web",
+        "title": "AWS 공식 상품·요금 페이지 (스토리지)",
+        "ref": "https://aws.amazon.com/ko/efs/pricing/",
+        "selected": false
+      },
+      {
+        "cid": "c4",
+        "type": "web",
+        "title": "GCP 공식 상품·요금 페이지 (컴퓨팅)",
+        "ref": "https://cloud.google.com/products/compute/pricing/general-purpose",
+        "selected": false
+      },
+      {
+        "cid": "c5",
+        "type": "web",
+        "title": "2026년 클라우드 보안인증 FAQ(2026.07)",
+        "ref": "https://isms-p.or.kr/ntcn/rcsrm/selectGnrlVrtlRcsrmList.do",
+        "selected": false
+      },
+      {
+        "cid": "c6",
+        "type": "web",
+        "title": "행정기관 및 공공기관의 클라우드컴퓨팅서비스 이용 기준 및 안전성 확보 등에 관한 고시",
+        "ref": "https://www.law.go.kr/행정규칙/행정기관및공공기관의클라우드컴퓨팅서비스이용기준및안전성확보등에관한고시",
+        "selected": false
+      },
+      {
+        "cid": "c7",
+        "type": "web",
+        "title": "행정기관 및 공공기관 정보시스템 구축·운영 지침",
+        "ref": "https://www.law.go.kr/행정규칙/행정기관및공공기관정보시스템구축·운영지침",
+        "selected": false
+      },
+      {
+        "cid": "c8",
+        "type": "wiki",
+        "title": "위시켓",
+        "ref": "위시켓",
+        "selected": false
+      },
+      {
+        "cid": "c9",
+        "type": "wiki",
+        "title": "비디오 게임 논란",
+        "ref": "비디오 게임 논란",
+        "selected": false
+      },
+      {
+        "cid": "c10",
+        "type": "web",
+        "title": "AWS 공식 상품·요금 페이지 (컴퓨팅)",
+        "ref": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+        "selected": false
+      },
+      {
+        "cid": "c11",
+        "type": "web",
+        "title": "NHN Cloud 공식 상품·요금 페이지 (컴퓨팅)",
+        "ref": "https://www.nhncloud.com/kr/pricing?c=Compute&s=Instance",
+        "selected": false
+      },
+      {
+        "cid": "c12",
+        "type": "wiki",
+        "title": "클라우드 컴퓨팅",
+        "ref": "클라우드 컴퓨팅",
+        "selected": false
+      },
+      {
+        "cid": "c13",
+        "type": "wiki",
+        "title": "시각 컴퓨팅",
+        "ref": "시각 컴퓨팅",
+        "selected": false
+      },
+      {
+        "cid": "c14",
+        "type": "wiki",
+        "title": "구글 브레인",
+        "ref": "구글 브레인",
+        "selected": false
+      },
+      {
+        "cid": "c15",
+        "type": "wiki",
+        "title": "아마존 (기업)",
+        "ref": "아마존 (기업)",
+        "selected": false
+      },
+      {
+        "cid": "c16",
+        "type": "wiki",
+        "title": "서울특별시",
+        "ref": "서울특별시",
+        "selected": false
+      },
+      {
+        "cid": "c17",
+        "type": "wiki",
+        "title": "기상",
+        "ref": "기상",
+        "selected": false
+      },
+      {
+        "cid": "c18",
+        "type": "wiki",
+        "title": "대한민국 기상청",
+        "ref": "대한민국 기상청",
+        "selected": false
+      },
+      {
+        "cid": "c19",
+        "type": "wiki",
+        "title": "도쿄",
+        "ref": "도쿄",
+        "selected": false
+      }
+    ],
+    "report": {
+      "official": "failed",
+      "new_keywords": [
+        "NCP Server Standard-g2 요금",
+        "국내 클라우드 무료 티어",
+        "클라우드 컴퓨팅 학습용 비용",
+        "서울 날씨 예보"
+      ],
+      "cached_keywords": [],
+      "candidates": 19,
+      "selected": [],
+      "indexed_docs": [],
+      "skipped": []
+    },
+    "ok": true,
+    "answer": "질문하신 \"다음 주 서울 날씨\"에 대한 내용은 문서에서 확인되지 않습니다. 근거 문서들은 클라우드 서비스 제공자(CSP)들의 요금, 무료 티어, 인증, 인스턴스 사양, 청구 방식 등에 관한 내용만 포함하고 있습니다.  \n즉, 날씨 정보는 문서에 존재하지 않아 답변할 수 없습니다.\n\n추가 참고사항으로, 학습용 최저 비용과 무료 티어·크레딧 관련 정보를 요약하면 다음과 같습니다.\n\n- **AWS**  \n  - 서울 리전(ap-northeast-2) 기준  \n  - 신규 가입자에게 최대 200 USD 크레딧과 최대 6개월간 무료 플랜 제공  \n  - 매월 100GB 인터넷 데이터 송신 무료  \n  - 인스턴스 t3.micro 등 다양한 인스턴스 유형 존재  \n  - CPU 크레딧 비용: Linux vCPU-시간당 0.05 USD  \n  - 온디맨드 시간 단위(초당 결제 최소 60초)  \n  - [근거 2, 4, 5, 6]\n\n- **Google Cloud Platform(GCP)**  \n  - 서울 리전(asia-northeast3) 기준  \n  - 신규 가입자에 300 USD 크레딧 90일간 제공  \n  - 단, e2-micro 상시 무료 인스턴스는 미국 3개 리전 한정 (서울 제외)  \n  - [근거 2]\n\n- **NCP (네이버 클라우드 플랫폼)**  \n  - 한국(VPC) 리전 기준  \n  - Server Standard-g2 2vCPU/8GB 요금: 119원/시간, 월 요금 약 85,120원  \n  - 무료 티어 및 크레딧 여부는 확인 필요  \n  - 공공 요건, 폐쇄망 연결 지원 여부도 확인 필요  \n  - [근거 1, 2, 3]\n\n- **KT Cloud**  \n  - Seoul M1 존 기준  \n  - 신규 가입 1개월 이내 50만원 상당 90일 무료 체험 제공  \n  - 회원가입 필요  \n  - [근거 2, 3]\n\n- **SCP**  \n  - 한국 리전 (오퍼링 Enterprises/Finance)  \n  - 결제수단 등록 시 30만 원 크레딧 3개월 제공  \n  - 무료 체험 크레딧은 콘솔 로그인 후 신청 가능  \n  - [근거 2, 3]\n\n- **NHN Cloud**  \n  - 한국(판교) 리전 기준  \n  - 무료 티어·크레딧 여부 확인 필요  \n  - [근거 2]\n\n요약하면 서울 지역 기준으로 비교하면 AWS와 GCP는 각각 신규 가입자에 USD 단위 크레딧 제공하나 GCP는 서울 상시 무료 인스턴스 불포함, NCP와 NHN Cloud는 무료 티어 확인이 필요하며 KT Cloud와 SCP는 원화 기준으로 비교적 큰 금액의 무료 크레딧 체험을 제공합니다.  \n학습용으로 최저 비용과 무료 혜택을 우선한다면 AWS의 무료 플랜과 KT Cloud 무료체험 등이 대표적입니다.\n\n하지만 서울 다음 주 날씨 정보는 관련 근거 자료에 없으므로 별도 날씨 서비스 활용을 권합니다.",
+    "cited": [
+      2,
+      4,
+      5,
+      6,
+      1,
+      3
+    ],
+    "notices": [
+      "선택 상품의 공식 문서를 가져오지 못해(접속 제한·본문 없음 등) 상품 메타데이터와 기존 색인 문서로 답했습니다."
+    ],
+    "evidences": [
+      {
+        "n": 1,
+        "type": "meta",
+        "title": "NCP Server Standard-g2 2vCPU/8GB",
+        "source": "https://www.ncloud.com/charge/price/ko",
+        "checked_at": "2026-10-21",
+        "chunk_id": "NCP-CMP-01",
+        "item_id": "NCP-CMP-01",
+        "cited": true
+      },
+      {
+        "n": 2,
+        "type": "summary",
+        "title": "CSP별 계정 단위 무료 티어·크레딧 요약",
+        "source": "수집결과_상품메타_공공PDF.md · CSP별 공통 정보",
+        "checked_at": "2026-10-21",
+        "chunk_id": "COMMON:sum-a36f9cee68:0",
+        "item_id": "COMMON",
+        "cited": true
+      },
+      {
+        "n": 3,
+        "type": "summary",
+        "title": "로그인 필요·공개 단가 없음 항목 정리",
+        "source": "수집결과_상품메타_공공PDF.md · ③",
+        "checked_at": "2026-10-21",
+        "chunk_id": "COMMON:sum-86cdd6ef61:0",
+        "item_id": "COMMON",
+        "cited": true
+      },
+      {
+        "n": 4,
+        "type": "web",
+        "title": "AWS 공식 문서: EC2 t3.micro",
+        "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+        "checked_at": "2026-10-23",
+        "chunk_id": "AWS-CMP-01:web-b3c884614d:1",
+        "item_id": "AWS-CMP-01",
+        "cited": true
+      },
+      {
+        "n": 5,
+        "type": "web",
+        "title": "AWS 공식 문서: EC2 t3.micro",
+        "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+        "checked_at": "2026-10-23",
+        "chunk_id": "AWS-CMP-01:web-b3c884614d:4",
+        "item_id": "AWS-CMP-01",
+        "cited": true
+      },
+      {
+        "n": 6,
+        "type": "web",
+        "title": "AWS 공식 문서: EC2 t3.micro",
+        "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+        "checked_at": "2026-10-23",
+        "chunk_id": "AWS-CMP-01:web-b3c884614d:0",
+        "item_id": "AWS-CMP-01",
+        "cited": true
+      }
+    ],
+    "seconds": 24.1,
+    "item_id": "NCP-CMP-01",
+    "question": "다음 주 서울 날씨는 어떤가요?",
+    "sector": "learning"
+  },
+  "exp_topk": {
+    "E1_k3": {
+      "evidences": [
+        {
+          "n": 1,
+          "type": "meta",
+          "title": "NCP Server Standard-g2 2vCPU/8GB",
+          "source": "https://www.ncloud.com/charge/price/ko",
+          "checked_at": "2026-10-21",
+          "chunk_id": "NCP-CMP-01",
+          "item_id": "NCP-CMP-01",
+          "cited": true
+        },
+        {
+          "n": 2,
+          "type": "summary",
+          "title": "CSP별 계정 단위 무료 티어·크레딧 요약",
+          "source": "수집결과_상품메타_공공PDF.md · CSP별 공통 정보",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-a36f9cee68:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 3,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:4",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        },
+        {
+          "n": 4,
+          "type": "summary",
+          "title": "로그인 필요·공개 단가 없음 항목 정리",
+          "source": "수집결과_상품메타_공공PDF.md · ③",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-86cdd6ef61:0",
+          "item_id": "COMMON",
+          "cited": false
+        }
+      ],
+      "cited": [
+        1,
+        2
+      ],
+      "answer": "- NCP Server Standard-g2 2vCPU/8GB 인스턴스를 월 730시간 사용할 경우 공식 환산 비용은 86,870원이다. 이는 상품 메타데이터의 공식 월 요금(85,120원)과 시분할 요금을 시간 기준으로 곱한 값이다[근거 1].\n- NCP 무료 티어 여부는 확인이 필요하며, 명확히 무료 이용 가능 여부나 크레딧 제공 내역은 문서에 없으므로 무료 혜택 적용 여부는 확인해야 한다[근거 1, 2].\n- AWS와 GCP 등 다른 CSP 무료 크레딧과 무료 티어 정책은 각기 다르며, NCP는 별도로 무료 티어가 공개되어 있지 않다[근거 2].\n- 따라서 월 730시간 사용할 때의 비용은 약 86,870원으로 예상되나, 무료 크레딧이나 티어 적용 가능 여부는 별도 확인이 필요하다[근거 1, 2].\n- 인증, 폐쇄망, 사설 연결 지원 여부는 확인 필요하여 비용 산정에 영향이 있을 수 있으나 현재 문서에는 상세 내용이 없다[근거 1]."
+    },
+    "E1_k5": {
+      "evidences": [
+        {
+          "n": 1,
+          "type": "meta",
+          "title": "NCP Server Standard-g2 2vCPU/8GB",
+          "source": "https://www.ncloud.com/charge/price/ko",
+          "checked_at": "2026-10-21",
+          "chunk_id": "NCP-CMP-01",
+          "item_id": "NCP-CMP-01",
+          "cited": true
+        },
+        {
+          "n": 2,
+          "type": "summary",
+          "title": "CSP별 계정 단위 무료 티어·크레딧 요약",
+          "source": "수집결과_상품메타_공공PDF.md · CSP별 공통 정보",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-a36f9cee68:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 3,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:4",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        },
+        {
+          "n": 4,
+          "type": "summary",
+          "title": "로그인 필요·공개 단가 없음 항목 정리",
+          "source": "수집결과_상품메타_공공PDF.md · ③",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-86cdd6ef61:0",
+          "item_id": "COMMON",
+          "cited": false
+        },
+        {
+          "n": 5,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:5",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        },
+        {
+          "n": 6,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:3",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        }
+      ],
+      "cited": [
+        1,
+        2
+      ],
+      "answer": "- NCP Server Standard-g2 2vCPU/8GB의 요금은 1시간당 119원이며, 월 730시간 사용 시 공식 환산 요금은 86,870원이다. VAT 별도이며 무료 티어 적용 여부는 확인 필요하다[근거 1].\n- NCP의 무료 티어 및 크레딧 제공 여부는 문서에서 확인 필요로 되어 있어 현재 무료 혜택을 확정할 수 없다[근거 1, 2].\n- 다른 CSP와 비교 시 AWS와 GCP는 신규 계정에 일정 USD 크레딧과 무료 플랜이 있으나, NCP는 무료 티어 관련 확인 필요 상태이다[근거 2].\n- 결론적으로, NCP Server Standard-g2 상품을 월 730시간 사용할 경우 약 86,870원(부가세 별도)의 비용이 예상된다. 무료 티어나 크레딧은 공식 문서에서 확인되지 않아 적용 여부를 확인해야 한다[근거 1, 2].\n\n따라서 학습용 최저 비용과 무료 혜택 우선이라면 NCP의 경우 무료 티어가 확인 필요하며, 월 사용 비용은 86,870원이 예상된다. 이 비용이 부담스럽거나 무료 혜택이 확실한 CSP가 필요하면 별도 확인이 필요하다."
+    },
+    "E1_k8": {
+      "evidences": [
+        {
+          "n": 1,
+          "type": "meta",
+          "title": "NCP Server Standard-g2 2vCPU/8GB",
+          "source": "https://www.ncloud.com/charge/price/ko",
+          "checked_at": "2026-10-21",
+          "chunk_id": "NCP-CMP-01",
+          "item_id": "NCP-CMP-01",
+          "cited": true
+        },
+        {
+          "n": 2,
+          "type": "summary",
+          "title": "CSP별 계정 단위 무료 티어·크레딧 요약",
+          "source": "수집결과_상품메타_공공PDF.md · CSP별 공통 정보",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-a36f9cee68:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 3,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:4",
+          "item_id": "AWS-CMP-01",
+          "cited": true
+        },
+        {
+          "n": 4,
+          "type": "summary",
+          "title": "로그인 필요·공개 단가 없음 항목 정리",
+          "source": "수집결과_상품메타_공공PDF.md · ③",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-86cdd6ef61:0",
+          "item_id": "COMMON",
+          "cited": false
+        },
+        {
+          "n": 5,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:5",
+          "item_id": "AWS-CMP-01",
+          "cited": true
+        },
+        {
+          "n": 6,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:3",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        },
+        {
+          "n": 7,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:0",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        },
+        {
+          "n": 8,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:1",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        },
+        {
+          "n": 9,
+          "type": "web",
+          "title": "NHN Cloud 공식 문서: Instance m2.c2m4",
+          "source": "https://www.nhncloud.com/kr/pricing?c=Compute&s=Instance",
+          "checked_at": "2026-10-23",
+          "chunk_id": "NHN-CMP-02:web-80f582c10b:0",
+          "item_id": "NHN-CMP-02",
+          "cited": true
+        }
+      ],
+      "cited": [
+        1,
+        2,
+        3,
+        5,
+        9
+      ],
+      "answer": "- NCP의 Server Standard-g2 2vCPU/8GB 인스턴스는 시간당 119원, 월 730시간 사용 시 총 86,870원 비용이 듭니다. (공식 문서 기준) [근거 1]\n- NCP의 무료 티어·크레딧 제공 여부는 확인이 필요하여, 무료 혜택이 있다고 단정할 수 없습니다. [근거 1, 2]\n- AWS EC2 t3.micro 인스턴스는 별도 명시된 시간당 요금이 USD 단위로 제공되고, 무료 티어로 최대 200 USD 크레딧과 6개월 무료 플랜이 있으나 서울 리전에서의 지속 무료 인스턴스는 제한적입니다. (정확한 시간당 원화 비용은 문서에서 확인되지 않음) [근거 2, 3, 5]\n- AWS 무료 티어는 매월 사용량을 합산해 적용하며, 미사용량 이월 불가합니다. [근거 5]\n- NHN Cloud의 무료 티어 및 요금 정보는 확인이 필요하며, 월 730시간 사용 비용 데이터는 문서에서 확인되지 않습니다. [근거 2, 9]\n- KT Cloud, SCP 등 다른 CSP의 무료 티어·크레딧도 각각 가입 조건과 기간이 있으며, NCP처럼 무료 여부는 확인 필요합니다. [근거 2]\n- NCP Server Standard-g2 2vCPU/8GB 인스턴스는 월 정액 환산 요금이 85,120원이나 월 730시간 기준 요금은 86,870원으로 명확히 제시되고 있습니다. [근거 1]\n\n따라서 월 730시간 사용 시 NCP Server Standard-g2 2vCPU/8GB 인스턴스 비용은 86,870원이며, 무료 티어 사용 가능 여부는 별도로 확인해야 합니다. AWS 등 다른 CSP들은 무료 크레딧이 있지만 시간당 원화 요금 및 서울 리전 무료 혜택은 문서에서 상세 확인 불가합니다."
+    },
+    "E2_k3": {
+      "evidences": [
+        {
+          "n": 1,
+          "type": "meta",
+          "title": "KT Cloud Connect Hub 1Gbps (Shared)",
+          "source": "https://cloud.kt.com/product/productDetail?prodId=P000000029",
+          "checked_at": "2026-10-21",
+          "chunk_id": "KT-NET-02",
+          "item_id": "KT-NET-02",
+          "cited": true
+        },
+        {
+          "n": 2,
+          "type": "summary",
+          "title": "로그인 필요·공개 단가 없음 항목 정리",
+          "source": "수집결과_상품메타_공공PDF.md · ③",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-86cdd6ef61:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 3,
+          "type": "summary",
+          "title": "CSP별 계정 단위 무료 티어·크레딧 요약",
+          "source": "수집결과_상품메타_공공PDF.md · CSP별 공통 정보",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-a36f9cee68:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 4,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:1",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        }
+      ],
+      "cited": [
+        1,
+        2,
+        3
+      ],
+      "answer": "사내 폐쇄망에서 KT Cloud Connect Hub 1Gbps (Shared) 상품을 사용하려면 다음 사항을 고려해야 합니다.\n\n- 이 상품은 전용 회선·VPN 연동 허브로 폐쇄망과 사설 연결을 지원합니다. 즉, 전용회선을 통해 사내 폐쇄망과 직접 연결할 수 있습니다[근거 1].\n- 단, 공공기관용 별도 플랫폼에서 CSAP IaaS 인증을 받고 있는지는 \"확인 필요\"로 명시되어 있어, 폐쇄망에서 사용 목적에 따라 인증 여부를 반드시 확인해야 합니다[근거 1].\n- 전용 회선 비용 및 설치비, 협정가 등 상세한 요금은 공식 홈페이지에 별도로 공개되어 있지 않고, 별도 영업 문의 또는 맞춤 견적이 필요합니다. 따라서 전용회선 계약 시 이에 대한 별도 상담이 필요합니다[근거 2].\n- KT Cloud는 가입 초기 1개월 이내에 50만원 한도의 90일 무료체험 크레딧을 계정 단위로 제공합니다. 이를 활용하면 초기 비용 부담을 줄일 수 있습니다[근거 3].\n- 폐쇄망 이용을 위한 VPN 연동이나 전용선 구축 등 네트워크 구성 외에, CSP 계정 생성 및 가입·인증 절차도 필요합니다. 구체적인 설정 방법과 인증 조건은 문서에서 확인되지 않으므로 별도 안내가 필요합니다.\n\n요약하면, 사내 폐쇄망에서 이 상품을 쓰려면\n- 전용 회선 계약 및 VPN 연동 등을 별도 진행해야 하며,\n- 공공기관용 인증 등 보안 요건 확인이 필요하고,\n- 전용회선 비용과 설치비는 별도 협의가 요구됩니다.\n- KT Cloud 신규 가입 시 일정 기간 무료 체험을 활용할 수 있습니다.\n\n폐쇄망 연동에 따른 상세한 기술적 설정 절차 및 인증 현황은 문서에서 확인되지 않습니다."
+    },
+    "E2_k5": {
+      "evidences": [
+        {
+          "n": 1,
+          "type": "meta",
+          "title": "KT Cloud Connect Hub 1Gbps (Shared)",
+          "source": "https://cloud.kt.com/product/productDetail?prodId=P000000029",
+          "checked_at": "2026-10-21",
+          "chunk_id": "KT-NET-02",
+          "item_id": "KT-NET-02",
+          "cited": true
+        },
+        {
+          "n": 2,
+          "type": "summary",
+          "title": "로그인 필요·공개 단가 없음 항목 정리",
+          "source": "수집결과_상품메타_공공PDF.md · ③",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-86cdd6ef61:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 3,
+          "type": "summary",
+          "title": "CSP별 계정 단위 무료 티어·크레딧 요약",
+          "source": "수집결과_상품메타_공공PDF.md · CSP별 공통 정보",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-a36f9cee68:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 4,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:1",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        },
+        {
+          "n": 5,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:2",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        },
+        {
+          "n": 6,
+          "type": "wiki",
+          "title": "위키백과: 아마존 일래스틱 컴퓨트 클라우드",
+          "source": "https://ko.wikipedia.org/wiki/%EC%95%84%EB%A7%88%EC%A1%B4_%EC%9D%BC%EB%9E%98%EC%8A%A4%ED%8B%B1_%EC%BB%B4%ED%93%A8%ED%8A%B8_%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:wiki-fc2d02fa7e:9",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        }
+      ],
+      "cited": [
+        1,
+        2,
+        3
+      ],
+      "answer": "사내 폐쇄망에서 KT Cloud Connect Hub 1Gbps (Shared) 상품을 사용하려면 다음 사항을 고려해야 합니다.\n\n- 폐쇄망·사설 연결 지원: 해당 상품은 전용 회선 방식으로 폐쇄망·사설 연결을 지원합니다. 따라서 사내 폐쇄망과 전용 회선 구축이 필요합니다[근거 1].\n- 추가 네트워크 장비·설치: 전용 회선 사용을 위한 회선 설치 및 연동 작업이 필요하며, 비용 및 설치비는 별도 문의해야 합니다[근거 2].\n- 요금: 월 140,000원(부가세 별도)의 전용 회선·VPN 연동 허브 이용 요금이 발생합니다[근거 1].\n- 공공기관 요건 여부 확인: 공공기관용 별도 플랫폼과 인증 범위는 확인이 필요하므로, 해당 사항이 있을 경우 별도 검토 필요합니다[근거 1].\n- 무료 체험 혜택: 가입 1개월 이내에 50만원 상당 90일 무료체험이 제공되므로 초기 비용 부담 완화 가능하나, 폐쇄망 구축과는 별도 사항임[근거 3].\n- 전용 VPN 연동이나 다수 사이트 연결 등 추가 보안·네트워크 서비스 이용 시 협정가로 별도 문의해야 합니다[근거 2].\n\n요약하면, 폐쇄망 환경에서 이 상품을 사용하려면 전용 회선 구축 및 설치 작업, 별도의 네트워크 연동 및 보안 서비스 문의가 필요하며, 단지 상품 구매만으로 바로 폐쇄망 연결이 되는 것은 아닙니다[근거 1, 2].  \n\n문서에는 폐쇄망 환경 구축 시 필요한 구체적인 인증 절차나 사내 네트워크와의 상세 연동 방법은 명시되어 있지 않습니다."
+    },
+    "E2_k8": {
+      "evidences": [
+        {
+          "n": 1,
+          "type": "meta",
+          "title": "KT Cloud Connect Hub 1Gbps (Shared)",
+          "source": "https://cloud.kt.com/product/productDetail?prodId=P000000029",
+          "checked_at": "2026-10-21",
+          "chunk_id": "KT-NET-02",
+          "item_id": "KT-NET-02",
+          "cited": true
+        },
+        {
+          "n": 2,
+          "type": "summary",
+          "title": "로그인 필요·공개 단가 없음 항목 정리",
+          "source": "수집결과_상품메타_공공PDF.md · ③",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-86cdd6ef61:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 3,
+          "type": "summary",
+          "title": "CSP별 계정 단위 무료 티어·크레딧 요약",
+          "source": "수집결과_상품메타_공공PDF.md · CSP별 공통 정보",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-a36f9cee68:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 4,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:1",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        },
+        {
+          "n": 5,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:2",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        },
+        {
+          "n": 6,
+          "type": "wiki",
+          "title": "위키백과: 아마존 일래스틱 컴퓨트 클라우드",
+          "source": "https://ko.wikipedia.org/wiki/%EC%95%84%EB%A7%88%EC%A1%B4_%EC%9D%BC%EB%9E%98%EC%8A%A4%ED%8B%B1_%EC%BB%B4%ED%93%A8%ED%8A%B8_%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:wiki-fc2d02fa7e:9",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        },
+        {
+          "n": 7,
+          "type": "web",
+          "title": "NHN Cloud 공식 문서: Instance m2.c2m4",
+          "source": "https://www.nhncloud.com/kr/pricing?c=Compute&s=Instance",
+          "checked_at": "2026-10-23",
+          "chunk_id": "NHN-CMP-02:web-80f582c10b:0",
+          "item_id": "NHN-CMP-02",
+          "cited": false
+        },
+        {
+          "n": 8,
+          "type": "wiki",
+          "title": "위키백과: 아마존 일래스틱 컴퓨트 클라우드",
+          "source": "https://ko.wikipedia.org/wiki/%EC%95%84%EB%A7%88%EC%A1%B4_%EC%9D%BC%EB%9E%98%EC%8A%A4%ED%8B%B1_%EC%BB%B4%ED%93%A8%ED%8A%B8_%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:wiki-fc2d02fa7e:2",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        },
+        {
+          "n": 9,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:4",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        }
+      ],
+      "cited": [
+        1,
+        3,
+        2
+      ],
+      "answer": "사내 폐쇄망 환경에서 KT Cloud Connect Hub 1Gbps (Shared) 상품을 사용하려면 다음 사항이 필요합니다.\n\n- **전용 회선 연결 필수**: 이 상품은 전용 회선·VPN 연동 허브로 설계되어 폐쇄망 및 사설 연결을 지원합니다. 즉, 사내 네트워크와 클라우드 데이터를 직접 연결하는 전용 회선이 반드시 필요합니다[근거 1].\n- **월 요금**: 전용 회선 사용 시 부담해야 하는 비용은 1회선당 월 140,000원(VAT 별도)입니다[근거 1].\n- **공공기관용 요건 확인 필요**: 해당 상품의 공공기관용 인증은 확인 필요하며, 민간용 요금 기준임을 유념해야 합니다[근거 1].\n- **VPN 연동 가능**: 전용 회선 외에 VPN으로도 연동할 수 있으나, 보안과 연결 품질 측면에서 전용 회선 사용이 폐쇄망 환경에 적합합니다[근거 1].\n- **회원가입 필요**: 서비스 이용 전 KT Cloud 계정 가입 절차가 필요하며, 무료체험(가입 1개월 이내 50만원 규모)을 신청할 수 있습니다[근거 1, 3].\n- **맞춤 견적 및 추가 비용 문의**: 전용 VPN이나 통신사 전용회선 비용, 설치비 등은 별도 문의가 필요할 수 있으므로, 정확한 구축 비용은 KT Cloud 영업 상담을 통해 확인하십시오[근거 2].\n- **리전 정보**: 본 상품은 서울 M1 존(G1/G2) 리전에 위치해 있으나, 다른 리전 지원은 문서에서 확인되지 않습니다[근거 1].\n\n정리하면, 사내 폐쇄망에서 이 상품을 활용하려면 사내 네트워크와 KT Cloud를 연결하는 전용 회선을 설치하고, 관련 비용과 서비스 조건을 KT Cloud에 별도 문의하여 계약하는 것이 필요합니다. VPN 연동 옵션도 지원하지만, 폐쇄망 기준에 맞는지 추가 검토가 요구됩니다[근거 1, 2]."
+    },
+    "E3_k3": {
+      "evidences": [
+        {
+          "n": 1,
+          "type": "meta",
+          "title": "NHN Cloud Instance m2.c2m4",
+          "source": "https://www.nhncloud.com/kr/pricing?c=Compute&s=Instance",
+          "checked_at": "2026-10-21",
+          "chunk_id": "NHN-CMP-02",
+          "item_id": "NHN-CMP-02",
+          "cited": true
+        },
+        {
+          "n": 2,
+          "type": "web",
+          "title": "NHN Cloud 공식 문서: Instance m2.c2m4",
+          "source": "https://www.nhncloud.com/kr/pricing?c=Compute&s=Instance",
+          "checked_at": "2026-10-23",
+          "chunk_id": "NHN-CMP-02:web-80f582c10b:0",
+          "item_id": "NHN-CMP-02",
+          "cited": false
+        },
+        {
+          "n": 3,
+          "type": "summary",
+          "title": "로그인 필요·공개 단가 없음 항목 정리",
+          "source": "수집결과_상품메타_공공PDF.md · ③",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-86cdd6ef61:0",
+          "item_id": "COMMON",
+          "cited": false
+        },
+        {
+          "n": 4,
+          "type": "summary",
+          "title": "CSAP(클라우드 보안인증) IaaS 인증 현황 — KISA 발급현황 조회 요약(2026-10-21)",
+          "source": "https://isms-p.or.kr/sttus/vrtl/selectVrtlCrtfctList.do",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-61f777353e:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 5,
+          "type": "summary",
+          "title": "CSAP(클라우드 보안인증) IaaS 인증 현황 — KISA 발급현황 조회 요약(2026-10-21)",
+          "source": "https://isms-p.or.kr/sttus/vrtl/selectVrtlCrtfctList.do",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-61f777353e:1",
+          "item_id": "COMMON",
+          "cited": false
+        }
+      ],
+      "cited": [
+        1,
+        4
+      ],
+      "answer": "- NHN Cloud의 Instance m2.c2m4 상품 자체는 2vCPU, 4GB 사양에 시간당 93원으로 한국(판교) 리전에서 운영되지만 리전과 폐쇄망·사설 연결 지원 여부는 아직 확인이 필요합니다[근거 1].\n- NHN Cloud에는 공공기관용 별도 플랫폼이 있고, CSAP IaaS 인증 범위가 해당 플랫폼에 적용됩니다. 다만, 이 상품의 단가는 민간용 요금으로 공공기관 사용을 위한 인증 여부가 명확하지 않아 확인이 필요합니다[근거 1].\n- NHN Cloud는 공공기관용 IaaS 플랫폼에 대해 CSAP 인증서(인증번호 CSAP-2017-003호)가 있고, 유효기간은 2022-12-13부터 2027-12-12까지 유지 중입니다. 그러나 이는 공공기관용 별도 플랫폼 기준이며 일반 민간용 상품에 대한 인증 여부는 문서에서 확인되지 않습니다[근거 4].\n- NHN Cloud 인스턴스 m2.c2m4가 공공 요건을 충족하는지, 즉 해당 인증 범위 내 상품인지 공식적으로 명확하지 않아 공공기관에서 바로 쓸 수 있는지는 판단이 어렵습니다. 특히 폐쇄망 환경 지원 여부도 확인 필요합니다[근거 1].\n- 따라서 공공기관이 NHN Cloud Instance m2.c2m4 상품을 이용하려면, 공공기관용 별도 플랫폼인지, CSAP IaaS 인증 범위 내 상품인지 등 실제 사용 조건과 인증 현황을 NHN Cloud 측에 별도로 문의하여 확인해야 합니다[근거 1, 4].  \n\n결론: NHN Cloud의 공공기관용 별도 플랫폼은 CSAP IaaS 인증을 보유하고 있으나, 질문한 상품(Instance m2.c2m4)은 민간용 단가이며 공공 요건 충족 여부가 확인되지 않아, 공공기관 사용 가능 여부는 별도 확인이 필요합니다."
+    },
+    "E3_k5": {
+      "evidences": [
+        {
+          "n": 1,
+          "type": "meta",
+          "title": "NHN Cloud Instance m2.c2m4",
+          "source": "https://www.nhncloud.com/kr/pricing?c=Compute&s=Instance",
+          "checked_at": "2026-10-21",
+          "chunk_id": "NHN-CMP-02",
+          "item_id": "NHN-CMP-02",
+          "cited": true
+        },
+        {
+          "n": 2,
+          "type": "web",
+          "title": "NHN Cloud 공식 문서: Instance m2.c2m4",
+          "source": "https://www.nhncloud.com/kr/pricing?c=Compute&s=Instance",
+          "checked_at": "2026-10-23",
+          "chunk_id": "NHN-CMP-02:web-80f582c10b:0",
+          "item_id": "NHN-CMP-02",
+          "cited": true
+        },
+        {
+          "n": 3,
+          "type": "summary",
+          "title": "로그인 필요·공개 단가 없음 항목 정리",
+          "source": "수집결과_상품메타_공공PDF.md · ③",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-86cdd6ef61:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 4,
+          "type": "summary",
+          "title": "CSAP(클라우드 보안인증) IaaS 인증 현황 — KISA 발급현황 조회 요약(2026-10-21)",
+          "source": "https://isms-p.or.kr/sttus/vrtl/selectVrtlCrtfctList.do",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-61f777353e:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 5,
+          "type": "summary",
+          "title": "CSAP(클라우드 보안인증) IaaS 인증 현황 — KISA 발급현황 조회 요약(2026-10-21)",
+          "source": "https://isms-p.or.kr/sttus/vrtl/selectVrtlCrtfctList.do",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-61f777353e:1",
+          "item_id": "COMMON",
+          "cited": false
+        },
+        {
+          "n": 6,
+          "type": "summary",
+          "title": "공공 클라우드 보안 검증 제도 변경(2026-04-20 발표) 요약",
+          "source": "https://byline.network/2026/04/20-578/",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-d07438a889:0",
+          "item_id": "COMMON",
+          "cited": false
+        },
+        {
+          "n": 7,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:1",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        }
+      ],
+      "cited": [
+        1,
+        4,
+        3,
+        2
+      ],
+      "answer": "공공기관의 NHN Cloud Instance m2.c2m4 사용 관련 요점입니다.\n\n- 공공 요건(클라우드 보안인증, CSAP) 충족 여부는 \"확인 필요\"로 명확하지 않습니다.  \n  - NHN Cloud의 별도 공공기관용 플랫폼이 CSAP IaaS 인증 범위에 해당하지만, 이 상품(Instance m2.c2m4)은 민간용 요금이며 공공용 인증 적용 여부는 문서에 명확하지 않습니다[근거 1].  \n  - NHN Cloud는 공공기관용 CSAP IaaS 인증서를 보유하고 있고 유효기간은 2022-12-13 ~ 2027-12-12입니다(인증번호 CSAP-2017-003호)[근거 4].  \n  - 다만 공공기관용 플랫폼 URL이 별도로 존재하며, 이 상품의 공공 요건 충족 여부는 확인이 필요합니다[근거 1, 3].  \n\n- 서비스 설명과 리전 정보도 \"확인 필요\" 상태로, 판교 리전 사용 가능 여부도 명확하지 않습니다[근거 1, 2].  \n\n- 폐쇄망 연결, 사설 엔드포인트 지원 여부도 공식 문서에 나오지 않아 확인이 필요합니다[근거 1].  \n\n- 따라서 이 상품이 공공기관에서 바로 사용할 수 있는지 여부는 다음 사항 확인이 필요합니다:  \n  1. 공공기관용 CSAP 인증 범위 내 서비스인지  \n  2. 폐쇄망, 전용회선, VPN 등 공공망 요구조건 충족 여부  \n  3. 해당 인스턴스가 공공기관별도 플랫폼에서 제공되는지 여부  \n\n- 비용은 시간당 93원이며 월 67,890원(730시간 환산)이나, 이 단가는 민간용 요금이므로 공공 요건 충족 시 별도 요금이 있을 수 있습니다[근거 1].\n\n정리하면, NHN Cloud는 공공기관용 CSAP 인증서를 보유하지만 Instance m2.c2m4 상품 자체의 공공 요건 충족 여부와 공공기관 전용 인프라 지원은 확인 필요합니다. 공공기관에서는 별도 공공기관 플랫폼 또는 인증 범위 내 서비스를 선택하는 것이 안전합니다[근거 1, 3, 4]."
+    },
+    "E3_k8": {
+      "evidences": [
+        {
+          "n": 1,
+          "type": "meta",
+          "title": "NHN Cloud Instance m2.c2m4",
+          "source": "https://www.nhncloud.com/kr/pricing?c=Compute&s=Instance",
+          "checked_at": "2026-10-21",
+          "chunk_id": "NHN-CMP-02",
+          "item_id": "NHN-CMP-02",
+          "cited": true
+        },
+        {
+          "n": 2,
+          "type": "web",
+          "title": "NHN Cloud 공식 문서: Instance m2.c2m4",
+          "source": "https://www.nhncloud.com/kr/pricing?c=Compute&s=Instance",
+          "checked_at": "2026-10-23",
+          "chunk_id": "NHN-CMP-02:web-80f582c10b:0",
+          "item_id": "NHN-CMP-02",
+          "cited": false
+        },
+        {
+          "n": 3,
+          "type": "summary",
+          "title": "로그인 필요·공개 단가 없음 항목 정리",
+          "source": "수집결과_상품메타_공공PDF.md · ③",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-86cdd6ef61:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 4,
+          "type": "summary",
+          "title": "CSAP(클라우드 보안인증) IaaS 인증 현황 — KISA 발급현황 조회 요약(2026-10-21)",
+          "source": "https://isms-p.or.kr/sttus/vrtl/selectVrtlCrtfctList.do",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-61f777353e:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 5,
+          "type": "summary",
+          "title": "CSAP(클라우드 보안인증) IaaS 인증 현황 — KISA 발급현황 조회 요약(2026-10-21)",
+          "source": "https://isms-p.or.kr/sttus/vrtl/selectVrtlCrtfctList.do",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-61f777353e:1",
+          "item_id": "COMMON",
+          "cited": false
+        },
+        {
+          "n": 6,
+          "type": "summary",
+          "title": "공공 클라우드 보안 검증 제도 변경(2026-04-20 발표) 요약",
+          "source": "https://byline.network/2026/04/20-578/",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-d07438a889:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 7,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:1",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        },
+        {
+          "n": 8,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:2",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        },
+        {
+          "n": 9,
+          "type": "summary",
+          "title": "CSP별 계정 단위 무료 티어·크레딧 요약",
+          "source": "수집결과_상품메타_공공PDF.md · CSP별 공통 정보",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-a36f9cee68:0",
+          "item_id": "COMMON",
+          "cited": false
+        },
+        {
+          "n": 10,
+          "type": "wiki",
+          "title": "위키백과: 아마존 일래스틱 컴퓨트 클라우드",
+          "source": "https://ko.wikipedia.org/wiki/%EC%95%84%EB%A7%88%EC%A1%B4_%EC%9D%BC%EB%9E%98%EC%8A%A4%ED%8B%B1_%EC%BB%B4%ED%93%A8%ED%8A%B8_%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:wiki-fc2d02fa7e:6",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        }
+      ],
+      "cited": [
+        1,
+        4,
+        6,
+        3
+      ],
+      "answer": "- NHN Cloud의 Instance m2.c2m4 상품은 공공 요건 충족 여부가 \"확인 필요\"로 명시되어 있습니다. 공공기관용 별도 플랫폼은 CSAP IaaS 인증 범위 내이며, 이 단가는 민간용 요금입니다. 따라서 현재 이 상품이 공공기관용으로 인증을 받았다고 단정할 수 없습니다[근거 1].\n- NHN Cloud는 공공기관용 플랫폼에서 CSAP IaaS 인증을 보유하고 있지만, 해당 플랫폼과 이 상품(Instance m2.c2m4)의 관계는 명확하지 않아 공공기관 사용 적합성 판단에 추가 확인이 필요합니다[근거 4].\n- 2026년 4월부터 공공 클라우드 보안 검증 제도가 국정원 단일 검증 체계로 일원화되며, 2027년 하반기부터 본격 시행됩니다. 기존 CSAP 인증서는 잔여 유효기간 동안 유효하지만, 이 변경 사항도 고려해야 합니다[근거 6].\n- 폐쇄망·사설 연결 지원 여부도 \"확인 필요\" 상태여서, 공공기관의 보안 환경 요구사항 충족 가능성은 추가 점검이 필요합니다[근거 1].\n- NHN Cloud의 공공기관용 플랫폼(gov-ncloud.com 등) 요금표는 이번에 조회하지 않아 관련 정보가 추가로 필요합니다[근거 3].\n- 결론적으로, 공공기관이 NHN Cloud Instance m2.c2m4를 직접 사용할 수 있는지는 다음 사항 확인이 선행되어야 합니다:\n  - 공공기관용 CSAP 인증 범위 해당 여부 (현재 제품과 공공 플랫폼간 인증 연결 확인)\n  - 폐쇄망·사설 네트워크 지원 여부\n  - 국정원 단일 검증 제도 대응 현황\n  - 공공기관용 가격 및 리전 조건 등 세부 서비스 내용\n\n따라서 현재로선 공공기관용 사용 여부를 명확히 판단할 수 없으며, NHN Cloud 측에 공공기관용 인증과 보안 요건 충족, 폐쇄망 대응 여부를 반드시 문의해야 합니다[근거 1, 3, 4, 6]."
+    }
+  },
+  "exp_search": {
+    "E1_similarity": {
+      "evidences": [
+        {
+          "n": 1,
+          "type": "meta",
+          "title": "NCP Server Standard-g2 2vCPU/8GB",
+          "source": "https://www.ncloud.com/charge/price/ko",
+          "checked_at": "2026-10-21",
+          "chunk_id": "NCP-CMP-01",
+          "item_id": "NCP-CMP-01",
+          "cited": true
+        },
+        {
+          "n": 2,
+          "type": "summary",
+          "title": "CSP별 계정 단위 무료 티어·크레딧 요약",
+          "source": "수집결과_상품메타_공공PDF.md · CSP별 공통 정보",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-a36f9cee68:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 3,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:4",
+          "item_id": "AWS-CMP-01",
+          "cited": true
+        },
+        {
+          "n": 4,
+          "type": "summary",
+          "title": "로그인 필요·공개 단가 없음 항목 정리",
+          "source": "수집결과_상품메타_공공PDF.md · ③",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-86cdd6ef61:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 5,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:5",
+          "item_id": "AWS-CMP-01",
+          "cited": true
+        },
+        {
+          "n": 6,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:3",
+          "item_id": "AWS-CMP-01",
+          "cited": true
+        }
+      ],
+      "cited": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        4
+      ],
+      "answer": "- NCP Server Standard-g2 2vCPU/8GB의 시간당 요금은 119원이며, 월 730시간 사용 시 86,870원입니다. (공식 웹사이트에서 제공하는 월 환산 가격 기준) [근거 1]\n- NCP의 무료 티어 또는 크레딧 여부는 확인이 필요하며, 공식적으로 명확한 무료 티어 또는 크레딧 정보가 문서에서 확인되지 않습니다. [근거 1, 2]\n- AWS의 경우 t3.micro 인스턴스는 리전별 무료 티어가 있으며, 신규 계정 기준으로 최대 200 USD 크레딧과 최대 6개월 무료 사용이 가능합니다. 다만, 구체적인 월 730시간 비용은 CPU 크레딧 요금 등 부가 사항까지 고려해야 하고 복잡한 조건 설명이 포함되어 있습니다. [근거 2, 3, 5, 6]\n- GCP, NHN Cloud, KT Cloud, SCP는 무료 티어 또는 크레딧 정보에 '확인 필요' 문구가 다수 포함되어 있어 무료 혜택 여부를 확정하기 어렵습니다. [근거 2, 4]\n\n따라서,\n- NCP Server Standard-g2 2vCPU/8GB 상품을 월 730시간 사용 시 예상 비용은 86,870원입니다.\n- NCP 무료 티어 적용 여부는 공식적으로 확인이 필요합니다.\n- AWS 등 타 CSP는 신규 가입 시 무료 크레딧 및 무료 티어를 제공하지만, 해당 상품과 사양 비교 및 월 730시간 연속 사용 시 정확한 비용 계산은 문서에서 확인되지 않습니다."
+    },
+    "E1_mmr": {
+      "evidences": [
+        {
+          "n": 1,
+          "type": "meta",
+          "title": "NCP Server Standard-g2 2vCPU/8GB",
+          "source": "https://www.ncloud.com/charge/price/ko",
+          "checked_at": "2026-10-21",
+          "chunk_id": "NCP-CMP-01",
+          "item_id": "NCP-CMP-01",
+          "cited": true
+        },
+        {
+          "n": 2,
+          "type": "summary",
+          "title": "CSP별 계정 단위 무료 티어·크레딧 요약",
+          "source": "수집결과_상품메타_공공PDF.md · CSP별 공통 정보",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-a36f9cee68:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 3,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:0",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        },
+        {
+          "n": 4,
+          "type": "web",
+          "title": "NHN Cloud 공식 문서: Instance m2.c2m4",
+          "source": "https://www.nhncloud.com/kr/pricing?c=Compute&s=Instance",
+          "checked_at": "2026-10-23",
+          "chunk_id": "NHN-CMP-02:web-80f582c10b:0",
+          "item_id": "NHN-CMP-02",
+          "cited": true
+        },
+        {
+          "n": 5,
+          "type": "wiki",
+          "title": "위키백과: 아마존 일래스틱 컴퓨트 클라우드",
+          "source": "https://ko.wikipedia.org/wiki/%EC%95%84%EB%A7%88%EC%A1%B4_%EC%9D%BC%EB%9E%98%EC%8A%A4%ED%8B%B1_%EC%BB%B4%ED%93%A8%ED%8A%B8_%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:wiki-fc2d02fa7e:10",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        },
+        {
+          "n": 6,
+          "type": "wiki",
+          "title": "위키백과: 아마존 일래스틱 컴퓨트 클라우드",
+          "source": "https://ko.wikipedia.org/wiki/%EC%95%84%EB%A7%88%EC%A1%B4_%EC%9D%BC%EB%9E%98%EC%8A%A4%ED%8B%B1_%EC%BB%B4%ED%93%A8%ED%8A%B8_%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:wiki-fc2d02fa7e:6",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        }
+      ],
+      "cited": [
+        1,
+        2,
+        4
+      ],
+      "answer": "- NCP Server Standard-g2 2vCPU/8GB 요금은 시간당 119원이며, 월 730시간 사용 시 86,870원입니다. 공식 월 요금으로는 85,120원이 안내되어 있습니다[근거 1].\n- NCP의 무료 티어 및 크레딧 제공 여부는 확인 필요합니다[근거 1, 2].\n- 다른 CSP의 무료 티어 현황: AWS는 서울 리전에서 신규 크레딧 최대 200 USD 및 최대 6개월 무료 플랜을 지원하며, GCP는 90일간 300 USD 크레딧을 제공합니다. NHN Cloud와 KT Cloud, SCP는 무료 티어 또는 크레딧 관련 정보가 일부 확인 필요하거나 제한 조건이 있습니다[근거 2].\n- 따라서 학습용으로 월 730시간 NCP Standard-g2를 사용하면 기본 요금 86,870원이 예상되나, 무료 크레딧 적용 여부는 별도 확인이 필요합니다[근거 1, 2].\n- NHN Cloud 인스턴스나 AWS t3.micro 등 다른 상품 요금은 문서에 월 730시간 기준 금액이 명확히 기재되어 있지 않습니다. 또한 NCP의 공공 요건, 폐쇄망/사설 연결 지원 여부도 확인 필요입니다[근거 1, 4].\n- 월 730시간은 1달 전체 시간 기준으로, 이 시간 모두 사용한다면 위 금액이 기준요금이 됩니다[근거 1]."
+    },
+    "E2_similarity": {
+      "evidences": [
+        {
+          "n": 1,
+          "type": "meta",
+          "title": "KT Cloud Connect Hub 1Gbps (Shared)",
+          "source": "https://cloud.kt.com/product/productDetail?prodId=P000000029",
+          "checked_at": "2026-10-21",
+          "chunk_id": "KT-NET-02",
+          "item_id": "KT-NET-02",
+          "cited": true
+        },
+        {
+          "n": 2,
+          "type": "summary",
+          "title": "로그인 필요·공개 단가 없음 항목 정리",
+          "source": "수집결과_상품메타_공공PDF.md · ③",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-86cdd6ef61:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 3,
+          "type": "summary",
+          "title": "CSP별 계정 단위 무료 티어·크레딧 요약",
+          "source": "수집결과_상품메타_공공PDF.md · CSP별 공통 정보",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-a36f9cee68:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 4,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:1",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        },
+        {
+          "n": 5,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:2",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        },
+        {
+          "n": 6,
+          "type": "wiki",
+          "title": "위키백과: 아마존 일래스틱 컴퓨트 클라우드",
+          "source": "https://ko.wikipedia.org/wiki/%EC%95%84%EB%A7%88%EC%A1%B4_%EC%9D%BC%EB%9E%98%EC%8A%A4%ED%8B%B1_%EC%BB%B4%ED%93%A8%ED%8A%B8_%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:wiki-fc2d02fa7e:9",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        }
+      ],
+      "cited": [
+        1,
+        2,
+        3
+      ],
+      "answer": "사내 폐쇄망 환경에서 KT Cloud Connect Hub 1Gbps (Shared) 상품을 사용하려면 다음 사항이 필요합니다:\n\n- 전용 회선·VPN 연동을 위한 허브 서비스 제공: 이 상품은 전용 회선과 VPN 연동을 지원하므로 사설망 환경에서 직접 연결이 가능합니다[근거 1].\n- 전용 회선 구축 및 연결 비용 별도 문의: 전용 회선 설치나 비용 관련 세부 사항은 영업 상담 또는 별도 문의를 해야 하며, 표준 요금 외에 추가 비용이 있을 수 있습니다[근거 2].\n- 공공기관용 폐쇄망 요건 확인 필요: 이 상품의 공공기관용 별도 플랫폼 CSAP 인증 범위가 확정되지 않아, 기관 특성에 따라 별도 협의 또는 확인 절차가 요구됩니다[근거 1].\n- 무료 체험 및 요금 정책: 계정 단위 무료 체험은 가입 1개월 이내 최대 50만원/90일이며, 정식 이용 시 월 140,000원(VAT 별도)입니다[근거 1, 3].\n- 로그인 및 회원가입 필요: KT Cloud 전체 서비스는 회원가입과 로그인 후 이용 가능하며, 맞춤 견적·할인은 영업 상담 필요합니다[근거 2].\n\n요약하면, 사내 폐쇄망에서 본 상품을 이용하려면  \n- 폐쇄망 전용 회선 구축 또는 VPN 연동 설정(별도 비용과 절차 확인 필요)  \n- KT Cloud 계정 생성 및 로그인 필수  \n- 공공기관 전용 요건 별도 확인 및 승인이 필요할 수 있음  \n을 준비해야 합니다[근거 1, 2, 3].\n\n다른 CSP(예: AWS, GCP)의 폐쇄망 연결 관련 정보는 문서에서 확인되지 않습니다."
+    },
+    "E2_mmr": {
+      "evidences": [
+        {
+          "n": 1,
+          "type": "meta",
+          "title": "KT Cloud Connect Hub 1Gbps (Shared)",
+          "source": "https://cloud.kt.com/product/productDetail?prodId=P000000029",
+          "checked_at": "2026-10-21",
+          "chunk_id": "KT-NET-02",
+          "item_id": "KT-NET-02",
+          "cited": true
+        },
+        {
+          "n": 2,
+          "type": "summary",
+          "title": "로그인 필요·공개 단가 없음 항목 정리",
+          "source": "수집결과_상품메타_공공PDF.md · ③",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-86cdd6ef61:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 3,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:2",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        },
+        {
+          "n": 4,
+          "type": "web",
+          "title": "NHN Cloud 공식 문서: Instance m2.c2m4",
+          "source": "https://www.nhncloud.com/kr/pricing?c=Compute&s=Instance",
+          "checked_at": "2026-10-23",
+          "chunk_id": "NHN-CMP-02:web-80f582c10b:0",
+          "item_id": "NHN-CMP-02",
+          "cited": false
+        },
+        {
+          "n": 5,
+          "type": "wiki",
+          "title": "위키백과: 아마존 일래스틱 컴퓨트 클라우드",
+          "source": "https://ko.wikipedia.org/wiki/%EC%95%84%EB%A7%88%EC%A1%B4_%EC%9D%BC%EB%9E%98%EC%8A%A4%ED%8B%B1_%EC%BB%B4%ED%93%A8%ED%8A%B8_%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:wiki-fc2d02fa7e:6",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        },
+        {
+          "n": 6,
+          "type": "wiki",
+          "title": "위키백과: 아마존 일래스틱 컴퓨트 클라우드",
+          "source": "https://ko.wikipedia.org/wiki/%EC%95%84%EB%A7%88%EC%A1%B4_%EC%9D%BC%EB%9E%98%EC%8A%A4%ED%8B%B1_%EC%BB%B4%ED%93%A8%ED%8A%B8_%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:wiki-fc2d02fa7e:10",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        }
+      ],
+      "cited": [
+        1,
+        2
+      ],
+      "answer": "사내 폐쇄망에서 해당 클라우드 상품을 사용하려면 다음이 필요합니다:\n\n- KT Cloud Connect Hub 1Gbps (Shared) 상품은 전용 회선 및 VPN 연동 허브로, 폐쇄망·사설 연결을 지원합니다. 즉, 사설 전용 회선 연결이 가능해 폐쇄망 환경에 적합합니다[근거 1].\n- 요금은 월 140,000원(부가세 별도)이며, 서울 M1 존 리전 서비스입니다[근거 1].\n- 다만, 공공기관용 별도의 플랫폼(예: CSAP IaaS 인증 범위)은 별도로 운영되며 이 단가는 민간용의 요금입니다. 공공 요건 준수 여부는 확인이 필요합니다[근거 1].\n- 전용 회선 설치, Cross Connect 및 통신사 전용회선 설치 비용 등은 별도 문의가 필요하며, VPN 연동을 위한 협정가도 별도 확인이 필요합니다[근거 2].\n- 따라서, 폐쇄망 환경에서 이 상품을 사용하려면 전용 회선 설치 계약과 연동 설정을 포함한 추가 네트워크 구성이 필요하며, 관련 비용과 인증 요건을 별도로 확인해야 합니다[근거 1, 2].\n- 로그인이나 회원가입 및 영업 상담을 통한 맞춤 견적 문의 절차가 필요할 수 있습니다[근거 2].\n\n정리하면,\n\n- 사내 폐쇄망에 연결하기 위해 전용 회선 설치(Connect Hub 사용)\n- VPN 연동 설정 필요 가능\n- 전용회선 설치 비용 및 협정가 별도 문의\n- 공공기관용 인증 여부 확인 필요\n- 회원가입 및 영업 상담 통한 추가 비용, 인증 요건 검토\n\n이런 추가 조치 없이 바로 폐쇄망에서 쓸 수 있는 상태는 아니라고 볼 수 있습니다[근거 1, 2]."
+    },
+    "E3_similarity": {
+      "evidences": [
+        {
+          "n": 1,
+          "type": "meta",
+          "title": "NHN Cloud Instance m2.c2m4",
+          "source": "https://www.nhncloud.com/kr/pricing?c=Compute&s=Instance",
+          "checked_at": "2026-10-21",
+          "chunk_id": "NHN-CMP-02",
+          "item_id": "NHN-CMP-02",
+          "cited": true
+        },
+        {
+          "n": 2,
+          "type": "web",
+          "title": "NHN Cloud 공식 문서: Instance m2.c2m4",
+          "source": "https://www.nhncloud.com/kr/pricing?c=Compute&s=Instance",
+          "checked_at": "2026-10-23",
+          "chunk_id": "NHN-CMP-02:web-80f582c10b:0",
+          "item_id": "NHN-CMP-02",
+          "cited": true
+        },
+        {
+          "n": 3,
+          "type": "summary",
+          "title": "로그인 필요·공개 단가 없음 항목 정리",
+          "source": "수집결과_상품메타_공공PDF.md · ③",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-86cdd6ef61:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 4,
+          "type": "summary",
+          "title": "CSAP(클라우드 보안인증) IaaS 인증 현황 — KISA 발급현황 조회 요약(2026-10-21)",
+          "source": "https://isms-p.or.kr/sttus/vrtl/selectVrtlCrtfctList.do",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-61f777353e:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 5,
+          "type": "summary",
+          "title": "CSAP(클라우드 보안인증) IaaS 인증 현황 — KISA 발급현황 조회 요약(2026-10-21)",
+          "source": "https://isms-p.or.kr/sttus/vrtl/selectVrtlCrtfctList.do",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-61f777353e:1",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 6,
+          "type": "summary",
+          "title": "공공 클라우드 보안 검증 제도 변경(2026-04-20 발표) 요약",
+          "source": "https://byline.network/2026/04/20-578/",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-d07438a889:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 7,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:1",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        }
+      ],
+      "cited": [
+        1,
+        4,
+        3,
+        6,
+        2,
+        5
+      ],
+      "answer": "- NHN Cloud Instance m2.c2m4 상품은 공공기관용 별도 플랫폼에서 CSAP IaaS 인증 범위에 포함된 것으로 보이나, 현재의 단가는 민간용 요금이며 공공 요건 충족 여부는 \"확인 필요\" 상태입니다[근거 1].\n- NHN Cloud는 CSAP 클라우드 보안인증(IaaS)에서 \"NHN Cloud (공공기관용)(IaaS)\" 인증을 유효기간 2022-12-13 ~ 2027-12-12로 보유하고 있어, 공공기관용 플랫폼은 별도로 인증받은 상태입니다[근거 4].\n- 다만, 공공기관용 플랫폼(gov-ncloud.com 등)의 구체적인 요금표나 서비스 상세는 이번 조사의 범위에 포함되지 않아 확인이 필요합니다[근거 3].\n- 2026년 4월 공공 클라우드 보안 검증 제도가 국정원 단일 검증 체계로 전환예정이며, 기존 CSAP 인증은 잔여 유효기간 동안 유효하지만 2027년 하반기부터는 새로운 절차 적용 예정으로 주의가 필요합니다[근거 6].\n- 결론적으로, NHN Cloud 일반 인스턴스 m2.c2m4 단가는 공공기관용 공식 인증 범위가 아니며, 공공기관이 해당 상품을 그대로 사용하려면 공공기관용 별도 플랫폼과 인증 여부, 전용 네트워크 연결 가능 여부 등을 반드시 확인해야 합니다[근거 1, 2, 3, 4, 5, 6].\n- 요약: NHN Cloud 일반 인스턴스는 공공기관용 공공 요건을 충족한다고 단정할 수 없으며, 공공기관용 별도 인증된 플랫폼을 사용하거나 확인 절차를 거쳐야 함.  \n\n- 사양: 2vCPU, 4GB RAM\n- 리전: 한국(판교) - 확인 필요\n- 공공 인증: 별도 공공기관용 CSAP 인증 플랫폼 존재, 일반 단가 상품은 공공 인증 여부 불확실\n- 폐쇄망 연결 가능성: 확인 필요\n\n따라서 공공기관이 NHN Cloud Instance m2.c2m4를 바로 쓰는 것은 공공 요건 충족 측면에서 확인과 검증이 필요합니다[근거 1, 3, 4, 6]."
+    },
+    "E3_mmr": {
+      "evidences": [
+        {
+          "n": 1,
+          "type": "meta",
+          "title": "NHN Cloud Instance m2.c2m4",
+          "source": "https://www.nhncloud.com/kr/pricing?c=Compute&s=Instance",
+          "checked_at": "2026-10-21",
+          "chunk_id": "NHN-CMP-02",
+          "item_id": "NHN-CMP-02",
+          "cited": true
+        },
+        {
+          "n": 2,
+          "type": "web",
+          "title": "NHN Cloud 공식 문서: Instance m2.c2m4",
+          "source": "https://www.nhncloud.com/kr/pricing?c=Compute&s=Instance",
+          "checked_at": "2026-10-23",
+          "chunk_id": "NHN-CMP-02:web-80f582c10b:0",
+          "item_id": "NHN-CMP-02",
+          "cited": false
+        },
+        {
+          "n": 3,
+          "type": "summary",
+          "title": "로그인 필요·공개 단가 없음 항목 정리",
+          "source": "수집결과_상품메타_공공PDF.md · ③",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-86cdd6ef61:0",
+          "item_id": "COMMON",
+          "cited": false
+        },
+        {
+          "n": 4,
+          "type": "summary",
+          "title": "CSAP(클라우드 보안인증) IaaS 인증 현황 — KISA 발급현황 조회 요약(2026-10-21)",
+          "source": "https://isms-p.or.kr/sttus/vrtl/selectVrtlCrtfctList.do",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-61f777353e:1",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 5,
+          "type": "summary",
+          "title": "공공 클라우드 보안 검증 제도 변경(2026-04-20 발표) 요약",
+          "source": "https://byline.network/2026/04/20-578/",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-d07438a889:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 6,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:2",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        },
+        {
+          "n": 7,
+          "type": "wiki",
+          "title": "위키백과: 아마존 일래스틱 컴퓨트 클라우드",
+          "source": "https://ko.wikipedia.org/wiki/%EC%95%84%EB%A7%88%EC%A1%B4_%EC%9D%BC%EB%9E%98%EC%8A%A4%ED%8B%B1_%EC%BB%B4%ED%93%A8%ED%8A%B8_%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:wiki-fc2d02fa7e:6",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        }
+      ],
+      "cited": [
+        1,
+        4,
+        5
+      ],
+      "answer": "- NHN Cloud의 Instance m2.c2m4 상품을 공공기관이 바로 사용할 수 있는지 여부는 현재 '공공 요건 충족 여부'가 확인 필요 상태입니다. 즉, 공공기관 전용 플랫폼(CSAP IaaS 인증 범위)과 별도로 민간용 요금이며, 공공기관에서 요구하는 클라우드 보안 인증 충족 여부는 명확하지 않습니다[근거 1].\n- CSAP(클라우드 보안인증) IaaS 인증 현황을 보면, NHN Cloud 민간용은 인증 정보를 제공하지 않고 있으며, 현재 인증을 받은 공공용 플랫폼은 따로 운영되고 있으나, 이번 요금표와 상품 정보에는 해당 공공기관용 플랫폼의 인증 현황이나 요금 정보가 포함되어 있지 않습니다[근거 1, 4].\n- 2027년 하반기부터는 공공 클라우드 보안 검증 체계가 국정원 단일 검증으로 일원화된다는 점도 참고해야 합니다. 기존 CSAP 인증은 잔여 유효기간 동안 유효하나, 앞으로 적용 예상되는 체계 변화로 인해 공공기관용 클라우드는 별도의 인증이 필요할 가능성이 큽니다[근거 5].\n- 폐쇄망·사설망 연결 지원, 무료 티어 제공 여부도 확인 필요로 명시되어 있어 공공기관 IT 환경 요구조건 충족 가능 여부를 명확히 파악하지 못하는 상황입니다[근거 1].\n- 따라서 이 상품(Instance m2.c2m4)을 공공기관이 그대로 바로 쓸 수 있는지는 현재 문서에서 확인되지 않으며, 공공기관용 별도 CSAP 인증 플랫폼 이용과 별도 확인이 반드시 필요합니다[근거 1, 4].\n- 공공 요건 충족이 1차 조건인 경우, NHN Cloud에서도 공공기관용 전용 플랫폼 및 인증 상태를 먼저 검토해야 하며, 비용 비교는 그 이후 단계임을 권고합니다[부문, 근거 1].\n\n요약하면,\n\n- NHN Cloud Instance m2.c2m4는 공공 요건 충족 여부가 확인 필요입니다.\n- 공공기관 전용 플랫폼 및 인증 상태는 별도이며, 이번 정보에는 포함되어 있지 않습니다.\n- 폐쇄망 연결 및 무료 티어 지원 여부도 미확인 상태입니다.\n- 따라서 공공기관이 바로 사용할 수 있는지 여부는 공식 확인이 필요합니다."
+    }
+  },
+  "explore": {
+    "private": {
+      "query": "서울 리전, 폐쇄망 지원, 월 3만 원 이하 MySQL",
+      "conditions": [
+        "서울 리전",
+        "폐쇄망 지원",
+        "월 3만 원 이하",
+        "MySQL",
+        "월 30,000원 이하(코드로 비교)",
+        "부문: private"
+      ],
+      "seconds": 15.9,
+      "hits": [
+        {
+          "item_id": "GCP-DB-01",
+          "name": "Cloud SQL db-f1-micro",
+          "csp": "GCP",
+          "category": "DB",
+          "monthly": 13342,
+          "closed": "확인 필요",
+          "public": "확인 필요",
+          "status": "unknown",
+          "reason": "서울 리전이며 폐쇄망 지원 여부가 확인 필요이나 월 3만 원 이하의 MySQL 서비스 상품입니다."
+        },
+        {
+          "item_id": "AWS-DB-01",
+          "name": "RDS for MySQL db.t3.micro",
+          "csp": "AWS",
+          "category": "DB",
+          "monthly": 25320,
+          "closed": "확인 필요",
+          "public": "확인 필요",
+          "status": "unknown",
+          "reason": "서울 리전이며 폐쇄망 지원 여부가 확인 필요이고 월 3만 원 이하의 MySQL 서비스 상품입니다."
+        }
+      ]
+    },
+    "learning": {
+      "query": "월 2만 원 이하 2vCPU 서버",
+      "conditions": [
+        "월 2만 원 이하",
+        "2vCPU 서버",
+        "월 20,000원 이하(코드로 비교)",
+        "vCPU 2개 이상(코드로 비교)",
+        "부문: 학습용"
+      ],
+      "seconds": 17.9,
+      "hits": [
+        {
+          "item_id": "GCP-CMP-01",
+          "name": "Compute Engine e2-micro",
+          "csp": "GCP",
+          "category": "CMP",
+          "monthly": 10465,
+          "closed": "확인 필요",
+          "public": "확인 필요",
+          "status": "ok",
+          "reason": "2vCPU 서버이면서 예상 월 요금 10,465원으로 월 2만 원 이하 조건을 만족함"
+        }
+      ]
+    },
+    "public": {
+      "query": "공공기관용 오브젝트 스토리지",
+      "conditions": [
+        "공공기관용",
+        "오브젝트 스토리지",
+        "부문: 공공"
+      ],
+      "seconds": 19.1,
+      "hits": [
+        {
+          "item_id": "GCP-STG-02",
+          "name": "Cloud Storage Coldline",
+          "csp": "GCP",
+          "category": "STG",
+          "monthly": 800,
+          "closed": "확인 필요",
+          "public": "확인 필요",
+          "status": "unknown",
+          "reason": "공공 여부와 폐쇄망 지원이 확인 필요이나 오브젝트 스토리지이며 공공기관용으로 적합함"
+        },
+        {
+          "item_id": "SCP-STG-02",
+          "name": "Object Storage",
+          "csp": "SCP",
+          "category": "STG",
+          "monthly": 2800,
+          "closed": "확인 필요",
+          "public": "확인 필요",
+          "status": "unknown",
+          "reason": "공공 여부와 폐쇄망 지원이 확인 필요이나 오브젝트 스토리지이며 공공기관용으로 적합함"
+        },
+        {
+          "item_id": "NCP-STG-01",
+          "name": "Object Storage",
+          "csp": "NCP",
+          "category": "STG",
+          "monthly": 2800,
+          "closed": "확인 필요",
+          "public": "확인 필요",
+          "status": "unknown",
+          "reason": "공공 여부와 폐쇄망 지원이 확인 필요이나 오브젝트 스토리지이며 공공기관용으로 적합함"
+        },
+        {
+          "item_id": "NHN-STG-02",
+          "name": "Object Storage Standard",
+          "csp": "NHN Cloud",
+          "category": "STG",
+          "monthly": 2880,
+          "closed": "확인 필요",
+          "public": "확인 필요",
+          "status": "unknown",
+          "reason": "리전 확인 필요, 공공 여부와 폐쇄망 지원이 확인 필요이나 오브젝트 스토리지이며 공공기관용으로 적합함"
+        },
+        {
+          "item_id": "KT-STG-02",
+          "name": "Object Storage Standard",
+          "csp": "KT Cloud",
+          "category": "STG",
+          "monthly": 3000,
+          "closed": "확인 필요",
+          "public": "확인 필요",
+          "status": "unknown",
+          "reason": "공공 여부와 폐쇄망 지원이 확인 필요이나 오브젝트 스토리지이며 공공기관용으로 적합함"
+        },
+        {
+          "item_id": "GCP-STG-01",
+          "name": "Cloud Storage Standard",
+          "csp": "GCP",
+          "category": "STG",
+          "monthly": 3068,
+          "closed": "확인 필요",
+          "public": "확인 필요",
+          "status": "unknown",
+          "reason": "공공 여부와 폐쇄망 지원이 확인 필요이나 오브젝트 스토리지이며 공공기관용으로 적합함"
+        },
+        {
+          "item_id": "AWS-STG-01",
+          "name": "S3 Standard",
+          "csp": "AWS",
+          "category": "STG",
+          "monthly": 3335,
+          "closed": "확인 필요",
+          "public": "확인 필요",
+          "status": "unknown",
+          "reason": "공공 여부와 폐쇄망 지원이 확인 필요이나 오브젝트 스토리지이며 공공기관용으로 적합함"
+        }
+      ]
+    }
+  },
+  "recommend": {
+    "learning": {
+      "requirement": {
+        "workload": "학습·실습",
+        "instances": 1,
+        "vcpu": 1,
+        "memory_gb": 1,
+        "need_db": true,
+        "storage_gb": 0,
+        "hours": 730,
+        "budget": 50000,
+        "security": [],
+        "note": "학습용 웹 서버 + DB",
+        "data_grade": "모름"
+      },
+      "best": "AWS",
+      "seconds": 18.6,
+      "candidates": [
+        {
+          "csp": "AWS",
+          "eligible": true,
+          "monthly": 41531,
+          "excluded": []
+        },
+        {
+          "csp": "GCP",
+          "eligible": true,
+          "monthly": 63446,
+          "excluded": []
+        },
+        {
+          "csp": "NCP",
+          "eligible": true,
+          "monthly": 133410,
+          "excluded": []
+        },
+        {
+          "csp": "NHN Cloud",
+          "eligible": true,
+          "monthly": 132050,
+          "excluded": []
+        },
+        {
+          "csp": "KT Cloud",
+          "eligible": true,
+          "monthly": 53500,
+          "excluded": []
+        },
+        {
+          "csp": "SCP",
+          "eligible": true,
+          "monthly": 208780,
+          "excluded": []
+        }
+      ],
+      "answer": "- 추천 CSP는 AWS인 이유:\n  - 월 예산 50,000원 내에서 서버, 디스크, DB 모두 구성 가능해 비용 적합(41,531원, 예산 이내) [근거 1, 2, 3].\n  - AWS t4g.micro 인스턴스 1대 (2vCPU/1GB, 서울 리전) 730시간 기준 10,128원으로 저렴하며, EBS gp3 스토리지 50GB 6,083원, RDS for MySQL db.t3.micro 730시간 25,320원 구성으로 학습용 웹 서버 + DB 요건 충족 [근거 1, 2, 3].\n  - 타 CSP인 KT Cloud(53,500원), GCP(63,446원), NHN Cloud(132,050원), NCP(133,410원), SCP(208,780원) 대비 비용 우위 크고 예산 초과 [계산 결과].\n\n- 구성 설계안과 역할:\n  - EC2 t4g.micro: 웹 서버 및 애플리케이션 서버 역할, vCPU 2, 메모리 1GB, 월 10,128원 [근거 1].\n  - EBS gp3 (50GB): EC2 인스턴스용 범용 SSD 디스크, 월 6,083원 [근거 2].\n  - RDS for MySQL db.t3.micro: 별도 DB 인스턴스, 2vCPU/1GB, Single-AZ, 월 25,320원 [근거 3].\n\n- 비용 차이:\n  - AWS 대비 KT Cloud 약 12,000원, GCP 약 22,000원, NHN Cloud 약 90,000원, NCP 약 92,000원, SCP 약 167,000원 더 비쌈, AWS가 가장 경제적임 [계산 결과].\n\n- 확인 필요 항목:\n  - AWS RDS 공공 요건 인증 보유하나 상품 단위 제공 여부는 확인 필요.\n  - 폐쇄망·사설 연결(전용회선·VPN·사설 엔드포인트) 지원 여부 확인 필요 [근거 3].\n  - 무료 티어 및 크레딧는 계정 단위이며, RDS 등 각각 상품 단위 무료 혜택 적용 여부는 콘솔에서 확인 필요 [근거 3, 6].\n  \n- 부문 요건 유의점:\n  - 학습용 무료 티어 및 크레딧은 계정 단위 제공하므로 개별 서비스별 무료 사용 범위가 제한적일 수 있음 [근거 6].\n  - AWS는 현재 세대 인스턴스 EBS 최적화 기본 활성화, 월별 데이터 송·수신 혜택 일부 무료 제공 등 학습용 비용 절감 가능 조건이 있음 [근거 4, 5, 8].\n  - 보안·연결 조건 없지만, 폐쇄망 지원 여부는 확인 필요하여 별도 요구 시 점검해야 함 [근거 3].\n  \n요약하면, AWS는 구성 가능한 서버·스토리지·DB 사양이 비용 내에 가장 적합하며, 무료 크레딧이나 티어 적용 가능 여부도 계정 단위로 확인 가능해 학습용 최저 비용 요구를 충족한다. 다만, 폐쇄망·보안 옵션 등은 고객이 직접 확인해야 한다. 다른 후보 CSP는 모두 비용이 크게 초과하여 부담된다.",
+      "cited": [
+        1,
+        2,
+        3,
+        6,
+        4,
+        5,
+        8
+      ],
+      "notices": [],
+      "evidences": [
+        {
+          "n": 1,
+          "type": "price",
+          "title": "서버 가격표 AWS-S0723",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/ (데이터: b0.p.awsstatic.com meteredUnitMaps, 게시 2026-10-15)",
+          "checked_at": "2026-10-21",
+          "chunk_id": "",
+          "item_id": "AWS-S0723",
+          "cited": true
+        },
+        {
+          "n": 2,
+          "type": "price",
+          "title": "Block Storage 단가표 ST01",
+          "source": "https://aws.amazon.com/ko/ebs/pricing/",
+          "checked_at": "2026-10-21",
+          "chunk_id": "",
+          "item_id": "ST01",
+          "cited": true
+        },
+        {
+          "n": 3,
+          "type": "meta",
+          "title": "AWS RDS for MySQL db.t3.micro",
+          "source": "https://aws.amazon.com/ko/rds/mysql/pricing/",
+          "checked_at": "2026-10-21",
+          "chunk_id": "AWS-DB-01",
+          "item_id": "AWS-DB-01",
+          "cited": true
+        },
+        {
+          "n": 4,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:3",
+          "item_id": "AWS-CMP-01",
+          "cited": true
+        },
+        {
+          "n": 5,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:2",
+          "item_id": "AWS-CMP-01",
+          "cited": true
+        },
+        {
+          "n": 6,
+          "type": "summary",
+          "title": "로그인 필요·공개 단가 없음 항목 정리",
+          "source": "수집결과_상품메타_공공PDF.md · ③",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-86cdd6ef61:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 7,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:6",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        },
+        {
+          "n": 8,
+          "type": "web",
+          "title": "AWS 공식 문서: EC2 t3.micro",
+          "source": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:web-b3c884614d:1",
+          "item_id": "AWS-CMP-01",
+          "cited": true
+        }
+      ]
+    },
+    "public": {
+      "requirement": {
+        "workload": "민원·대국민 서비스",
+        "instances": 2,
+        "vcpu": 2,
+        "memory_gb": 8,
+        "need_db": true,
+        "storage_gb": 100,
+        "hours": 730,
+        "budget": 2000000,
+        "security": [
+          "공공 요건",
+          "웹 방화벽(WAF)"
+        ],
+        "note": "지자체 민원 시스템",
+        "data_grade": "중"
+      },
+      "best": "KT Cloud",
+      "seconds": 7.7,
+      "candidates": [
+        {
+          "csp": "AWS",
+          "eligible": false,
+          "monthly": 305461,
+          "excluded": [
+            "공공 요건: CSAP 하등급 인증만 보유 — 중등급 시스템에는 쓸 수 없음 (CSAP-2025-014호 · 아마존 웹 서비스(AWS) 서울 리전에서 제공하는 클라우드컴퓨팅서비스 (…)"
+          ]
+        },
+        {
+          "csp": "GCP",
+          "eligible": false,
+          "monthly": 216592,
+          "excluded": [
+            "공공 요건: CSAP 하등급 인증만 보유 — 중등급 시스템에는 쓸 수 없음 (CSAP-2025-002호 · 구글 클라우드 플랫폼(GCP, 하등급, 다 그룹 용)(하등급 IaaS))",
+            "DB: 2vCPU/4GB 이상 MySQL 상품이 상품 메타데이터에 없음"
+          ]
+        },
+        {
+          "csp": "NCP",
+          "eligible": false,
+          "monthly": 314580,
+          "excluded": [
+            "웹 방화벽(WAF) 상품이 상품 메타데이터에 없음"
+          ]
+        },
+        {
+          "csp": "NHN Cloud",
+          "eligible": false,
+          "monthly": 324650,
+          "excluded": [
+            "웹 방화벽(WAF) 상품이 상품 메타데이터에 없음"
+          ]
+        },
+        {
+          "csp": "KT Cloud",
+          "eligible": true,
+          "monthly": 624260,
+          "excluded": []
+        },
+        {
+          "csp": "SCP",
+          "eligible": true,
+          "monthly": 728310,
+          "excluded": []
+        }
+      ],
+      "answer": "- **추천 이유: KT Cloud 선택 배경**  \n  - 공공 요건 충족 여부가 1차 조건임. KT Cloud는 공공기관용 별도 플랫폼으로 CSAP IaaS 인증을 '중등급' 이상으로 보유한 것으로 확인됨 (인증번호 CSAP-2026-010호, 유효기간 2026-03-25~2031-03-24) [근거 7, 8].  \n  - 다른 후보들은 공공 요건 충족에서 제외:  \n    - GCP, AWS는 CSAP 하등급 인증만 보유해 중등급 이상 공공 시스템에 적용 불가 [근거 7, 8].  \n    - NCP, NHN Cloud는 웹 방화벽(WAF) 상품이 없어 요구 조건의 WAF 미충족 [근거 6].  \n    - SCP는 CSAP 인증은 보유하나 KT Cloud 대비 비용이 104,050원/월 더 비쌈 (728,310원 vs. 624,260원) [계산 결과, 근거 8].  \n\n- **KT Cloud 설계안 구성 및 월 비용**  \n  - 서버 OS 2vCore 8GB × 2대: 98,800원 × 2 = 197,600원/월 [근거 1]  \n  - DB (DBaaS for MySQL/MariaDB 2vCore 4GB) × 1개: 93,000원/월 [근거 2]  \n  - 오브젝트 스토리지 100GB: 30원/GB·월 × 100 = 3,000원/월 [근거 3]  \n  - 웹 방화벽 WAF Standard 1개: 300,000원/월 [근거 4]  \n  - 로드밸런서(종량제) 1개 × 730시간: 42원/시간 × 730 = 30,660원/월 [근거 5]  \n  - 월 합계: 624,260원 (예산 2,000,000원 이내) [계산 결과]  \n\n- **비용 차이 및 타 CSP 대비 경쟁력**  \n  - SCP: 104,050원 더 비쌈 (728,310원) [계산 결과]  \n  - GCP, AWS: 낮은 등급 CSAP 인증으로 배제됨 [근거 7, 8]  \n  - NCP, NHN Cloud: WAF 상품 부재로 배제됨 [근거 6]  \n\n- **확인 필요 항목 및 주의점**  \n  - KT Cloud 구성 중 서버 OS, DBaaS, 오브젝트 스토리지, WAF, 로드밸런서 모두 '공공기관용 별도 플랫폼'에서 CSAP IaaS 인증 범위인지는 ‘확인 필요’임 [근거 2, 3, 4, 5].  \n  - 폐쇄망·사설 연결(전용회선·VPN·사설 엔드포인트) 지원 여부도 확인 필요 [근거 2, 3, 4, 5].  \n  - 공공 요건인 CSAP 인증 및 중·상등급 충족은 반드시 플랫폼별 상품과 요금이 ‘공공기관용 별도’ 기준과 일치하는지 재검증 필요 [근거 7, 8].  \n\n- **부문 요건 주의점**  \n  - '공공' 부문은 클라우드 보안인증(CSAP) 중 '중등급 이상' 인증이 최소 조건임 [근거 7, 8].  \n  - 민원·대국민 서비스와 지자체 민원 시스템 특성상 웹 방화벽(WAF)과 안정적 연결(로드밸런서)이 필수인데, KT Cloud는 모두 상품 제공 가능하나 정확한 공공용 기준 충족 여부 검증 필요 [근거 2, 3, 4, 5, 6].  \n\n요약: 공공 중등급 CSAP 인증 보유와 요구 조건 충족 상품 모두 마련된 점, 비용적 우위로 KT Cloud를 추천하며, 각 상품에 대해 공공기관용 플랫폼 적용 여부 및 폐쇄망 연결 지원 여부를 반드시 확인해야 한다. 타 CSP는 공공 요건 미충족 또는 WAF 미보유 등 이유로 제외되었다.",
+      "cited": [
+        7,
+        8,
+        6,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "notices": [],
+      "evidences": [
+        {
+          "n": 1,
+          "type": "price",
+          "title": "서버 가격표 KT-S0037",
+          "source": "https://cloud.kt.com/calculator/ (요금계산기 데이터)",
+          "checked_at": "2026-10-21",
+          "chunk_id": "",
+          "item_id": "KT-S0037",
+          "cited": true
+        },
+        {
+          "n": 2,
+          "type": "meta",
+          "title": "KT Cloud DBaaS for MySQL/MariaDB 2vCore 4GB",
+          "source": "https://cloud.kt.com/calculator/",
+          "checked_at": "2026-10-21",
+          "chunk_id": "KT-DB-02",
+          "item_id": "KT-DB-02",
+          "cited": true
+        },
+        {
+          "n": 3,
+          "type": "meta",
+          "title": "KT Cloud Object Storage Standard",
+          "source": "https://cloud.kt.com/calculator/",
+          "checked_at": "2026-10-21",
+          "chunk_id": "KT-STG-02",
+          "item_id": "KT-STG-02",
+          "cited": true
+        },
+        {
+          "n": 4,
+          "type": "meta",
+          "title": "KT Cloud WAF Standard",
+          "source": "https://cloud.kt.com/calculator/",
+          "checked_at": "2026-10-21",
+          "chunk_id": "KT-SEC-01",
+          "item_id": "KT-SEC-01",
+          "cited": true
+        },
+        {
+          "n": 5,
+          "type": "meta",
+          "title": "KT Cloud Load Balancer (종량제)",
+          "source": "https://cloud.kt.com/calculator/",
+          "checked_at": "2026-10-21",
+          "chunk_id": "KT-NET-01",
+          "item_id": "KT-NET-01",
+          "cited": true
+        },
+        {
+          "n": 6,
+          "type": "summary",
+          "title": "로그인 필요·공개 단가 없음 항목 정리",
+          "source": "수집결과_상품메타_공공PDF.md · ③",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-86cdd6ef61:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 7,
+          "type": "summary",
+          "title": "CSAP(클라우드 보안인증) IaaS 인증 현황 — KISA 발급현황 조회 요약(2026-10-21)",
+          "source": "https://isms-p.or.kr/sttus/vrtl/selectVrtlCrtfctList.do",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-61f777353e:0",
+          "item_id": "COMMON",
+          "cited": true
+        },
+        {
+          "n": 8,
+          "type": "summary",
+          "title": "CSAP(클라우드 보안인증) IaaS 인증 현황 — KISA 발급현황 조회 요약(2026-10-21)",
+          "source": "https://isms-p.or.kr/sttus/vrtl/selectVrtlCrtfctList.do",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-61f777353e:1",
+          "item_id": "COMMON",
+          "cited": true
+        }
+      ]
+    },
+    "private": {
+      "requirement": {
+        "workload": "사내 업무 시스템(ERP 등)",
+        "instances": 1,
+        "vcpu": 2,
+        "memory_gb": 8,
+        "need_db": true,
+        "storage_gb": 100,
+        "hours": 730,
+        "budget": 1000000,
+        "security": [
+          "폐쇄망(사설 연결)"
+        ],
+        "note": "사내망에서만 접근하는 ERP",
+        "data_grade": "모름"
+      },
+      "best": "KT Cloud",
+      "seconds": 20.6,
+      "candidates": [
+        {
+          "csp": "AWS",
+          "eligible": true,
+          "monthly": 481927,
+          "excluded": []
+        },
+        {
+          "csp": "GCP",
+          "eligible": false,
+          "monthly": 363721,
+          "excluded": [
+            "DB: 2vCPU/4GB 이상 MySQL 상품이 상품 메타데이터에 없음"
+          ]
+        },
+        {
+          "csp": "NCP",
+          "eligible": true,
+          "monthly": 445200,
+          "excluded": []
+        },
+        {
+          "csp": "NHN Cloud",
+          "eligible": true,
+          "monthly": 444850,
+          "excluded": []
+        },
+        {
+          "csp": "KT Cloud",
+          "eligible": true,
+          "monthly": 334800,
+          "excluded": []
+        },
+        {
+          "csp": "SCP",
+          "eligible": true,
+          "monthly": 359760,
+          "excluded": []
+        }
+      ],
+      "answer": "- 폐쇄망·사설 연결 지원과 비용 적합성: KT Cloud는 Connect Hub 1Gbps (Shared)를 통해 전용 회선·사설 연결을 지원한다. (폐쇄망 요건 충족) [근거 4]  \n- 비용 측면에서 예산 1,000,000원 대비 예상 월 합계 334,800원으로 예산 이내여 비용 효과적임 [계산 결과, 근거 1~4]  \n- 설계 구성 및 비용  \n  - 서버 OS 2vCore 8GB (G1/G2 Seoul M2): 월 98,800원 × 1대 = 98,800원 [근거 1]  \n  - DB: DBaaS for MySQL/MariaDB 2vCore 4GB: 월 93,000원 × 1개 = 93,000원 [근거 2]  \n  - 스토리지: Object Storage Standard 100GB: 30원/GB·월 × 100GB = 3,000원 [근거 3]  \n  - 사설 연결: Connect Hub 1Gbps (Shared): 140,000원/월 × 1회선 = 140,000원 [근거 4]  \n- 비용 비교:  \n  - SCP: 359,760원으로 KT Cloud 대비 약 24,960원 더 비쌈  \n  - NHN Cloud: 444,850원, NCP: 445,200원, AWS: 481,927원으로 KT Cloud 대비 대체로 11만 원 이상 비싼 편 [계산 결과]  \n  - GCP는 DB 상품(2vCPU/4GB 이상 MySQL) 부재로 후보에서 제외됨 [계산 결과]  \n- 확인 필요 항목:  \n  - KT Cloud의 서버 OS 2vCore 8GB, DBaaS for MySQL/MariaDB 2vCore 4GB, Object Storage Standard는 폐쇄망·사설 연결 지원 여부가 공식 문서에서 '확인 필요'로 명시되어 있음. 일부 공공 요건(CSAP IaaS 인증)도 확인 필요임 [근거 2, 3, 4]  \n- 부문 요건 주의점:  \n  - 폐쇄망, 사설 연결 지원은 Connect Hub 상품으로 해결되나 DB 및 스토리지의 완전한 전용망 지원 여부는 확인이 필요함. 공공기관용 별도 플랫폼 관련 인증 범위도 달라 확인 요망 [근거 2, 3, 4]  \n  - KT Cloud는 서울 M1 존(G1/G2) 리전을 사용하는 점 참고 [근거 1, 2, 3, 4]  \n- 요약:  \n  - KT Cloud는 폐쇄망을 위한 전용회선 상품을 보유하며, 월 비용도 경쟁사 대비 저렴해 예산 내에서 경제적으로 사내 업무 시스템 구축 가능  \n  - 다만 폐쇄망 연동 가능성 등 일부 기술적 사항은 공식 문서상으로는 '확인 필요' 사항이므로 추가 확인 권고  \n  - GCP는 DB 상품 부재, SCP·NHN·NCP·AWS는 비용 부담이 더 크다는 점에서 KT Cloud가 우선 추천됨",
+      "cited": [
+        4,
+        1,
+        2,
+        3
+      ],
+      "notices": [],
+      "evidences": [
+        {
+          "n": 1,
+          "type": "price",
+          "title": "서버 가격표 KT-S0037",
+          "source": "https://cloud.kt.com/calculator/ (요금계산기 데이터)",
+          "checked_at": "2026-10-21",
+          "chunk_id": "",
+          "item_id": "KT-S0037",
+          "cited": true
+        },
+        {
+          "n": 2,
+          "type": "meta",
+          "title": "KT Cloud DBaaS for MySQL/MariaDB 2vCore 4GB",
+          "source": "https://cloud.kt.com/calculator/",
+          "checked_at": "2026-10-21",
+          "chunk_id": "KT-DB-02",
+          "item_id": "KT-DB-02",
+          "cited": true
+        },
+        {
+          "n": 3,
+          "type": "meta",
+          "title": "KT Cloud Object Storage Standard",
+          "source": "https://cloud.kt.com/calculator/",
+          "checked_at": "2026-10-21",
+          "chunk_id": "KT-STG-02",
+          "item_id": "KT-STG-02",
+          "cited": true
+        },
+        {
+          "n": 4,
+          "type": "meta",
+          "title": "KT Cloud Connect Hub 1Gbps (Shared)",
+          "source": "https://cloud.kt.com/product/productDetail?prodId=P000000029",
+          "checked_at": "2026-10-21",
+          "chunk_id": "KT-NET-02",
+          "item_id": "KT-NET-02",
+          "cited": true
+        },
+        {
+          "n": 5,
+          "type": "summary",
+          "title": "로그인 필요·공개 단가 없음 항목 정리",
+          "source": "수집결과_상품메타_공공PDF.md · ③",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-86cdd6ef61:0",
+          "item_id": "COMMON",
+          "cited": false
+        },
+        {
+          "n": 6,
+          "type": "summary",
+          "title": "CSP별 계정 단위 무료 티어·크레딧 요약",
+          "source": "수집결과_상품메타_공공PDF.md · CSP별 공통 정보",
+          "checked_at": "2026-10-21",
+          "chunk_id": "COMMON:sum-a36f9cee68:0",
+          "item_id": "COMMON",
+          "cited": false
+        },
+        {
+          "n": 7,
+          "type": "web",
+          "title": "NHN Cloud 공식 문서: Instance m2.c2m4",
+          "source": "https://www.nhncloud.com/kr/pricing?c=Compute&s=Instance",
+          "checked_at": "2026-10-23",
+          "chunk_id": "NHN-CMP-02:web-80f582c10b:0",
+          "item_id": "NHN-CMP-02",
+          "cited": false
+        },
+        {
+          "n": 8,
+          "type": "wiki",
+          "title": "위키백과: 아마존 일래스틱 컴퓨트 클라우드",
+          "source": "https://ko.wikipedia.org/wiki/%EC%95%84%EB%A7%88%EC%A1%B4_%EC%9D%BC%EB%9E%98%EC%8A%A4%ED%8B%B1_%EC%BB%B4%ED%93%A8%ED%8A%B8_%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C",
+          "checked_at": "2026-10-23",
+          "chunk_id": "AWS-CMP-01:wiki-fc2d02fa7e:4",
+          "item_id": "AWS-CMP-01",
+          "cited": false
+        }
+      ]
+    }
+  },
+  "api": {
+    "status": 200,
+    "products": 200,
+    "bad_product": [
+      404,
+      {
+        "detail": "상품을 찾을 수 없습니다."
+      }
+    ],
+    "ask": {
+      "code": 200,
+      "keys": [
+        "cited",
+        "disclaimer",
+        "evidences",
+        "notices",
+        "text"
+      ],
+      "evidence_count": 1
+    }
+  },
+  "exp_chunk": [
+    {
+      "meta": 108,
+      "docs_common": 8,
+      "docs_after_e1": 8,
+      "chunk": {
+        "chunk_size": 500,
+        "chunk_overlap": 100
+      },
+      "e1": {
+        "progress": [
+          "질문에서 외부 문서 검색어를 뽑고 있습니다.",
+          "선택 상품의 공식 문서를 가져오고 있습니다.",
+          "새 검색어 4개로 외부 문서 후보를 모으고 있습니다.",
+          "후보 13건 중 색인할 문서를 고르고 있습니다.",
+          "선택한 문서 1건의 본문을 수집·색인하고 있습니다.",
+          "상품 메타데이터와 외부 문서에서 근거를 찾아 합치고 있습니다.",
+          "근거를 바탕으로 답변을 만들었습니다."
+        ],
+        "keywords": [
+          "NCP Server Standard-g2 요금 계산",
+          "NCP 클라우드 요금 정책",
+          "클라우드 월간 요금 산정",
+          "클라우드 컴퓨팅 비용"
+        ],
+        "keywords_used": [
+          "NCP Server Standard-g2 요금 계산",
+          "NCP 클라우드 요금 정책",
+          "클라우드 월간 요금 산정",
+          "클라우드 컴퓨팅 비용"
+        ],
+        "candidates": [
+          {
+            "cid": "c1",
+            "type": "web",
+            "title": "KT Cloud 공식 상품·요금 페이지 (네트워크, 데이터베이스, 보안, 스토리지, 컴퓨팅)",
+            "ref": "https://cloud.kt.com/calculator/",
+            "selected": true
+          },
+          {
+            "cid": "c2",
+            "type": "web",
+            "title": "AWS 공식 상품·요금 페이지 (스토리지)",
+            "ref": "https://aws.amazon.com/ko/s3/pricing/",
+            "selected": false
+          },
+          {
+            "cid": "c3",
+            "type": "web",
+            "title": "AWS 공식 상품·요금 페이지 (스토리지)",
+            "ref": "https://aws.amazon.com/ko/efs/pricing/",
+            "selected": false
+          },
+          {
+            "cid": "c4",
+            "type": "web",
+            "title": "GCP 공식 상품·요금 페이지 (컴퓨팅)",
+            "ref": "https://cloud.google.com/products/compute/pricing/general-purpose",
+            "selected": false
+          },
+          {
+            "cid": "c5",
+            "type": "web",
+            "title": "AWS 공식 상품·요금 페이지 (컴퓨팅)",
+            "ref": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+            "selected": false
+          },
+          {
+            "cid": "c6",
+            "type": "web",
+            "title": "AWS 공식 상품·요금 페이지 (데이터베이스)",
+            "ref": "https://aws.amazon.com/ko/rds/mysql/pricing/",
+            "selected": false
+          },
+          {
+            "cid": "c7",
+            "type": "web",
+            "title": "AWS 공식 상품·요금 페이지 (데이터베이스)",
+            "ref": "https://aws.amazon.com/ko/rds/postgresql/pricing/",
+            "selected": false
+          },
+          {
+            "cid": "c8",
+            "type": "web",
+            "title": "AWS 공식 상품·요금 페이지 (데이터베이스)",
+            "ref": "https://aws.amazon.com/ko/dynamodb/pricing/on-demand/",
+            "selected": false
+          },
+          {
+            "cid": "c9",
+            "type": "web",
+            "title": "NHN Cloud 공식 상품·요금 페이지 (컴퓨팅)",
+            "ref": "https://www.nhncloud.com/kr/pricing?c=Compute&s=Instance",
+            "selected": false
+          },
+          {
+            "cid": "c10",
+            "type": "wiki",
+            "title": "클라우드 컴퓨팅",
+            "ref": "클라우드 컴퓨팅",
+            "selected": false
+          },
+          {
+            "cid": "c11",
+            "type": "wiki",
+            "title": "클라우드 컴퓨팅 보안",
+            "ref": "클라우드 컴퓨팅 보안",
+            "selected": false
+          },
+          {
+            "cid": "c12",
+            "type": "wiki",
+            "title": "양자 컴퓨터",
+            "ref": "양자 컴퓨터",
+            "selected": false
+          },
+          {
+            "cid": "c13",
+            "type": "wiki",
+            "title": "소버린 AI",
+            "ref": "소버린 AI",
+            "selected": false
+          }
+        ],
+        "report": {
+          "official": "failed",
+          "new_keywords": [
+            "NCP Server Standard-g2 요금 계산",
+            "NCP 클라우드 요금 정책",
+            "클라우드 월간 요금 산정",
+            "클라우드 컴퓨팅 비용"
+          ],
+          "cached_keywords": [],
+          "candidates": 13,
+          "selected": [
+            "c1"
+          ],
+          "indexed_docs": [],
+          "skipped": [
+            "KT Cloud 공식 상품·요금 페이지 (네트워크, 데이터베이스, 보안, 스토리지, 컴퓨팅): 수집 실패"
+          ]
+        },
+        "ok": true,
+        "answer": "- NCP Server Standard-g2 2vCPU/8GB의 시간당 단가는 119원이며, 730시간 사용할 경우 공식 환산 비용은 86,870원이다. (상품 메타데이터 기준) [근거 1]\n- 무료 티어·크레딧 지원 여부는 NCP에서 확인 필요하다. (무료 제공 여부 문서에서 확인 불가) [근거 1, 2, 3]\n- 가입 후 무료 크레딧이나 체험 혜택은 문서에 명확히 기록되어 있지 않으며 로그인 후 확인 가능할 수 있다. [근거 4, 5]\n- 따라서 월 730시간 사용 시 비용은 약 86,870원이며, 무료 티어나 크레딧 적용 여부는 직접 확인해야 한다.",
+        "cited": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "notices": [
+          "선택 상품의 공식 문서를 가져오지 못해(접속 제한·본문 없음 등) 상품 메타데이터와 기존 색인 문서로 답했습니다.",
+          "수집하지 않은 문서: KT Cloud 공식 상품·요금 페이지 (네트워크, 데이터베이스, 보안, 스토리지, 컴퓨팅): 수집 실패"
+        ],
+        "evidences": [
+          {
+            "n": 1,
+            "type": "meta",
+            "title": "NCP Server Standard-g2 2vCPU/8GB",
+            "source": "https://www.ncloud.com/charge/price/ko",
+            "checked_at": "2026-10-21",
+            "chunk_id": "NCP-CMP-01",
+            "item_id": "NCP-CMP-01",
+            "cited": true
+          },
+          {
+            "n": 2,
+            "type": "summary",
+            "title": "CSP별 계정 단위 무료 티어·크레딧 요약",
+            "source": "수집결과_상품메타_공공PDF.md · CSP별 공통 정보",
+            "checked_at": "2026-10-21",
+            "chunk_id": "COMMON:sum-a36f9cee68:1",
+            "item_id": "COMMON",
+            "cited": true
+          },
+          {
+            "n": 3,
+            "type": "summary",
+            "title": "CSP별 계정 단위 무료 티어·크레딧 요약",
+            "source": "수집결과_상품메타_공공PDF.md · CSP별 공통 정보",
+            "checked_at": "2026-10-21",
+            "chunk_id": "COMMON:sum-a36f9cee68:0",
+            "item_id": "COMMON",
+            "cited": true
+          },
+          {
+            "n": 4,
+            "type": "summary",
+            "title": "로그인 필요·공개 단가 없음 항목 정리",
+            "source": "수집결과_상품메타_공공PDF.md · ③",
+            "checked_at": "2026-10-21",
+            "chunk_id": "COMMON:sum-86cdd6ef61:0",
+            "item_id": "COMMON",
+            "cited": true
+          },
+          {
+            "n": 5,
+            "type": "summary",
+            "title": "로그인 필요·공개 단가 없음 항목 정리",
+            "source": "수집결과_상품메타_공공PDF.md · ③",
+            "checked_at": "2026-10-21",
+            "chunk_id": "COMMON:sum-86cdd6ef61:1",
+            "item_id": "COMMON",
+            "cited": true
+          }
+        ],
+        "seconds": 65.7,
+        "item_id": "NCP-CMP-01",
+        "question": "이 상품을 월 730시간 쓰면 비용이 얼마인가요?",
+        "sector": "learning"
+      },
+      "tag": "chunk_500_100"
+    },
+    {
+      "meta": 108,
+      "docs_common": 5,
+      "docs_after_e1": 5,
+      "chunk": {
+        "chunk_size": 1000,
+        "chunk_overlap": 200
+      },
+      "e1": {
+        "progress": [
+          "질문에서 외부 문서 검색어를 뽑고 있습니다.",
+          "선택 상품의 공식 문서를 가져오고 있습니다.",
+          "새 검색어 4개로 외부 문서 후보를 모으고 있습니다.",
+          "후보 13건 중 색인할 문서를 고르고 있습니다.",
+          "상품 메타데이터와 외부 문서에서 근거를 찾아 합치고 있습니다.",
+          "근거를 바탕으로 답변을 만들었습니다."
+        ],
+        "keywords": [
+          "NCP Server Standard-g2 요금 계산",
+          "NCP 클라우드 컴퓨팅 요금 체계",
+          "클라우드 요금 월 환산",
+          "클라우드 컴퓨팅 무료 티어"
+        ],
+        "keywords_used": [
+          "NCP Server Standard-g2 요금 계산",
+          "NCP 클라우드 컴퓨팅 요금 체계",
+          "클라우드 요금 월 환산",
+          "클라우드 컴퓨팅 무료 티어"
+        ],
+        "candidates": [
+          {
+            "cid": "c1",
+            "type": "web",
+            "title": "KT Cloud 공식 상품·요금 페이지 (네트워크, 데이터베이스, 보안, 스토리지, 컴퓨팅)",
+            "ref": "https://cloud.kt.com/calculator/",
+            "selected": false
+          },
+          {
+            "cid": "c2",
+            "type": "web",
+            "title": "AWS 공식 상품·요금 페이지 (스토리지)",
+            "ref": "https://aws.amazon.com/ko/s3/pricing/",
+            "selected": false
+          },
+          {
+            "cid": "c3",
+            "type": "web",
+            "title": "AWS 공식 상품·요금 페이지 (스토리지)",
+            "ref": "https://aws.amazon.com/ko/efs/pricing/",
+            "selected": false
+          },
+          {
+            "cid": "c4",
+            "type": "web",
+            "title": "GCP 공식 상품·요금 페이지 (컴퓨팅)",
+            "ref": "https://cloud.google.com/products/compute/pricing/general-purpose",
+            "selected": false
+          },
+          {
+            "cid": "c5",
+            "type": "web",
+            "title": "AWS 공식 상품·요금 페이지 (컴퓨팅)",
+            "ref": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+            "selected": false
+          },
+          {
+            "cid": "c6",
+            "type": "web",
+            "title": "NHN Cloud 공식 상품·요금 페이지 (컴퓨팅)",
+            "ref": "https://www.nhncloud.com/kr/pricing?c=Compute&s=Instance",
+            "selected": false
+          },
+          {
+            "cid": "c7",
+            "type": "web",
+            "title": "AWS 공식 상품·요금 페이지 (데이터베이스)",
+            "ref": "https://aws.amazon.com/ko/rds/mysql/pricing/",
+            "selected": false
+          },
+          {
+            "cid": "c8",
+            "type": "web",
+            "title": "AWS 공식 상품·요금 페이지 (데이터베이스)",
+            "ref": "https://aws.amazon.com/ko/rds/postgresql/pricing/",
+            "selected": false
+          },
+          {
+            "cid": "c9",
+            "type": "web",
+            "title": "AWS 공식 상품·요금 페이지 (데이터베이스)",
+            "ref": "https://aws.amazon.com/ko/dynamodb/pricing/on-demand/",
+            "selected": false
+          },
+          {
+            "cid": "c10",
+            "type": "wiki",
+            "title": "아마존 일래스틱 컴퓨트 클라우드",
+            "ref": "아마존 일래스틱 컴퓨트 클라우드",
+            "selected": false
+          },
+          {
+            "cid": "c11",
+            "type": "wiki",
+            "title": "AI 스페이스 (카페24)",
+            "ref": "AI 스페이스 (카페24)",
+            "selected": false
+          },
+          {
+            "cid": "c12",
+            "type": "wiki",
+            "title": "서비스형 소프트웨어",
+            "ref": "서비스형 소프트웨어",
+            "selected": false
+          },
+          {
+            "cid": "c13",
+            "type": "wiki",
+            "title": "리눅스 재단",
+            "ref": "리눅스 재단",
+            "selected": false
+          }
+        ],
+        "report": {
+          "official": "failed",
+          "new_keywords": [
+            "NCP Server Standard-g2 요금 계산",
+            "NCP 클라우드 컴퓨팅 요금 체계",
+            "클라우드 요금 월 환산",
+            "클라우드 컴퓨팅 무료 티어"
+          ],
+          "cached_keywords": [],
+          "candidates": 13,
+          "selected": [],
+          "indexed_docs": [],
+          "skipped": []
+        },
+        "ok": true,
+        "answer": "- NCP Server Standard-g2 2vCPU/8GB 상품의 시간당 요금은 119원이고, 공식 월 요금은 85,120원이다. 730시간 기준 월 환산 비용은 86,870원으로 안내되어 있다[근거 1].\n- NCP의 무료 티어 및 크레딧 제공 여부는 확인이 필요하다[근거 1, 2].\n- 따라서 무료 혜택을 제외하고, 730시간 사용할 경우 월 86,870원 비용이 발생한다는 점 참고 바란다.\n- 이외의 무료 티어나 크레딧 적용 조건 등은 문서에서 확인되지 않으며, 공공기관용 플랫폼이나 사설 연결, 인증 등은 확인 필요하다[근거 1, 2, 3].",
+        "cited": [
+          1,
+          2,
+          3
+        ],
+        "notices": [
+          "선택 상품의 공식 문서를 가져오지 못해(접속 제한·본문 없음 등) 상품 메타데이터와 기존 색인 문서로 답했습니다."
+        ],
+        "evidences": [
+          {
+            "n": 1,
+            "type": "meta",
+            "title": "NCP Server Standard-g2 2vCPU/8GB",
+            "source": "https://www.ncloud.com/charge/price/ko",
+            "checked_at": "2026-10-21",
+            "chunk_id": "NCP-CMP-01",
+            "item_id": "NCP-CMP-01",
+            "cited": true
+          },
+          {
+            "n": 2,
+            "type": "summary",
+            "title": "CSP별 계정 단위 무료 티어·크레딧 요약",
+            "source": "수집결과_상품메타_공공PDF.md · CSP별 공통 정보",
+            "checked_at": "2026-10-21",
+            "chunk_id": "COMMON:sum-a36f9cee68:0",
+            "item_id": "COMMON",
+            "cited": true
+          },
+          {
+            "n": 3,
+            "type": "summary",
+            "title": "로그인 필요·공개 단가 없음 항목 정리",
+            "source": "수집결과_상품메타_공공PDF.md · ③",
+            "checked_at": "2026-10-21",
+            "chunk_id": "COMMON:sum-86cdd6ef61:0",
+            "item_id": "COMMON",
+            "cited": true
+          }
+        ],
+        "seconds": 69.6,
+        "item_id": "NCP-CMP-01",
+        "question": "이 상품을 월 730시간 쓰면 비용이 얼마인가요?",
+        "sector": "learning"
+      },
+      "tag": "chunk_1000_200"
+    },
+    {
+      "meta": 108,
+      "docs_common": 4,
+      "docs_after_e1": 4,
+      "chunk": {
+        "chunk_size": 1500,
+        "chunk_overlap": 300
+      },
+      "e1": {
+        "progress": [
+          "질문에서 외부 문서 검색어를 뽑고 있습니다.",
+          "선택 상품의 공식 문서를 가져오고 있습니다.",
+          "새 검색어 4개로 외부 문서 후보를 모으고 있습니다.",
+          "후보 17건 중 색인할 문서를 고르고 있습니다.",
+          "선택한 문서 1건의 본문을 수집·색인하고 있습니다.",
+          "상품 메타데이터와 외부 문서에서 근거를 찾아 합치고 있습니다.",
+          "근거를 바탕으로 답변을 만들었습니다."
+        ],
+        "keywords": [
+          "NCP Server Standard-g2 2vCPU/8GB 요금",
+          "NCP 클라우드 무료 티어",
+          "클라우드 컴퓨팅 비용 산정",
+          "시간 단위 요금 계산"
+        ],
+        "keywords_used": [
+          "NCP Server Standard-g2 2vCPU/8GB 요금",
+          "NCP 클라우드 무료 티어",
+          "클라우드 컴퓨팅 비용 산정",
+          "시간 단위 요금 계산"
+        ],
+        "candidates": [
+          {
+            "cid": "c1",
+            "type": "web",
+            "title": "KT Cloud 공식 상품·요금 페이지 (네트워크, 데이터베이스, 보안, 스토리지, 컴퓨팅)",
+            "ref": "https://cloud.kt.com/calculator/",
+            "selected": true
+          },
+          {
+            "cid": "c2",
+            "type": "web",
+            "title": "AWS 공식 상품·요금 페이지 (스토리지)",
+            "ref": "https://aws.amazon.com/ko/s3/pricing/",
+            "selected": false
+          },
+          {
+            "cid": "c3",
+            "type": "web",
+            "title": "AWS 공식 상품·요금 페이지 (스토리지)",
+            "ref": "https://aws.amazon.com/ko/efs/pricing/",
+            "selected": false
+          },
+          {
+            "cid": "c4",
+            "type": "web",
+            "title": "GCP 공식 상품·요금 페이지 (컴퓨팅)",
+            "ref": "https://cloud.google.com/products/compute/pricing/general-purpose",
+            "selected": false
+          },
+          {
+            "cid": "c5",
+            "type": "web",
+            "title": "2026년 클라우드 보안인증 FAQ(2026.07)",
+            "ref": "https://isms-p.or.kr/ntcn/rcsrm/selectGnrlVrtlRcsrmList.do",
+            "selected": false
+          },
+          {
+            "cid": "c6",
+            "type": "web",
+            "title": "행정기관 및 공공기관의 클라우드컴퓨팅서비스 이용 기준 및 안전성 확보 등에 관한 고시",
+            "ref": "https://www.law.go.kr/행정규칙/행정기관및공공기관의클라우드컴퓨팅서비스이용기준및안전성확보등에관한고시",
+            "selected": false
+          },
+          {
+            "cid": "c7",
+            "type": "web",
+            "title": "행정기관 및 공공기관 정보시스템 구축·운영 지침",
+            "ref": "https://www.law.go.kr/행정규칙/행정기관및공공기관정보시스템구축·운영지침",
+            "selected": false
+          },
+          {
+            "cid": "c8",
+            "type": "wiki",
+            "title": "위시켓",
+            "ref": "위시켓",
+            "selected": false
+          },
+          {
+            "cid": "c9",
+            "type": "web",
+            "title": "AWS 공식 상품·요금 페이지 (컴퓨팅)",
+            "ref": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+            "selected": false
+          },
+          {
+            "cid": "c10",
+            "type": "web",
+            "title": "NHN Cloud 공식 상품·요금 페이지 (컴퓨팅)",
+            "ref": "https://www.nhncloud.com/kr/pricing?c=Compute&s=Instance",
+            "selected": false
+          },
+          {
+            "cid": "c11",
+            "type": "wiki",
+            "title": "소프트웨어 구조",
+            "ref": "소프트웨어 구조",
+            "selected": false
+          },
+          {
+            "cid": "c12",
+            "type": "wiki",
+            "title": "전력 구매 계약",
+            "ref": "전력 구매 계약",
+            "selected": false
+          },
+          {
+            "cid": "c13",
+            "type": "web",
+            "title": "AWS 공식 상품·요금 페이지 (데이터베이스)",
+            "ref": "https://aws.amazon.com/ko/rds/mysql/pricing/",
+            "selected": false
+          },
+          {
+            "cid": "c14",
+            "type": "web",
+            "title": "AWS 공식 상품·요금 페이지 (데이터베이스)",
+            "ref": "https://aws.amazon.com/ko/rds/postgresql/pricing/",
+            "selected": false
+          },
+          {
+            "cid": "c15",
+            "type": "web",
+            "title": "AWS 공식 상품·요금 페이지 (데이터베이스)",
+            "ref": "https://aws.amazon.com/ko/dynamodb/pricing/on-demand/",
+            "selected": false
+          },
+          {
+            "cid": "c16",
+            "type": "wiki",
+            "title": "안내양",
+            "ref": "안내양",
+            "selected": false
+          },
+          {
+            "cid": "c17",
+            "type": "wiki",
+            "title": "쏘카",
+            "ref": "쏘카",
+            "selected": false
+          }
+        ],
+        "report": {
+          "official": "failed",
+          "new_keywords": [
+            "NCP Server Standard-g2 2vCPU/8GB 요금",
+            "NCP 클라우드 무료 티어",
+            "클라우드 컴퓨팅 비용 산정",
+            "시간 단위 요금 계산"
+          ],
+          "cached_keywords": [],
+          "candidates": 17,
+          "selected": [
+            "c1"
+          ],
+          "indexed_docs": [],
+          "skipped": [
+            "KT Cloud 공식 상품·요금 페이지 (네트워크, 데이터베이스, 보안, 스토리지, 컴퓨팅): 수집 실패"
+          ]
+        },
+        "ok": true,
+        "answer": "- NCP Server Standard-g2 2vCPU/8GB 상품의 시간당 요금은 119원입니다. 월 730시간을 사용할 경우, 공식 월 요금은 85,120원이나 월 환산 가격은 86,870원으로 안내되어 있습니다[근거 1].\n- NCP의 무료 티어 및 크레딧 제공 여부는 확인이 필요합니다. 공식 문서에서 무료 혜택이 명확히 제시되어 있지 않아, 무료 크레딧이나 무료 티어 적용 여부를 직접 확인해야 합니다[근거 1, 2].\n- 따라서, 무료 티어나 크레딧 미적용 시 월 사용료는 약 86,870원이 될 것으로 예상되며, 무료 혜택이 있다면 비용은 그보다 낮을 수 있으나 상세 내용은 확인이 필요합니다[근거 1, 2].\n- 리전은 한국(VPC)이며, 공공 인증 관련 사항과 폐쇄망 지원 여부도 확인이 필요한 상태입니다[근거 1].\n- 할인이나 맞춤 견적, 무료 티어 적용 여부는 콘솔이나 상담을 통해서만 확인할 수 있습니다[근거 3].\n\n요약하면, NCP Server Standard-g2 2vCPU/8GB를 월 730시간 사용 시 공식 요금 기준 약 86,870원이 드나 무료 티어·크레딧 적용 여부는 확인이 필요합니다.",
+        "cited": [
+          1,
+          2,
+          3
+        ],
+        "notices": [
+          "선택 상품의 공식 문서를 가져오지 못해(접속 제한·본문 없음 등) 상품 메타데이터와 기존 색인 문서로 답했습니다.",
+          "수집하지 않은 문서: KT Cloud 공식 상품·요금 페이지 (네트워크, 데이터베이스, 보안, 스토리지, 컴퓨팅): 수집 실패"
+        ],
+        "evidences": [
+          {
+            "n": 1,
+            "type": "meta",
+            "title": "NCP Server Standard-g2 2vCPU/8GB",
+            "source": "https://www.ncloud.com/charge/price/ko",
+            "checked_at": "2026-10-21",
+            "chunk_id": "NCP-CMP-01",
+            "item_id": "NCP-CMP-01",
+            "cited": true
+          },
+          {
+            "n": 2,
+            "type": "summary",
+            "title": "CSP별 계정 단위 무료 티어·크레딧 요약",
+            "source": "수집결과_상품메타_공공PDF.md · CSP별 공통 정보",
+            "checked_at": "2026-10-21",
+            "chunk_id": "COMMON:sum-a36f9cee68:0",
+            "item_id": "COMMON",
+            "cited": true
+          },
+          {
+            "n": 3,
+            "type": "summary",
+            "title": "로그인 필요·공개 단가 없음 항목 정리",
+            "source": "수집결과_상품메타_공공PDF.md · ③",
+            "checked_at": "2026-10-21",
+            "chunk_id": "COMMON:sum-86cdd6ef61:0",
+            "item_id": "COMMON",
+            "cited": true
+          }
+        ],
+        "seconds": 68.4,
+        "item_id": "NCP-CMP-01",
+        "question": "이 상품을 월 730시간 쓰면 비용이 얼마인가요?",
+        "sector": "learning"
+      },
+      "tag": "chunk_1500_300"
+    }
+  ],
+  "final_counts": {
+    "meta": 108,
+    "docs": 62
+  }
+}

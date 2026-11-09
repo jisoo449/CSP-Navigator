@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSP Navigator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- F2013: HTML·CSS·JS 화면. 데이터는 모두 /api/* (FastAPI)에서 받는다. -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">◇</span>
+      <div>
+        <h1>CSP Navigator</h1>
+        <p class="tagline">요구사항·부문으로 6개 CSP 중 적합하고 저렴한 곳을 근거와 함께</p>
+      </div>
+    </div>
+    <div class="sector" role="radiogroup" aria-label="부문">
+      <button type="button" data-sector="public" class="on" role="radio" aria-checked="true">공공</button>
+      <button type="button" data-sector="private" role="radio" aria-checked="false">private</button>
+      <button type="button" data-sector="learning" role="radio" aria-checked="false">학습용</button>
+    </div>
+  </header>
+
+  <!-- F2012: 상단 고정 면책 문구 -->
+  <div class="disclaimer" id="disclaimer"></div>
+  <div class="status" id="status" aria-live="polite"></div>
+  <p class="sector-help" id="sectorHelp"></p>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" data-tab="recommend" class="on">CSP 추천·설계</button>
+    <button role="tab" data-tab="explore">조건 탐색</button>
+    <button role="tab" data-tab="chat">상품 질의응답</button>
+  </nav>
+
+  <main>
+    <!-- F2010 CSP 추천·설계 -->
+    <section id="tab-recommend" class="panel on">
+      <form id="recForm" class="card form-grid">
+        <label>워크로드 <select name="workload" id="workload"></select></label>
+        <label>월 예산(원) <input name="budget" type="number" min="0" step="10000" value="300000"></label>
+        <label>서버 수(대) <input name="instances" type="number" min="1" max="50" value="2"></label>
+        <label>서버당 vCPU
+          <select name="vcpu"><option>1</option><option selected>2</option><option>4</option><option>8</option></select></label>
+        <label>서버당 메모리(GB)
+          <select name="memory_gb"><option>1</option><option>2</option><option>4</option><option selected>8</option><option>16</option><option>32</option></select></label>
+        <label>월 사용 시간 <input name="hours" type="number" min="1" max="744" value="730"></label>
+        <label>오브젝트 스토리지(GB) <input name="storage_gb" type="number" min="0" step="50" value="100"></label>
+        <label class="check"><input name="need_db" type="checkbox" checked> 관리형 DB(MySQL) 포함</label>
+        <label id="gradeWrap">공공 시스템 등급 <select name="data_grade" id="dataGrade"></select></label>
+        <fieldset class="wide"><legend>보안·연결 조건</legend><div id="securityBoxes" class="chips"></div></fieldset>
+        <label class="wide">추가 요구사항(선택) <textarea name="note" rows="2" placeholder="예: 사내망에서만 접근하는 ERP, 개인정보 포함"></textarea></label>
+        <div class="wide actions"><button type="submit" class="primary" id="recBtn">추천 받기</button></div>
+      </form>
+      <div id="recResult"></div>
+    </section>
+
+    <!-- F2011 조건 탐색 -->
+    <section id="tab-explore" class="panel">
+      <div class="card">
+        <div class="examples" id="exploreExamples"></div>
+        <form id="exploreForm" class="row">
+          <input id="exploreQ" placeholder="예: 서울 리전, 폐쇄망 지원, 월 3만 원 이하 MySQL" maxlength="300">
+          <button type="submit" class="primary">찾기</button>
+        </form>
+      </div>
+      <div id="exploreResult"></div>
+    </section>
+
+    <!-- F2009 상품 선택 + 질의응답 -->
+    <section id="tab-chat" class="panel">
+      <div class="chat-layout">
+        <aside class="card picker">
+          <label>CSP <select id="fCsp"></select></label>
+          <label>분류 <select id="fCat"></select></label>
+          <label>상품 <select id="fProduct"></select></label>
+          <button type="button" id="clearChat" class="ghost">이 상품 대화 지우기</button>
+        </aside>
+        <div class="chat-main">
+          <div id="productBox"></div>
+          <div id="chatLog" class="chat-log"></div>
+          <div class="examples" id="chatExamples"></div>
+          <form id="chatForm" class="row">
+            <input id="chatQ" placeholder="선택한 상품에 대해 질문하세요" maxlength="1000">
+            <button type="submit" class="primary">질문</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>요금·인증 현황은 확인일 기준입니다. 확인일이 90일(기본값)보다 오래된 값에는 ‘재확인 권장’이 붙습니다.</footer>
+  <script src="app.js"></script>
+</body>
+</html>

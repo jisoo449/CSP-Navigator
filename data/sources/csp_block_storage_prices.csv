@@ -1,0 +1,31 @@
+﻿storage_id,csp,storage_type,unit_price,unit,gb_month_factor,price_per_gb_month,currency,note,source_url,checked_at
+ST01,AWS,EBS gp3 (범용 SSD),0.0912,USD/GB-월,1,0.0912,USD,"기본 3,000 IOPS·125MB/s 포함. 추가 IOPS 0.0057 USD/IOPS-월, 추가 처리량 46.6944 USD/GiBps-월",https://aws.amazon.com/ko/ebs/pricing/,2026-10-21
+ST02,AWS,"EBS gp2 (범용 SSD, 이전 세대)",0.114,USD/GB-월,1,0.114,USD,,https://aws.amazon.com/ko/ebs/pricing/,2026-10-21
+ST03,AWS,EBS io2 (프로비저닝 IOPS SSD),0.1278,USD/GB-월,1,0.1278,USD,"IOPS 별도: 0.0666 / 0.04662(Tier2) / 0.032634(Tier3) USD/IOPS-월, 구간 경계 확인 필요",https://aws.amazon.com/ko/ebs/pricing/,2026-10-21
+ST04,AWS,EBS io1 (프로비저닝 IOPS SSD),0.1278,USD/GB-월,1,0.1278,USD,IOPS 별도 0.0666 USD/IOPS-월,https://aws.amazon.com/ko/ebs/pricing/,2026-10-21
+ST05,AWS,EBS st1 (처리량 최적화 HDD),0.051,USD/GB-월,1,0.051,USD,,https://aws.amazon.com/ko/ebs/pricing/,2026-10-21
+ST06,AWS,EBS sc1 (콜드 HDD),0.0174,USD/GB-월,1,0.0174,USD,,https://aws.amazon.com/ko/ebs/pricing/,2026-10-21
+ST07,AWS,"EBS standard (마그네틱, 이전 세대)",0.08,USD/GB-월,1,0.08,USD,I/O 요청 0.00000008 USD/건,https://aws.amazon.com/ko/ebs/pricing/,2026-10-21
+ST08,GCP,Standard PD (HDD),7.1233e-05,USD/GiB-시간,730,0.052,USD,,https://cloud.google.com/compute/disks-image-pricing,2026-10-21
+ST09,GCP,Balanced PD (SSD),0.000178082,USD/GiB-시간,730,0.13,USD,,https://cloud.google.com/compute/disks-image-pricing,2026-10-21
+ST10,GCP,SSD PD,0.00030274,USD/GiB-시간,730,0.221,USD,,https://cloud.google.com/compute/disks-image-pricing,2026-10-21
+ST11,GCP,Extreme PD,0.000223288,USD/GiB-시간,730,0.163,USD,프로비저닝 IOPS 0.000116438 USD/IOPS-시간 별도,https://cloud.google.com/compute/disks-image-pricing,2026-10-21
+ST12,GCP,Regional Standard PD,0.000142466,USD/GiB-시간,730,0.104,USD,2개 존 복제,https://cloud.google.com/compute/disks-image-pricing,2026-10-21
+ST13,GCP,Regional Balanced PD,0.000356164,USD/GiB-시간,730,0.26,USD,2개 존 복제,https://cloud.google.com/compute/disks-image-pricing,2026-10-21
+ST14,GCP,Regional SSD PD,0.000605479,USD/GiB-시간,730,0.442,USD,2개 존 복제,https://cloud.google.com/compute/disks-image-pricing,2026-10-21
+ST15,GCP,Hyperdisk Balanced,0.000124658,USD/GiB-시간,730,0.091,USD,"기본 3,000 IOPS·140MBps 초과분: IOPS 0.000008219, 처리량 0.000063014 USD/시간",https://cloud.google.com/compute/disks-image-pricing,2026-10-21
+ST16,GCP,Hyperdisk Balanced HA,0.000249863,USD/GiB-시간,730,0.1824,USD,"초과 IOPS 0.000015616, 처리량 0.000124932 USD/시간",https://cloud.google.com/compute/disks-image-pricing,2026-10-21
+ST17,GCP,Hyperdisk Extreme,0.00019589,USD/GiB-시간,730,0.143,USD,IOPS 0.000049315 USD/IOPS-시간 별도,https://cloud.google.com/compute/disks-image-pricing,2026-10-21
+ST18,GCP,Hyperdisk Throughput,8.219e-06,USD/GiB-시간,730,0.006,USD,처리량 0.000390411 USD/MBps-시간 별도,https://cloud.google.com/compute/disks-image-pricing,2026-10-21
+ST19,GCP,Local SSD,0.000142466,USD/GiB-시간,730,0.104,USD,VM에 붙는 임시 디스크,https://cloud.google.com/compute/disks-image-pricing,2026-10-21
+ST20,NCP,Block Storage HDD,0.8,원/10GB-시간,72,57.6,KRW,공식 30일 요금 576원/10GB (환산계수 720시간÷10),https://www.ncloud.com/charge/price/ko,2026-10-21
+ST21,NCP,Block Storage SSD,1.6,원/10GB-시간,72,115.2,KRW,"공식 30일 요금 1,152원/10GB",https://www.ncloud.com/charge/price/ko,2026-10-21
+ST22,NHN,Block Storage HDD,1.4,원/10GB-시간,72,100.8,KRW,30일(720시간) 기준 환산. 판교·평촌 동일,https://www.nhncloud.com/kr/pricing?c=storage&s=block%20storage&r=KR1,2026-10-21
+ST23,NHN,Block Storage SSD,1.6,원/10GB-시간,72,115.2,KRW,30일(720시간) 기준 환산,https://www.nhncloud.com/kr/pricing?c=storage&s=block%20storage&r=KR1,2026-10-21
+ST24,NHN,Block Storage Encrypted HDD,1.4,원/10GB-시간,72,100.8,KRW,,https://www.nhncloud.com/kr/pricing?c=storage&s=block%20storage&r=KR1,2026-10-21
+ST25,NHN,Block Storage Encrypted SSD,1.6,원/10GB-시간,72,115.2,KRW,,https://www.nhncloud.com/kr/pricing?c=storage&s=block%20storage&r=KR1,2026-10-21
+ST26,KT,"Block Storage HDD (G1/G2, D1)",70,원/GB-월,1,70,KRW,,https://cloud.kt.com/calculator/,2026-10-21
+ST27,KT,"Block Storage SSD (G1/G2 M2 존, D1)",140,원/GB-월,1,140,KRW,G1/G2는 Seoul M2 존만,https://cloud.kt.com/calculator/,2026-10-21
+ST28,KT,Block Storage SSD-Provisioned (G1/G2),100,원/GB-월,1,100,KRW,"+ 35원/IOPS-월, 100~800GB, 6,000~20,000 IOPS",https://cloud.kt.com/calculator/,2026-10-21
+ST29,SCP,Block Storage HDD,55,원/GB-월,1,55,KRW,"KR WEST 기준, 5만GB 초과 구간 할인",https://cloud.samsungsds.com/serviceportal/services/storage/blockStorage.html,2026-10-21
+ST30,SCP,Block Storage SSD,120,원/GB-월,1,120,KRW,"KR WEST 기준, IOPS·처리량 성능 요금은 프리뷰로 한시 무료",https://cloud.samsungsds.com/serviceportal/services/storage/blockStorage.html,2026-10-21

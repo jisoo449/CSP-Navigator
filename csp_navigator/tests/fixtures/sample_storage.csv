@@ -1,0 +1,3 @@
+storage_id,csp,storage_type,unit_price,unit,gb_month_factor,price_per_gb_month,currency,note,source_url,checked_at
+ST01,AWS,EBS gp3 (범용 SSD),0.0912,USD/GB-월,1,0.0912,USD,"기본 3,000 IOPS·125MB/s 포함",https://aws.amazon.com/ko/ebs/pricing/,2026-10-21
+ST21,NCP,Block Storage SSD,1.6,원/10GB-시간,72,115.2,KRW,,https://www.ncloud.com/charge/price/ko,2026-10-21

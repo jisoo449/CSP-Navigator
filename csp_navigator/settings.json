@@ -1,0 +1,90 @@
+{
+  "_설명": "조정 가능한 설정값. (기본값) 표시는 임시로 정한 값이다. 키·주소·모델명은 여기에 두지 않고 .env에 둔다(NF2003).",
+
+  "paths": {
+    "source_dir": "../data/sources",
+    "products_md": "../data/sources/수집결과_상품메타_공공PDF.md",
+    "server_csv": "../data/sources/csp_server_prices.csv",
+    "storage_csv": "../data/sources/csp_block_storage_prices.csv",
+    "processed_dir": "data/processed",
+    "pdf_dir": "data/pdf",
+    "cache_dir": "data/cache",
+    "chroma_dir": "data/chroma"
+  },
+
+  "collections": {
+    "meta": "csp_product_meta",
+    "docs": "csp_external_docs"
+  },
+
+  "llm": {
+    "temperature": null,
+    "timeout_sec": 60,
+    "max_retries": 2
+  },
+
+  "chunking": {
+    "_설명": "출처 종류별 청크 크기·중복 길이(문자 수). 초기값 1,000/200 (F2005, F2016)",
+    "web":     {"chunk_size": 1000, "chunk_overlap": 200},
+    "pdf":     {"chunk_size": 1000, "chunk_overlap": 200},
+    "wiki":    {"chunk_size": 1000, "chunk_overlap": 200},
+    "summary": {"chunk_size": 1000, "chunk_overlap": 200}
+  },
+
+  "retrieval": {
+    "_설명": "search_type: similarity | mmr (F2014는 미선택이지만 값으로 바꿀 수 있게 둠)",
+    "top_k": 5,
+    "search_type": "similarity",
+    "mmr_fetch_k": 20,
+    "mmr_lambda": 0.5,
+    "own_doc_k": 2,
+    "max_evidences": 8,
+    "snippet_chars": 280
+  },
+
+  "collection": {
+    "_설명": "외부 문서 수집 규칙 (F2004, NF2002, NF2006)",
+    "sources": ["web", "pdf", "wiki"],
+    "max_keywords": 4,
+    "candidates_per_source": 4,
+    "max_selected_docs": 3,
+    "min_body_chars": 300,
+    "max_body_chars": 30000,
+    "request_interval_sec": 1.0,
+    "max_retries": 4,
+    "backoff_base_sec": 1.5,
+    "timeout_sec": 20
+  },
+
+  "cost": {
+    "_설명": "비용 계산 기준 (F2018). 노란 칸(엑셀)과 같은 기준값",
+    "hours_per_month": 730,
+    "storage_hours_per_month": {"default": 730, "NCP": 720, "NHN Cloud": 720},
+    "days_per_month": 30,
+    "usd_krw": 1334.03,
+    "usd_krw_source": "YCharts, 2026-10-16 기준"
+  },
+
+  "design": {
+    "_설명": "추천 설계안을 만들 때 쓰는 규칙 (F2010). 모두 (기본값)",
+    "db_min_vcpu": 2,
+    "db_min_memory_gb": 4,
+    "learning_db_min_vcpu": 1,
+    "learning_db_min_memory_gb": 1,
+    "boot_disk_gb": 50,
+    "boot_disk_storage_id": {"AWS": "ST01", "GCP": "ST09", "NCP": "ST21", "NHN Cloud": "ST23", "KT Cloud": "ST27", "SCP": "ST30"},
+    "exclude_server_platforms": ["Classic 1세대"],
+    "exclude_server_note_keywords": ["기본료"],
+    "closed_network_roles": ["net_dedicated", "net_vpn"],
+    "learning_closed_network_roles": ["net_vpn", "net_dedicated"],
+    "add_lb_when_instances_gte": 2
+  },
+
+  "explore": {
+    "candidate_k": 30,
+    "max_hits": 12,
+    "est_storage_gb": 100
+  },
+
+  "freshness_days": 90
+}

@@ -1,0 +1,8 @@
+# 화면에 오류 추적 정보를 보여 주지 않는다. (NF2004)
+# streamlit run 을 csp_navigator 폴더에서 실행해야 이 설정이 적용된다.
+[client]
+showErrorDetails = "none"
+toolbarMode = "viewer"
+
+[server]
+runOnSave = false

@@ -1,0 +1,97 @@
+{
+ "meta": {
+  "source_md": "수집결과_상품메타_공공PDF.md",
+  "checked_at": "2026-10-21",
+  "csap_source_url": "https://isms-p.or.kr/sttus/vrtl/selectVrtlCrtfctList.do"
+ },
+ "items": [
+  {
+   "id": "P1",
+   "title": "클라우드서비스 보안인증기준 해설서(26.07)",
+   "publisher": "한국인터넷진흥원(KISA)",
+   "date": "2026-07 (2026-07-28 오탈자 수정)",
+   "form": "PDF",
+   "url": "https://isms-p.or.kr/ntcn/rcsrm/selectGnrlVrtlRcsrmList.do",
+   "url_text": "KISA 자료실(클라우드보안인증제)(https://isms-p.or.kr/ntcn/rcsrm/selectGnrlVrtlRcsrmList.do) — 게시글 '2026년 클라우드서비스 보안인증기준 해설서(2026.07)' 첨부",
+   "license": "게시 페이지에 공공누리 표시 없음 → 확인 필요. 같은 제목 이전 판은 공공데이터포털에 공공누리 제4유형(출처표시·상업적 이용금지·변경금지)으로 등록됨",
+   "purpose": "공공부문 특화 요구사항(14번 항목) 근거"
+  },
+  {
+   "id": "P2",
+   "title": "한국인터넷진흥원_클라우드서비스 보안인증기준 해설서 (공공데이터포털 등록본)",
+   "publisher": "한국인터넷진흥원",
+   "date": "등록본 판 확인 필요",
+   "form": "PDF(파일데이터)",
+   "url": "https://www.data.go.kr/biz/dcat/metadata/15160242.do",
+   "url_text": "공공데이터포털 15160242(https://www.data.go.kr/biz/dcat/metadata/15160242.do)",
+   "license": "공공누리 제4유형 (출처표시, 상업적 이용금지, 변경금지)",
+   "purpose": "P1의 재배포 가능 판본 후보"
+  },
+  {
+   "id": "P3",
+   "title": "2026년 클라우드 보안인증 FAQ(2026.07)",
+   "publisher": "한국인터넷진흥원",
+   "date": "2026-07-06",
+   "form": "PDF 첨부",
+   "url": "https://isms-p.or.kr/ntcn/rcsrm/selectGnrlVrtlRcsrmList.do",
+   "url_text": "KISA 자료실(https://isms-p.or.kr/ntcn/rcsrm/selectGnrlVrtlRcsrmList.do)",
+   "license": "공공누리 표시 없음 → 확인 필요",
+   "purpose": "인증 등급·절차 질의응답 근거"
+  },
+  {
+   "id": "P4",
+   "title": "클라우드컴퓨팅서비스 보안인증에 관한 고시",
+   "publisher": "과학기술정보통신부(고시 제2023-4호)",
+   "date": "시행 2023-01-31",
+   "form": "법령 원문(HTML, PDF 저장 가능)",
+   "url": "https://www.law.go.kr/행정규칙/클라우드컴퓨팅서비스보안인증에관한고시",
+   "url_text": "국가법령정보센터(https://www.law.go.kr/행정규칙/클라우드컴퓨팅서비스보안인증에관한고시)",
+   "license": "법령·고시는 저작권법 제7조에 따라 보호 대상 아님 (출처 표기 권장)",
+   "purpose": "보안인증 유형·기준 근거"
+  },
+  {
+   "id": "P5",
+   "title": "행정기관 및 공공기관의 클라우드컴퓨팅서비스 이용 기준 및 안전성 확보 등에 관한 고시",
+   "publisher": "행정안전부(고시 제2025-79호)",
+   "date": "시행 2025-12-29",
+   "form": "법령 원문",
+   "url": "https://www.law.go.kr/행정규칙/행정기관및공공기관의클라우드컴퓨팅서비스이용기준및안전성확보등에관한고시",
+   "url_text": "국가법령정보센터(https://www.law.go.kr/행정규칙/행정기관및공공기관의클라우드컴퓨팅서비스이용기준및안전성확보등에관한고시)",
+   "license": "저작권법 제7조 (보호 대상 아님)",
+   "purpose": "공공기관의 민간 클라우드 이용 기준(Q1, Q5)"
+  },
+  {
+   "id": "P6",
+   "title": "클라우드컴퓨팅 발전 및 이용자 보호에 관한 법률",
+   "publisher": "법률 제21066호",
+   "date": "시행 2025-10-01",
+   "form": "법령 원문",
+   "url": "https://www.law.go.kr/법령/클라우드컴퓨팅발전및이용자보호에관한법률",
+   "url_text": "국가법령정보센터(https://www.law.go.kr/법령/클라우드컴퓨팅발전및이용자보호에관한법률)",
+   "license": "저작권법 제7조 (보호 대상 아님)",
+   "purpose": "상위 법률 근거"
+  },
+  {
+   "id": "P7",
+   "title": "행정기관 및 공공기관 정보시스템 구축·운영 지침",
+   "publisher": "행정안전부(고시 제2025-1호)",
+   "date": "시행 2025-01-02",
+   "form": "법령 원문",
+   "url": "https://www.law.go.kr/행정규칙/행정기관및공공기관정보시스템구축·운영지침",
+   "url_text": "국가법령정보센터(https://www.law.go.kr/행정규칙/행정기관및공공기관정보시스템구축·운영지침)",
+   "license": "저작권법 제7조 (보호 대상 아님)",
+   "purpose": "제6조: 클라우드 우선 검토 의무"
+  },
+  {
+   "id": "P8",
+   "title": "국가 망 보안체계(N²SF) 보안 가이드라인 1.0",
+   "publisher": "국가정보원",
+   "date": "2025-09-30 공개(언론 보도 기준)",
+   "form": "PDF",
+   "url": "https://byline.network/2025/09/30-445/",
+   "url_text": "공식 배포 URL 확인 필요 (보도: 바이라인네트워크(https://byline.network/2025/09/30-445/))",
+   "license": "확인 필요",
+   "purpose": "공공 망 보안·등급 분류 참고"
+  }
+ ]
+}

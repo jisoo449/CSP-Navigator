@@ -1,0 +1,925 @@
+{
+ "meta": {
+  "source_md": "수집결과_상품메타_공공PDF.md",
+  "checked_at": "2026-10-21",
+  "csap_source_url": "https://isms-p.or.kr/sttus/vrtl/selectVrtlCrtfctList.do"
+ },
+ "items": [
+  {
+   "id": "web-b3c884614d",
+   "url": "https://aws.amazon.com/ko/ec2/pricing/on-demand/",
+   "csp": "AWS",
+   "source_type": "web",
+   "title": "AWS 공식 상품·요금 페이지 (컴퓨팅)",
+   "summary": "AWS의 컴퓨팅 상품 요금·과금 안내. 관련 상품: EC2 t3.micro, EC2 t3.medium, EC2 t3.large, EC2 m6i.large, EC2 c6i.large",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "AWS-CMP-01",
+    "AWS-CMP-02",
+    "AWS-CMP-03",
+    "AWS-CMP-04",
+    "AWS-CMP-05"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-f9548eb38e",
+   "url": "https://aws.amazon.com/ko/rds/mysql/pricing/",
+   "csp": "AWS",
+   "source_type": "web",
+   "title": "AWS 공식 상품·요금 페이지 (데이터베이스)",
+   "summary": "AWS의 데이터베이스 상품 요금·과금 안내. 관련 상품: RDS for MySQL db.t3.micro, RDS for MySQL db.t4g.medium",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "AWS-DB-01",
+    "AWS-DB-02"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-165060a0dd",
+   "url": "https://aws.amazon.com/ko/rds/postgresql/pricing/",
+   "csp": "AWS",
+   "source_type": "web",
+   "title": "AWS 공식 상품·요금 페이지 (데이터베이스)",
+   "summary": "AWS의 데이터베이스 상품 요금·과금 안내. 관련 상품: RDS for PostgreSQL db.m6i.large",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "AWS-DB-03"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-cd6628e472",
+   "url": "https://aws.amazon.com/ko/dynamodb/pricing/on-demand/",
+   "csp": "AWS",
+   "source_type": "web",
+   "title": "AWS 공식 상품·요금 페이지 (데이터베이스)",
+   "summary": "AWS의 데이터베이스 상품 요금·과금 안내. 관련 상품: DynamoDB 온디맨드",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "AWS-DB-04"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-4dd301ed58",
+   "url": "https://aws.amazon.com/ko/s3/pricing/",
+   "csp": "AWS",
+   "source_type": "web",
+   "title": "AWS 공식 상품·요금 페이지 (스토리지)",
+   "summary": "AWS의 스토리지 상품 요금·과금 안내. 관련 상품: S3 Standard",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "AWS-STG-01"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-1d70976428",
+   "url": "https://aws.amazon.com/ko/ebs/pricing/",
+   "csp": "AWS",
+   "source_type": "web",
+   "title": "AWS 공식 상품·요금 페이지 (스토리지)",
+   "summary": "AWS의 스토리지 상품 요금·과금 안내. 관련 상품: EBS gp3",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "AWS-STG-02"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-66194d30b3",
+   "url": "https://aws.amazon.com/ko/efs/pricing/",
+   "csp": "AWS",
+   "source_type": "web",
+   "title": "AWS 공식 상품·요금 페이지 (스토리지)",
+   "summary": "AWS의 스토리지 상품 요금·과금 안내. 관련 상품: EFS Standard",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "AWS-STG-03"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-6163bc40f1",
+   "url": "https://aws.amazon.com/ko/elasticloadbalancing/pricing/",
+   "csp": "AWS",
+   "source_type": "web",
+   "title": "AWS 공식 상품·요금 페이지 (네트워크)",
+   "summary": "AWS의 네트워크 상품 요금·과금 안내. 관련 상품: Application Load Balancer",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "AWS-NET-01"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-8acca3d3e6",
+   "url": "https://aws.amazon.com/ko/vpn/pricing/",
+   "csp": "AWS",
+   "source_type": "web",
+   "title": "AWS 공식 상품·요금 페이지 (네트워크)",
+   "summary": "AWS의 네트워크 상품 요금·과금 안내. 관련 상품: Site-to-Site VPN",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "AWS-NET-02"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-db9c226f9c",
+   "url": "https://aws.amazon.com/ko/directconnect/pricing/",
+   "csp": "AWS",
+   "source_type": "web",
+   "title": "AWS 공식 상품·요금 페이지 (네트워크)",
+   "summary": "AWS의 네트워크 상품 요금·과금 안내. 관련 상품: Direct Connect 1G 전용 포트",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "AWS-NET-03"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-6f52e43cf3",
+   "url": "https://aws.amazon.com/ko/privatelink/pricing/",
+   "csp": "AWS",
+   "source_type": "web",
+   "title": "AWS 공식 상품·요금 페이지 (네트워크)",
+   "summary": "AWS의 네트워크 상품 요금·과금 안내. 관련 상품: VPC 인터페이스 엔드포인트(PrivateLink)",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "AWS-NET-04"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-5cd1a7d45a",
+   "url": "https://aws.amazon.com/ko/kms/pricing/",
+   "csp": "AWS",
+   "source_type": "web",
+   "title": "AWS 공식 상품·요금 페이지 (보안)",
+   "summary": "AWS의 보안 상품 요금·과금 안내. 관련 상품: KMS 고객 관리형 키",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "AWS-SEC-01"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-8685a9d666",
+   "url": "https://aws.amazon.com/ko/waf/pricing/",
+   "csp": "AWS",
+   "source_type": "web",
+   "title": "AWS 공식 상품·요금 페이지 (보안)",
+   "summary": "AWS의 보안 상품 요금·과금 안내. 관련 상품: WAF",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "AWS-SEC-02"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-78da9845a5",
+   "url": "https://cloud.google.com/products/compute/pricing/general-purpose",
+   "csp": "GCP",
+   "source_type": "web",
+   "title": "GCP 공식 상품·요금 페이지 (컴퓨팅)",
+   "summary": "GCP의 컴퓨팅 상품 요금·과금 안내. 관련 상품: Compute Engine e2-micro, Compute Engine e2-medium, Compute Engine e2-standard-2, Compute Engine n2-standard-2, Compute Engine n4-standard-2",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "GCP-CMP-01",
+    "GCP-CMP-02",
+    "GCP-CMP-03",
+    "GCP-CMP-04",
+    "GCP-CMP-05"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-2bf2fc8f56",
+   "url": "https://cloud.google.com/sql/pricing",
+   "csp": "GCP",
+   "source_type": "web",
+   "title": "GCP 공식 상품·요금 페이지 (데이터베이스)",
+   "summary": "GCP의 데이터베이스 상품 요금·과금 안내. 관련 상품: Cloud SQL db-f1-micro, Cloud SQL db-g1-small, Cloud SQL Enterprise 2vCPU/8GiB, Cloud SQL Enterprise 2vCPU/8GiB HA",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "GCP-DB-01",
+    "GCP-DB-02",
+    "GCP-DB-03",
+    "GCP-DB-04"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-41c27d02e2",
+   "url": "https://cloud.google.com/storage/pricing",
+   "csp": "GCP",
+   "source_type": "web",
+   "title": "GCP 공식 상품·요금 페이지 (스토리지)",
+   "summary": "GCP의 스토리지 상품 요금·과금 안내. 관련 상품: Cloud Storage Standard, Cloud Storage Coldline",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "GCP-STG-01",
+    "GCP-STG-02"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-eb8243bfc5",
+   "url": "https://cloud.google.com/compute/disks-image-pricing",
+   "csp": "GCP",
+   "source_type": "web",
+   "title": "GCP 공식 상품·요금 페이지 (스토리지)",
+   "summary": "GCP의 스토리지 상품 요금·과금 안내. 관련 상품: Persistent Disk Balanced",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "GCP-STG-03"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-b6f6f41298",
+   "url": "https://cloud.google.com/vpn/pricing",
+   "csp": "GCP",
+   "source_type": "web",
+   "title": "GCP 공식 상품·요금 페이지 (네트워크)",
+   "summary": "GCP의 네트워크 상품 요금·과금 안내. 관련 상품: Cloud VPN(HA VPN) 터널",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "GCP-NET-01"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-74e86682dd",
+   "url": "https://cloud.google.com/network-connectivity/interconnect/pricing",
+   "csp": "GCP",
+   "source_type": "web",
+   "title": "GCP 공식 상품·요금 페이지 (네트워크)",
+   "summary": "GCP의 네트워크 상품 요금·과금 안내. 관련 상품: Dedicated Interconnect 10G, Partner Interconnect 1Gbps VLAN",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "GCP-NET-02",
+    "GCP-NET-03"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-777330da9c",
+   "url": "https://cloud.google.com/load-balancing/pricing",
+   "csp": "GCP",
+   "source_type": "web",
+   "title": "GCP 공식 상품·요금 페이지 (네트워크)",
+   "summary": "GCP의 네트워크 상품 요금·과금 안내. 관련 상품: 내부 Application Load Balancer",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "GCP-NET-04"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-8abdef801a",
+   "url": "https://cloud.google.com/kms/pricing",
+   "csp": "GCP",
+   "source_type": "web",
+   "title": "GCP 공식 상품·요금 페이지 (보안)",
+   "summary": "GCP의 보안 상품 요금·과금 안내. 관련 상품: Cloud KMS 소프트웨어 키",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "GCP-SEC-01"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-3010e0d4fa",
+   "url": "https://cloud.google.com/armor/pricing",
+   "csp": "GCP",
+   "source_type": "web",
+   "title": "GCP 공식 상품·요금 페이지 (보안)",
+   "summary": "GCP의 보안 상품 요금·과금 안내. 관련 상품: Cloud Armor Standard",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "GCP-SEC-02"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-38b0a8e7d5",
+   "url": "https://www.ncloud.com/charge/price/ko",
+   "csp": "NCP",
+   "source_type": "web",
+   "title": "NCP 공식 상품·요금 페이지 (네트워크, 데이터베이스, 보안, 스토리지, 컴퓨팅)",
+   "summary": "NCP의 네트워크, 데이터베이스, 보안, 스토리지, 컴퓨팅 상품 요금·과금 안내. 관련 상품: Server Standard-g2 2vCPU/8GB, Server High CPU-g2 2vCPU/4GB, Server High Memory-g2 2vCPU/16GB, Server Standard-g2 4vCPU/16GB, Server Micro-g1 (Classic)",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "NCP-CMP-01",
+    "NCP-CMP-02",
+    "NCP-CMP-03",
+    "NCP-CMP-04",
+    "NCP-CMP-05",
+    "NCP-DB-01",
+    "NCP-DB-02",
+    "NCP-DB-03",
+    "NCP-DB-04",
+    "NCP-STG-01",
+    "NCP-STG-02",
+    "NCP-STG-03",
+    "NCP-NET-01",
+    "NCP-NET-02",
+    "NCP-NET-03",
+    "NCP-NET-04",
+    "NCP-SEC-01",
+    "NCP-SEC-02"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-80f582c10b",
+   "url": "https://www.nhncloud.com/kr/pricing?c=Compute&s=Instance",
+   "csp": "NHN Cloud",
+   "source_type": "web",
+   "title": "NHN Cloud 공식 상품·요금 페이지 (컴퓨팅)",
+   "summary": "NHN Cloud의 컴퓨팅 상품 요금·과금 안내. 관련 상품: Instance t2.c1m1, Instance m2.c2m4, Instance m2.c4m8, Instance c2.c2m2, Instance r2.c2m8",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "NHN-CMP-01",
+    "NHN-CMP-02",
+    "NHN-CMP-03",
+    "NHN-CMP-04",
+    "NHN-CMP-05"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-78454994a9",
+   "url": "https://www.nhncloud.com/kr/pricing?c=Database",
+   "csp": "NHN Cloud",
+   "source_type": "web",
+   "title": "NHN Cloud 공식 상품·요금 페이지 (데이터베이스)",
+   "summary": "NHN Cloud의 데이터베이스 상품 요금·과금 안내. 관련 상품: RDS for MySQL m2.c2m4, RDS for MySQL r2.c2m8, RDS for PostgreSQL m2.c2m4, EasyCache m2.c1m2",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "NHN-DB-01",
+    "NHN-DB-02",
+    "NHN-DB-03",
+    "NHN-DB-04"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-e631b7b656",
+   "url": "https://www.nhncloud.com/kr/pricing?c=Storage",
+   "csp": "NHN Cloud",
+   "source_type": "web",
+   "title": "NHN Cloud 공식 상품·요금 페이지 (스토리지)",
+   "summary": "NHN Cloud의 스토리지 상품 요금·과금 안내. 관련 상품: Block Storage SSD, Object Storage Standard, NAS",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "NHN-STG-01",
+    "NHN-STG-02",
+    "NHN-STG-03"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-59a4c96ab1",
+   "url": "https://www.nhncloud.com/kr/pricing?c=Network",
+   "csp": "NHN Cloud",
+   "source_type": "web",
+   "title": "NHN Cloud 공식 상품·요금 페이지 (네트워크)",
+   "summary": "NHN Cloud의 네트워크 상품 요금·과금 안내. 관련 상품: Load Balancer (일반), NAT Gateway, VPN Gateway (Site-to-Site) 20Mbps, Direct Connect 1G 포트",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "NHN-NET-01",
+    "NHN-NET-02",
+    "NHN-NET-03",
+    "NHN-NET-04"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-12268f6204",
+   "url": "https://www.nhncloud.com/kr/pricing?c=Security",
+   "csp": "NHN Cloud",
+   "source_type": "web",
+   "title": "NHN Cloud 공식 상품·요금 페이지 (보안)",
+   "summary": "NHN Cloud의 보안 상품 요금·과금 안내. 관련 상품: Secure Key Manager, Network Firewall",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "NHN-SEC-01",
+    "NHN-SEC-02"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-e09dac7445",
+   "url": "https://cloud.kt.com/calculator/",
+   "csp": "KT Cloud",
+   "source_type": "web",
+   "title": "KT Cloud 공식 상품·요금 페이지 (네트워크, 데이터베이스, 보안, 스토리지, 컴퓨팅)",
+   "summary": "KT Cloud의 네트워크, 데이터베이스, 보안, 스토리지, 컴퓨팅 상품 요금·과금 안내. 관련 상품: Server 1vCore 1GB (G1/G2), Server 2vCore 4GB (G1/G2), Server 2vCore 8GB (G1/G2), Server 4vCore 8GB (G1/G2), Server CPU-AMD 2vCore 4GB (D1)",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "KT-CMP-01",
+    "KT-CMP-02",
+    "KT-CMP-03",
+    "KT-CMP-04",
+    "KT-CMP-05",
+    "KT-DB-01",
+    "KT-DB-02",
+    "KT-DB-03",
+    "KT-DB-04",
+    "KT-STG-01",
+    "KT-STG-02",
+    "KT-STG-03",
+    "KT-NET-01",
+    "KT-NET-04",
+    "KT-SEC-01",
+    "KT-SEC-02"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-e8d18f8dab",
+   "url": "https://cloud.kt.com/product/productDetail?prodId=P000000029",
+   "csp": "KT Cloud",
+   "source_type": "web",
+   "title": "KT Cloud 공식 상품·요금 페이지 (네트워크)",
+   "summary": "KT Cloud의 네트워크 상품 요금·과금 안내. 관련 상품: Connect Hub 1Gbps (Shared)",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "KT-NET-02"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-1ad28e2e7c",
+   "url": "https://cloud.kt.com/product/productDetail?prodId=P000000032",
+   "csp": "KT Cloud",
+   "source_type": "web",
+   "title": "KT Cloud 공식 상품·요금 페이지 (네트워크)",
+   "summary": "KT Cloud의 네트워크 상품 요금·과금 안내. 관련 상품: Shared VPN (IPsec)",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "KT-NET-03"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-403b484ef9",
+   "url": "https://cloud.samsungsds.com/serviceportal/services/compute/virtualServer.html",
+   "csp": "SCP",
+   "source_type": "web",
+   "title": "SCP 공식 상품·요금 페이지 (컴퓨팅)",
+   "summary": "SCP의 컴퓨팅 상품 요금·과금 안내. 관련 상품: Virtual Server s1v2m4 (1세대), Virtual Server s2v1m2 (2세대), Virtual Server s2v2m4 (2세대), Virtual Server s2v2m8 (2세대), Virtual Server s2v4m16 (2세대)",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "SCP-CMP-01",
+    "SCP-CMP-02",
+    "SCP-CMP-03",
+    "SCP-CMP-04",
+    "SCP-CMP-05"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-06fd9fcbbd",
+   "url": "https://cloud.samsungsds.com/serviceportal/services/database/Mysql.html",
+   "csp": "SCP",
+   "source_type": "web",
+   "title": "SCP 공식 상품·요금 페이지 (데이터베이스)",
+   "summary": "SCP의 데이터베이스 상품 요금·과금 안내. 관련 상품: MySQL(DBaaS) db1v2m4, MySQL(DBaaS) db1v2m8",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "SCP-DB-01",
+    "SCP-DB-02"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-9b88bfcf06",
+   "url": "https://cloud.samsungsds.com/serviceportal/services/database/PostgreSQL.html",
+   "csp": "SCP",
+   "source_type": "web",
+   "title": "SCP 공식 상품·요금 페이지 (데이터베이스)",
+   "summary": "SCP의 데이터베이스 상품 요금·과금 안내. 관련 상품: PostgreSQL(DBaaS) db1v2m8",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "SCP-DB-03"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-d1b7f43b15",
+   "url": "https://cloud.samsungsds.com/serviceportal/services/database/cacheStore.html",
+   "csp": "SCP",
+   "source_type": "web",
+   "title": "SCP 공식 상품·요금 페이지 (데이터베이스)",
+   "summary": "SCP의 데이터베이스 상품 요금·과금 안내. 관련 상품: CacheStore(DBaaS) redis1v1m2",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "SCP-DB-04"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-c68493a34d",
+   "url": "https://cloud.samsungsds.com/serviceportal/services/storage/blockStorage.html",
+   "csp": "SCP",
+   "source_type": "web",
+   "title": "SCP 공식 상품·요금 페이지 (스토리지)",
+   "summary": "SCP의 스토리지 상품 요금·과금 안내. 관련 상품: Block Storage SSD",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "SCP-STG-01"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-7477816417",
+   "url": "https://cloud.samsungsds.com/serviceportal/services/storage/objStorage.html",
+   "csp": "SCP",
+   "source_type": "web",
+   "title": "SCP 공식 상품·요금 페이지 (스토리지)",
+   "summary": "SCP의 스토리지 상품 요금·과금 안내. 관련 상품: Object Storage",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "SCP-STG-02"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-0243a6f267",
+   "url": "https://cloud.samsungsds.com/serviceportal/services/storage/fileStorage.html",
+   "csp": "SCP",
+   "source_type": "web",
+   "title": "SCP 공식 상품·요금 페이지 (스토리지)",
+   "summary": "SCP의 스토리지 상품 요금·과금 안내. 관련 상품: File Storage HDD",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "SCP-STG-03"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-a6764a8e57",
+   "url": "https://cloud.samsungsds.com/serviceportal/services/network/loadBalancer.html",
+   "csp": "SCP",
+   "source_type": "web",
+   "title": "SCP 공식 상품·요금 페이지 (네트워크)",
+   "summary": "SCP의 네트워크 상품 요금·과금 안내. 관련 상품: Load Balancer",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "SCP-NET-01"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-b47ec30a2b",
+   "url": "https://cloud.samsungsds.com/serviceportal/services/network/directConnect.html",
+   "csp": "SCP",
+   "source_type": "web",
+   "title": "SCP 공식 상품·요금 페이지 (네트워크)",
+   "summary": "SCP의 네트워크 상품 요금·과금 안내. 관련 상품: Direct Connect 1Gbps",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "SCP-NET-02"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-3452a97225",
+   "url": "https://cloud.samsungsds.com/serviceportal/services/network/vpn.html",
+   "csp": "SCP",
+   "source_type": "web",
+   "title": "SCP 공식 상품·요금 페이지 (네트워크)",
+   "summary": "SCP의 네트워크 상품 요금·과금 안내. 관련 상품: VPN (IPsec VPN Gateway)",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "SCP-NET-03"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-5872d274b3",
+   "url": "https://cloud.samsungsds.com/serviceportal/services/network/firewall.html",
+   "csp": "SCP",
+   "source_type": "web",
+   "title": "SCP 공식 상품·요금 페이지 (네트워크)",
+   "summary": "SCP의 네트워크 상품 요금·과금 안내. 관련 상품: Firewall Extra Small",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "SCP-NET-04"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-a09aa4c454",
+   "url": "https://cloud.samsungsds.com/serviceportal/services/security/kms.html",
+   "csp": "SCP",
+   "source_type": "web",
+   "title": "SCP 공식 상품·요금 페이지 (보안)",
+   "summary": "SCP의 보안 상품 요금·과금 안내. 관련 상품: Key Management Service",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "SCP-SEC-01"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-5ba00f9204",
+   "url": "https://cloud.samsungsds.com/serviceportal/services/security/waf.html",
+   "csp": "SCP",
+   "source_type": "web",
+   "title": "SCP 공식 상품·요금 페이지 (보안)",
+   "summary": "SCP의 보안 상품 요금·과금 안내. 관련 상품: WAF 100Mbps",
+   "sectors": [
+    "public",
+    "private",
+    "learning"
+   ],
+   "item_ids": [
+    "SCP-SEC-02"
+   ],
+   "license": "CSP 이용약관·robots.txt 확인 필요(미결 #3)"
+  },
+  {
+   "id": "web-9965f18998",
+   "url": "https://isms-p.or.kr/ntcn/rcsrm/selectGnrlVrtlRcsrmList.do",
+   "csp": "",
+   "source_type": "web",
+   "title": "클라우드서비스 보안인증기준 해설서(26.07)",
+   "summary": "한국인터넷진흥원(KISA) · 2026-07 (2026-07-28 오탈자 수정) · 용도: 공공부문 특화 요구사항(14번 항목) 근거",
+   "sectors": [
+    "public"
+   ],
+   "item_ids": [],
+   "license": "게시 페이지에 공공누리 표시 없음 → 확인 필요. 같은 제목 이전 판은 공공데이터포털에 공공누리 제4유형(출처표시·상업적 이용금지·변경금지)으로 등록됨"
+  },
+  {
+   "id": "web-64949a93d5",
+   "url": "https://www.data.go.kr/biz/dcat/metadata/15160242.do",
+   "csp": "",
+   "source_type": "web",
+   "title": "한국인터넷진흥원_클라우드서비스 보안인증기준 해설서 (공공데이터포털 등록본)",
+   "summary": "한국인터넷진흥원 · 등록본 판 확인 필요 · 용도: P1의 재배포 가능 판본 후보",
+   "sectors": [
+    "public"
+   ],
+   "item_ids": [],
+   "license": "공공누리 제4유형 (출처표시, 상업적 이용금지, 변경금지)"
+  },
+  {
+   "id": "web-e6d2ddddb7",
+   "url": "https://isms-p.or.kr/ntcn/rcsrm/selectGnrlVrtlRcsrmList.do",
+   "csp": "",
+   "source_type": "web",
+   "title": "2026년 클라우드 보안인증 FAQ(2026.07)",
+   "summary": "한국인터넷진흥원 · 2026-07-06 · 용도: 인증 등급·절차 질의응답 근거",
+   "sectors": [
+    "public"
+   ],
+   "item_ids": [],
+   "license": "공공누리 표시 없음 → 확인 필요"
+  },
+  {
+   "id": "web-31ed75b517",
+   "url": "https://www.law.go.kr/행정규칙/클라우드컴퓨팅서비스보안인증에관한고시",
+   "csp": "",
+   "source_type": "web",
+   "title": "클라우드컴퓨팅서비스 보안인증에 관한 고시",
+   "summary": "과학기술정보통신부(고시 제2023-4호) · 시행 2023-01-31 · 용도: 보안인증 유형·기준 근거",
+   "sectors": [
+    "public"
+   ],
+   "item_ids": [],
+   "license": "법령·고시는 저작권법 제7조에 따라 보호 대상 아님 (출처 표기 권장)"
+  },
+  {
+   "id": "web-d5d89a6894",
+   "url": "https://www.law.go.kr/행정규칙/행정기관및공공기관의클라우드컴퓨팅서비스이용기준및안전성확보등에관한고시",
+   "csp": "",
+   "source_type": "web",
+   "title": "행정기관 및 공공기관의 클라우드컴퓨팅서비스 이용 기준 및 안전성 확보 등에 관한 고시",
+   "summary": "행정안전부(고시 제2025-79호) · 시행 2025-12-29 · 용도: 공공기관의 민간 클라우드 이용 기준(Q1, Q5)",
+   "sectors": [
+    "public"
+   ],
+   "item_ids": [],
+   "license": "저작권법 제7조 (보호 대상 아님)"
+  },
+  {
+   "id": "web-86ce81572c",
+   "url": "https://www.law.go.kr/법령/클라우드컴퓨팅발전및이용자보호에관한법률",
+   "csp": "",
+   "source_type": "web",
+   "title": "클라우드컴퓨팅 발전 및 이용자 보호에 관한 법률",
+   "summary": "법률 제21066호 · 시행 2025-10-01 · 용도: 상위 법률 근거",
+   "sectors": [
+    "public"
+   ],
+   "item_ids": [],
+   "license": "저작권법 제7조 (보호 대상 아님)"
+  },
+  {
+   "id": "web-cab011f88e",
+   "url": "https://www.law.go.kr/행정규칙/행정기관및공공기관정보시스템구축·운영지침",
+   "csp": "",
+   "source_type": "web",
+   "title": "행정기관 및 공공기관 정보시스템 구축·운영 지침",
+   "summary": "행정안전부(고시 제2025-1호) · 시행 2025-01-02 · 용도: 제6조: 클라우드 우선 검토 의무",
+   "sectors": [
+    "public"
+   ],
+   "item_ids": [],
+   "license": "저작권법 제7조 (보호 대상 아님)"
+  },
+  {
+   "id": "web-c94c18dc5f",
+   "url": "https://byline.network/2025/09/30-445/",
+   "csp": "",
+   "source_type": "web",
+   "title": "국가 망 보안체계(N²SF) 보안 가이드라인 1.0",
+   "summary": "국가정보원 · 2025-09-30 공개(언론 보도 기준) · 용도: 공공 망 보안·등급 분류 참고",
+   "sectors": [
+    "public"
+   ],
+   "item_ids": [],
+   "license": "확인 필요"
+  }
+ ]
+}
